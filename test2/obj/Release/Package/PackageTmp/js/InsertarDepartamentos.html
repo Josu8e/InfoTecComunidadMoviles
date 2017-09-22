@@ -8,19 +8,45 @@
         </ul>
     </div>
     <div id="inDep" style="width: 100%" class="mainDiv">
-        <br>
+        <h2>Agregar nuevo departamento</h2>
         <input type="text" id="nombre" maxlength="100" name="n" placeholder="Nombre del departamento a agregar" required="required" />
+        <br>
+        <select id="sedesDisp" width="50%">
+            <option value="ca">Cartago</option>
+            <option value="lm">Limon</option>
+            <option value="sc">San Carlos</option>
+        </select>
+        <br>
+        <select id="tiposDip" width="50%" >
+            <option value="d">Departamento</option>
+            <option value="c">Comunidad </option>
+        </select>
+        <br>
         <input type="button" onclick="insertarD()" class="btn btn-primary btn-block btn-large" value="Aceptar" />
         <div id="mensajeDep"></div>
-        <br />
-    </div>
-
-    <div>
-        <div id="divPersona">
-            <a>hola</a>
+        <br>
+        
+        <div id="inPer">
+            <h2>Agregar miebros a departamento</h2>
+            <div id="depDisp">
+                <h5>Departamentos disponibles</h5>
+                <input name="nombreD" placeholder="Nombre del departamento" />
+                <input list="sedes" placeholder="Sede">
+                <datalist id="sedes">
+                    <option value="Cartago">
+                    <option value="San Carlos">
+                </datalist>
+                <input list="tipos" placeholder="Categoria">
+                <datalist id="tipos">
+                    <option value="Comunidad">
+                    <option value="Departamento">
+                </datalist>
+            </div>
+            <div id="agrePer" >
+                <h5>Personas disponibles</h5>
+                <input type="text" id="carnetP" maxlength="10" min="0" name="n" placeholder="Carnet institucional" />
+            </div>
         </div>
-        <div id="divDepartamento">
-            <a>hola</a>
-        </div>
+        <br>
     </div>
 </div>
