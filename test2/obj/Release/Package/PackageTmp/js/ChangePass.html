@@ -1,0 +1,19 @@
+<div id="send" class="mensaje">
+    <div id="topmenu">
+        <ul>
+            <li id="departamento" onclick="changeModul(5)">Departamentos</li>
+            <li id="M_admin" onclick="changeModul(1)">Enviar</li>
+            <li id="C_contraseña" onclick="changeModul(2)">Enviados</li>
+            <li id="salir" onclick="changeModul(4)">Salir</li>
+        </ul>
+    </div>
+    <br />
+    <br />
+    <div id="Mensaje_admin" style="width: 100%" class="mainDiv">
+        <input type="password" id="cn" maxlength="100" name="u" placeholder="Nueva Contraseña" />
+        <input type="password" id="cn1" maxlength="100" name="u" placeholder="Repetir Nueva Contraseña" />
+        <br/>
+        <input type="button" onclick="cambiarPass()" class="btn btn-primary btn-block btn-large" value="Cambiar" />
+        <div id="notificacion" style="margin:10px auto"></div>
+    </div>
+</div>

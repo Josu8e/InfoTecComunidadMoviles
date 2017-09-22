@@ -1,0 +1,402 @@
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\test2.dll.config
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\test2.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\test2.pdb
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\Antlr3.Runtime.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\DotNetOpenAuth.AspNet.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\DotNetOpenAuth.Core.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\DotNetOpenAuth.OAuth.Consumer.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\DotNetOpenAuth.OAuth.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\DotNetOpenAuth.OpenId.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\EntityFramework.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\Microsoft.Data.Edm.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\Microsoft.Data.OData.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\Microsoft.Web.Infrastructure.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\Microsoft.Web.WebPages.OAuth.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\Newtonsoft.Json.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\System.Net.Http.Formatting.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\System.Spatial.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\System.Web.Helpers.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\System.Web.Http.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\System.Web.Http.OData.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\System.Web.Http.WebHost.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\System.Web.Mvc.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\System.Web.Optimization.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\System.Web.Razor.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\System.Web.WebPages.Deployment.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\System.Web.WebPages.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\System.Web.WebPages.Razor.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\WebGrease.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\WebMatrix.Data.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\WebMatrix.WebData.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\EntityFramework.xml
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\Newtonsoft.Json.xml
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\System.Net.Http.Formatting.xml
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\System.Web.Helpers.xml
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\System.Web.Http.xml
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\System.Web.Http.WebHost.xml
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\System.Web.Mvc.xml
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\System.Web.Razor.xml
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\System.Web.WebPages.xml
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\System.Web.WebPages.Deployment.xml
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\System.Web.WebPages.Razor.xml
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\WebMatrix.Data.xml
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\Microsoft.Web.WebPages.OAuth.xml
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\WebMatrix.WebData.xml
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\DotNetOpenAuth.AspNet.xml
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\DotNetOpenAuth.Core.xml
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\DotNetOpenAuth.OAuth.Consumer.xml
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\DotNetOpenAuth.OAuth.xml
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\DotNetOpenAuth.OpenId.xml
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\System.Web.Http.OData.xml
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\Microsoft.Data.Edm.xml
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\Microsoft.Data.OData.xml
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\System.Spatial.xml
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\es\EntityFramework.resources.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\es\System.Net.Http.Formatting.resources.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\es\System.Web.Helpers.resources.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\es\System.Web.Http.resources.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\es\System.Web.Http.WebHost.resources.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\es\System.Web.Mvc.resources.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\es\System.Web.Optimization.resources.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\es\System.Web.Razor.resources.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\es\System.Web.WebPages.resources.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\es\System.Web.WebPages.Deployment.resources.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\es\System.Web.WebPages.Razor.resources.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\es\WebMatrix.Data.resources.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\es\Microsoft.Web.WebPages.OAuth.resources.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\es\WebMatrix.WebData.resources.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\es\System.Web.Http.OData.resources.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\de\Microsoft.Data.Edm.resources.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\es\Microsoft.Data.Edm.resources.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\fr\Microsoft.Data.Edm.resources.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\it\Microsoft.Data.Edm.resources.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\ja\Microsoft.Data.Edm.resources.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\ko\Microsoft.Data.Edm.resources.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\ru\Microsoft.Data.Edm.resources.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\de\Microsoft.Data.OData.resources.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\es\Microsoft.Data.OData.resources.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\fr\Microsoft.Data.OData.resources.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\it\Microsoft.Data.OData.resources.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\ja\Microsoft.Data.OData.resources.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\ko\Microsoft.Data.OData.resources.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\ru\Microsoft.Data.OData.resources.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\de\System.Spatial.resources.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\es\System.Spatial.resources.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\fr\System.Spatial.resources.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\it\System.Spatial.resources.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\ja\System.Spatial.resources.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\ko\System.Spatial.resources.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\ru\System.Spatial.resources.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\zh-Hans\System.Spatial.resources.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\bin\zh-Hant\System.Spatial.resources.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\obj\Debug\test2.csprojResolveAssemblyReference.cache
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\obj\Debug\test2.dll
+c:\users\jimmy\documents\visual studio 2013\Projects\test2\test2\obj\Debug\test2.pdb
+C:\Users\Jimmy\Dropbox\test2\test2\bin\test2.dll.config
+C:\Users\Jimmy\Dropbox\test2\test2\bin\test2.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\test2.pdb
+C:\Users\Jimmy\Dropbox\test2\test2\bin\Antlr3.Runtime.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\DotNetOpenAuth.AspNet.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\DotNetOpenAuth.Core.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\DotNetOpenAuth.OAuth.Consumer.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\DotNetOpenAuth.OAuth.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\DotNetOpenAuth.OpenId.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\EntityFramework.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\Microsoft.Data.Edm.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\Microsoft.Data.OData.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\Microsoft.Web.WebPages.OAuth.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\Newtonsoft.Json.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\System.Net.Http.Formatting.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\System.Spatial.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\System.Web.Helpers.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\System.Web.Http.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\System.Web.Http.OData.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\System.Web.Http.WebHost.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\System.Web.Mvc.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\System.Web.Optimization.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\System.Web.Razor.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\System.Web.WebPages.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\System.Web.WebPages.Razor.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\WebGrease.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\WebMatrix.Data.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\WebMatrix.WebData.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\EntityFramework.xml
+C:\Users\Jimmy\Dropbox\test2\test2\bin\Newtonsoft.Json.xml
+C:\Users\Jimmy\Dropbox\test2\test2\bin\System.Net.Http.Formatting.xml
+C:\Users\Jimmy\Dropbox\test2\test2\bin\System.Web.Helpers.xml
+C:\Users\Jimmy\Dropbox\test2\test2\bin\System.Web.Http.xml
+C:\Users\Jimmy\Dropbox\test2\test2\bin\System.Web.Http.WebHost.xml
+C:\Users\Jimmy\Dropbox\test2\test2\bin\System.Web.Mvc.xml
+C:\Users\Jimmy\Dropbox\test2\test2\bin\System.Web.Razor.xml
+C:\Users\Jimmy\Dropbox\test2\test2\bin\System.Web.WebPages.xml
+C:\Users\Jimmy\Dropbox\test2\test2\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Jimmy\Dropbox\test2\test2\bin\System.Web.WebPages.Razor.xml
+C:\Users\Jimmy\Dropbox\test2\test2\bin\WebMatrix.Data.xml
+C:\Users\Jimmy\Dropbox\test2\test2\bin\Microsoft.Web.WebPages.OAuth.xml
+C:\Users\Jimmy\Dropbox\test2\test2\bin\WebMatrix.WebData.xml
+C:\Users\Jimmy\Dropbox\test2\test2\bin\DotNetOpenAuth.AspNet.xml
+C:\Users\Jimmy\Dropbox\test2\test2\bin\DotNetOpenAuth.Core.xml
+C:\Users\Jimmy\Dropbox\test2\test2\bin\DotNetOpenAuth.OAuth.Consumer.xml
+C:\Users\Jimmy\Dropbox\test2\test2\bin\DotNetOpenAuth.OAuth.xml
+C:\Users\Jimmy\Dropbox\test2\test2\bin\DotNetOpenAuth.OpenId.xml
+C:\Users\Jimmy\Dropbox\test2\test2\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+C:\Users\Jimmy\Dropbox\test2\test2\bin\System.Web.Http.OData.xml
+C:\Users\Jimmy\Dropbox\test2\test2\bin\Microsoft.Data.Edm.xml
+C:\Users\Jimmy\Dropbox\test2\test2\bin\Microsoft.Data.OData.xml
+C:\Users\Jimmy\Dropbox\test2\test2\bin\System.Spatial.xml
+C:\Users\Jimmy\Dropbox\test2\test2\bin\es\EntityFramework.resources.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\es\System.Net.Http.Formatting.resources.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\es\System.Web.Helpers.resources.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\es\System.Web.Http.resources.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\es\System.Web.Http.WebHost.resources.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\es\System.Web.Mvc.resources.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\es\System.Web.Optimization.resources.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\es\System.Web.Razor.resources.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\es\System.Web.WebPages.resources.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\es\System.Web.WebPages.Deployment.resources.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\es\System.Web.WebPages.Razor.resources.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\es\WebMatrix.Data.resources.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\es\Microsoft.Web.WebPages.OAuth.resources.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\es\WebMatrix.WebData.resources.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\es\System.Web.Http.OData.resources.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\de\Microsoft.Data.Edm.resources.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\es\Microsoft.Data.Edm.resources.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\fr\Microsoft.Data.Edm.resources.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\it\Microsoft.Data.Edm.resources.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\ja\Microsoft.Data.Edm.resources.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\ko\Microsoft.Data.Edm.resources.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\ru\Microsoft.Data.Edm.resources.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\de\Microsoft.Data.OData.resources.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\es\Microsoft.Data.OData.resources.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\fr\Microsoft.Data.OData.resources.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\it\Microsoft.Data.OData.resources.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\ja\Microsoft.Data.OData.resources.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\ko\Microsoft.Data.OData.resources.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\ru\Microsoft.Data.OData.resources.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\de\System.Spatial.resources.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\es\System.Spatial.resources.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\fr\System.Spatial.resources.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\it\System.Spatial.resources.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\ja\System.Spatial.resources.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\ko\System.Spatial.resources.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\ru\System.Spatial.resources.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\zh-Hans\System.Spatial.resources.dll
+C:\Users\Jimmy\Dropbox\test2\test2\bin\zh-Hant\System.Spatial.resources.dll
+C:\Users\Jimmy\Dropbox\test2\test2\obj\Debug\test2.csprojResolveAssemblyReference.cache
+C:\Users\Jimmy\Dropbox\test2\test2\obj\Debug\test2.dll
+C:\Users\Jimmy\Dropbox\test2\test2\obj\Debug\test2.pdb
+C:\Users\Josue\Desktop\test2\test2\bin\test2.dll.config
+C:\Users\Josue\Desktop\test2\test2\bin\test2.dll
+C:\Users\Josue\Desktop\test2\test2\bin\test2.pdb
+C:\Users\Josue\Desktop\test2\test2\bin\Antlr3.Runtime.dll
+C:\Users\Josue\Desktop\test2\test2\bin\DotNetOpenAuth.AspNet.dll
+C:\Users\Josue\Desktop\test2\test2\bin\DotNetOpenAuth.Core.dll
+C:\Users\Josue\Desktop\test2\test2\bin\DotNetOpenAuth.OAuth.Consumer.dll
+C:\Users\Josue\Desktop\test2\test2\bin\DotNetOpenAuth.OAuth.dll
+C:\Users\Josue\Desktop\test2\test2\bin\DotNetOpenAuth.OpenId.dll
+C:\Users\Josue\Desktop\test2\test2\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+C:\Users\Josue\Desktop\test2\test2\bin\EntityFramework.dll
+C:\Users\Josue\Desktop\test2\test2\bin\Microsoft.Data.Edm.dll
+C:\Users\Josue\Desktop\test2\test2\bin\Microsoft.Data.OData.dll
+C:\Users\Josue\Desktop\test2\test2\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Josue\Desktop\test2\test2\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+C:\Users\Josue\Desktop\test2\test2\bin\Microsoft.Web.WebPages.OAuth.dll
+C:\Users\Josue\Desktop\test2\test2\bin\Newtonsoft.Json.dll
+C:\Users\Josue\Desktop\test2\test2\bin\System.Net.Http.Formatting.dll
+C:\Users\Josue\Desktop\test2\test2\bin\System.Spatial.dll
+C:\Users\Josue\Desktop\test2\test2\bin\System.Web.Helpers.dll
+C:\Users\Josue\Desktop\test2\test2\bin\System.Web.Http.dll
+C:\Users\Josue\Desktop\test2\test2\bin\System.Web.Http.OData.dll
+C:\Users\Josue\Desktop\test2\test2\bin\System.Web.Http.WebHost.dll
+C:\Users\Josue\Desktop\test2\test2\bin\System.Web.Mvc.dll
+C:\Users\Josue\Desktop\test2\test2\bin\System.Web.Optimization.dll
+C:\Users\Josue\Desktop\test2\test2\bin\System.Web.Razor.dll
+C:\Users\Josue\Desktop\test2\test2\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Josue\Desktop\test2\test2\bin\System.Web.WebPages.dll
+C:\Users\Josue\Desktop\test2\test2\bin\System.Web.WebPages.Razor.dll
+C:\Users\Josue\Desktop\test2\test2\bin\WebGrease.dll
+C:\Users\Josue\Desktop\test2\test2\bin\WebMatrix.WebData.dll
+C:\Users\Josue\Desktop\test2\test2\bin\EntityFramework.xml
+C:\Users\Josue\Desktop\test2\test2\bin\Newtonsoft.Json.xml
+C:\Users\Josue\Desktop\test2\test2\bin\System.Net.Http.Formatting.xml
+C:\Users\Josue\Desktop\test2\test2\bin\System.Web.Helpers.xml
+C:\Users\Josue\Desktop\test2\test2\bin\System.Web.Http.xml
+C:\Users\Josue\Desktop\test2\test2\bin\System.Web.Http.WebHost.xml
+C:\Users\Josue\Desktop\test2\test2\bin\System.Web.Mvc.xml
+C:\Users\Josue\Desktop\test2\test2\bin\System.Web.Razor.xml
+C:\Users\Josue\Desktop\test2\test2\bin\System.Web.WebPages.xml
+C:\Users\Josue\Desktop\test2\test2\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Josue\Desktop\test2\test2\bin\System.Web.WebPages.Razor.xml
+C:\Users\Josue\Desktop\test2\test2\bin\WebMatrix.Data.xml
+C:\Users\Josue\Desktop\test2\test2\bin\Microsoft.Web.WebPages.OAuth.xml
+C:\Users\Josue\Desktop\test2\test2\bin\WebMatrix.WebData.xml
+C:\Users\Josue\Desktop\test2\test2\bin\DotNetOpenAuth.AspNet.xml
+C:\Users\Josue\Desktop\test2\test2\bin\DotNetOpenAuth.Core.xml
+C:\Users\Josue\Desktop\test2\test2\bin\DotNetOpenAuth.OAuth.Consumer.xml
+C:\Users\Josue\Desktop\test2\test2\bin\DotNetOpenAuth.OAuth.xml
+C:\Users\Josue\Desktop\test2\test2\bin\DotNetOpenAuth.OpenId.xml
+C:\Users\Josue\Desktop\test2\test2\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+C:\Users\Josue\Desktop\test2\test2\bin\System.Web.Http.OData.xml
+C:\Users\Josue\Desktop\test2\test2\bin\Microsoft.Data.Edm.xml
+C:\Users\Josue\Desktop\test2\test2\bin\Microsoft.Data.OData.xml
+C:\Users\Josue\Desktop\test2\test2\bin\System.Spatial.xml
+C:\Users\Josue\Desktop\test2\test2\bin\es\EntityFramework.resources.dll
+C:\Users\Josue\Desktop\test2\test2\bin\es\System.Net.Http.Formatting.resources.dll
+C:\Users\Josue\Desktop\test2\test2\bin\es\System.Web.Helpers.resources.dll
+C:\Users\Josue\Desktop\test2\test2\bin\es\System.Web.Http.resources.dll
+C:\Users\Josue\Desktop\test2\test2\bin\es\System.Web.Http.WebHost.resources.dll
+C:\Users\Josue\Desktop\test2\test2\bin\es\System.Web.Mvc.resources.dll
+C:\Users\Josue\Desktop\test2\test2\bin\es\System.Web.Optimization.resources.dll
+C:\Users\Josue\Desktop\test2\test2\bin\es\System.Web.Razor.resources.dll
+C:\Users\Josue\Desktop\test2\test2\bin\es\System.Web.WebPages.resources.dll
+C:\Users\Josue\Desktop\test2\test2\bin\es\System.Web.WebPages.Deployment.resources.dll
+C:\Users\Josue\Desktop\test2\test2\bin\es\System.Web.WebPages.Razor.resources.dll
+C:\Users\Josue\Desktop\test2\test2\bin\es\WebMatrix.Data.resources.dll
+C:\Users\Josue\Desktop\test2\test2\bin\es\Microsoft.Web.WebPages.OAuth.resources.dll
+C:\Users\Josue\Desktop\test2\test2\bin\es\WebMatrix.WebData.resources.dll
+C:\Users\Josue\Desktop\test2\test2\bin\es\System.Web.Http.OData.resources.dll
+C:\Users\Josue\Desktop\test2\test2\bin\de\Microsoft.Data.Edm.resources.dll
+C:\Users\Josue\Desktop\test2\test2\bin\es\Microsoft.Data.Edm.resources.dll
+C:\Users\Josue\Desktop\test2\test2\bin\fr\Microsoft.Data.Edm.resources.dll
+C:\Users\Josue\Desktop\test2\test2\bin\it\Microsoft.Data.Edm.resources.dll
+C:\Users\Josue\Desktop\test2\test2\bin\ja\Microsoft.Data.Edm.resources.dll
+C:\Users\Josue\Desktop\test2\test2\bin\ko\Microsoft.Data.Edm.resources.dll
+C:\Users\Josue\Desktop\test2\test2\bin\ru\Microsoft.Data.Edm.resources.dll
+C:\Users\Josue\Desktop\test2\test2\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+C:\Users\Josue\Desktop\test2\test2\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+C:\Users\Josue\Desktop\test2\test2\bin\de\Microsoft.Data.OData.resources.dll
+C:\Users\Josue\Desktop\test2\test2\bin\es\Microsoft.Data.OData.resources.dll
+C:\Users\Josue\Desktop\test2\test2\bin\fr\Microsoft.Data.OData.resources.dll
+C:\Users\Josue\Desktop\test2\test2\bin\it\Microsoft.Data.OData.resources.dll
+C:\Users\Josue\Desktop\test2\test2\bin\ja\Microsoft.Data.OData.resources.dll
+C:\Users\Josue\Desktop\test2\test2\bin\ko\Microsoft.Data.OData.resources.dll
+C:\Users\Josue\Desktop\test2\test2\bin\ru\Microsoft.Data.OData.resources.dll
+C:\Users\Josue\Desktop\test2\test2\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+C:\Users\Josue\Desktop\test2\test2\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+C:\Users\Josue\Desktop\test2\test2\bin\de\System.Spatial.resources.dll
+C:\Users\Josue\Desktop\test2\test2\bin\es\System.Spatial.resources.dll
+C:\Users\Josue\Desktop\test2\test2\bin\fr\System.Spatial.resources.dll
+C:\Users\Josue\Desktop\test2\test2\bin\it\System.Spatial.resources.dll
+C:\Users\Josue\Desktop\test2\test2\bin\ja\System.Spatial.resources.dll
+C:\Users\Josue\Desktop\test2\test2\bin\ko\System.Spatial.resources.dll
+C:\Users\Josue\Desktop\test2\test2\bin\ru\System.Spatial.resources.dll
+C:\Users\Josue\Desktop\test2\test2\bin\zh-Hans\System.Spatial.resources.dll
+C:\Users\Josue\Desktop\test2\test2\bin\zh-Hant\System.Spatial.resources.dll
+C:\Users\Josue\Desktop\test2\test2\obj\Debug\test2.csprojResolveAssemblyReference.cache
+C:\Users\Josue\Desktop\test2\test2\obj\Debug\test2.dll
+C:\Users\Josue\Desktop\test2\test2\obj\Debug\test2.pdb
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\test2.dll.config
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\test2.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\test2.pdb
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\Antlr3.Runtime.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\DotNetOpenAuth.AspNet.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\DotNetOpenAuth.Core.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\DotNetOpenAuth.OAuth.Consumer.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\DotNetOpenAuth.OAuth.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\DotNetOpenAuth.OpenId.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\EntityFramework.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\Microsoft.Data.Edm.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\Microsoft.Data.OData.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\Microsoft.Web.Mvc.FixedDisplayModes.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\Microsoft.Web.WebPages.OAuth.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\Newtonsoft.Json.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\System.Net.Http.Formatting.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\System.Spatial.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\System.Web.Helpers.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\System.Web.Http.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\System.Web.Http.OData.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\System.Web.Http.WebHost.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\System.Web.Mvc.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\System.Web.Optimization.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\System.Web.Razor.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\System.Web.WebPages.Deployment.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\System.Web.WebPages.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\System.Web.WebPages.Razor.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\WebGrease.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\WebMatrix.WebData.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\EntityFramework.xml
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\Newtonsoft.Json.xml
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\System.Net.Http.Formatting.xml
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\System.Web.Helpers.xml
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\System.Web.Http.xml
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\System.Web.Http.WebHost.xml
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\System.Web.Mvc.xml
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\System.Web.Razor.xml
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\System.Web.WebPages.xml
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\System.Web.WebPages.Deployment.xml
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\System.Web.WebPages.Razor.xml
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\WebMatrix.Data.xml
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\Microsoft.Web.WebPages.OAuth.xml
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\WebMatrix.WebData.xml
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\DotNetOpenAuth.AspNet.xml
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\DotNetOpenAuth.Core.xml
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\DotNetOpenAuth.OAuth.Consumer.xml
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\DotNetOpenAuth.OAuth.xml
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\DotNetOpenAuth.OpenId.xml
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\System.Web.Http.OData.xml
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\Microsoft.Data.Edm.xml
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\Microsoft.Data.OData.xml
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\System.Spatial.xml
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\es\EntityFramework.resources.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\es\System.Net.Http.Formatting.resources.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\es\System.Web.Helpers.resources.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\es\System.Web.Http.resources.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\es\System.Web.Http.WebHost.resources.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\es\System.Web.Mvc.resources.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\es\System.Web.Optimization.resources.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\es\System.Web.Razor.resources.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\es\System.Web.WebPages.resources.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\es\System.Web.WebPages.Deployment.resources.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\es\System.Web.WebPages.Razor.resources.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\es\WebMatrix.Data.resources.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\es\Microsoft.Web.WebPages.OAuth.resources.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\es\WebMatrix.WebData.resources.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\es\System.Web.Http.OData.resources.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\de\Microsoft.Data.Edm.resources.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\es\Microsoft.Data.Edm.resources.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\fr\Microsoft.Data.Edm.resources.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\it\Microsoft.Data.Edm.resources.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\ja\Microsoft.Data.Edm.resources.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\ko\Microsoft.Data.Edm.resources.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\ru\Microsoft.Data.Edm.resources.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\zh-Hans\Microsoft.Data.Edm.resources.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\zh-Hant\Microsoft.Data.Edm.resources.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\de\Microsoft.Data.OData.resources.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\es\Microsoft.Data.OData.resources.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\fr\Microsoft.Data.OData.resources.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\it\Microsoft.Data.OData.resources.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\ja\Microsoft.Data.OData.resources.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\ko\Microsoft.Data.OData.resources.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\ru\Microsoft.Data.OData.resources.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\zh-Hans\Microsoft.Data.OData.resources.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\zh-Hant\Microsoft.Data.OData.resources.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\de\System.Spatial.resources.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\es\System.Spatial.resources.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\fr\System.Spatial.resources.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\it\System.Spatial.resources.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\ja\System.Spatial.resources.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\ko\System.Spatial.resources.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\ru\System.Spatial.resources.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\zh-Hans\System.Spatial.resources.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\bin\zh-Hant\System.Spatial.resources.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\obj\Debug\test2.csprojResolveAssemblyReference.cache
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\obj\Debug\test2.dll
+C:\Users\USUARIO\Desktop\I semestre 2017\Comunidad de móviles\InfoTEC\test2\obj\Debug\test2.pdb

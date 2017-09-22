@@ -1,0 +1,120 @@
+
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 30px;
+}
+
+.set-radius-zero {
+    border-radius: 0px;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+}
+
+.content-wrapper {
+    margin-top: 40px;
+    min-height: 600px;
+    padding-bottom: 60px;
+}
+
+.page-head-line {
+    font-weight: 900;
+    text-transform: uppercase;
+    color: #3D3D3D;
+    font-size: 20px;
+}
+
+
+/* =============================================================
+   HEADER SECTION STYLES
+ ============================================================ */
+header {
+    background-color: #3399ff;
+    color: #fff;
+    padding: 10px;
+    text-align: right;
+}
+
+
+.menu-section {
+    background-color: #3D3D3D;
+    width: 100%;    
+}
+
+#menu-top a {
+    color: #FFF;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 10px 10px 10px 10px;
+    text-transform: uppercase;
+    height: 48px;
+}
+
+.menu-top-active {
+    background-color: #3312b5;
+}
+
+.menu-section .nav > li > a:hover,.menu-section .nav > li > a:focus {
+    background-color: #3312b5! important;
+}
+
+/* USER SETTINGS DIV */
+.user-settings-wrapper .nav > li > a {
+    position: relative;
+    display: block;
+    padding: 15px 18px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    background-color: #F0677C;
+    color: #fff;
+}
+
+.user-settings-wrapper {
+    margin-top: 10px;
+}
+
+    .user-settings-wrapper li {
+        display: inline-block;
+    }
+
+    .user-settings-wrapper .dropdown-settings {
+        width: 200px;
+        padding: 10px;
+    }
+
+    .user-settings-wrapper .nav > li > a:hover,.user-settings-wrapper .nav > li > a:focus {
+        text-decoration: none;
+        background-color: #C36464!important;
+    }
+
+    .user-settings-wrapper img {
+        height: 64px;
+        width: 64px;
+        border: 1px solid #000000;
+    }
+
+    .user-settings-wrapper .dropdown-menu {
+        margin: 0px;
+        border-radius: 0px!important;
+        -moz-border-radius: 0px!important;
+        -webkit-border-radius: 0px!important;
+    }
+
+    .user-settings-wrapper .btn {
+        border-radius: 0px!important;
+        -moz-border-radius: 0px!important;
+        -webkit-border-radius: 0px!important;
+    }
+
+    .user-settings-wrapper .media-heading {
+        padding-top: 10px;
+    }
+
+
+.navbar-toggle {
+    background-color: #3399ff;
+    border: 1px solid #3d3d3d;
+}

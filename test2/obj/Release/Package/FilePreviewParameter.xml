@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="C:\inetpub\wwwroot\infoTec" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\USUARIO\\Desktop\\I\ semestre\ 2017\\Comunidad\ de\ móviles\\InfoTEC\\test2\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\USUARIO\\Desktop\\I\ semestre\ 2017\\Comunidad\ de\ móviles\\InfoTEC\\test2\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="DefaultConnection-Web.config Connection String" description="" value="Data Source=Jimmy-PC;Initial Catalog=test;User ID=sa;Password=heaven" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\USUARIO\\Desktop\\I\ semestre\ 2017\\Comunidad\ de\ móviles\\InfoTEC\\test2\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+  <parameter name="test2.Models.UsersContext-Web.config Connection String" description="" value="test2.Models.UsersContext_ConnectionString" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\USUARIO\\Desktop\\I\ semestre\ 2017\\Comunidad\ de\ móviles\\InfoTEC\\test2\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='test2.Models.UsersContext']/@connectionString" />
+  </parameter>
+</parameters>

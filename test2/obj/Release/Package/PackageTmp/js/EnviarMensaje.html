@@ -1,0 +1,51 @@
+﻿<div id="send" class="mensaje">
+    <div id="topmenu">
+        <ul>
+            <li id="departamento" onclick="changeModul(5)">Departamentos</li>
+            <li id="M_admin" onclick="changeModul(2)">Enviados</li>
+            <li id="C_contraseña" onclick="changeModul(3)">Contraseña</li>
+            <li id="salir" onclick="changeModul(4)">Salir</li>
+        </ul>
+    </div>     
+
+    
+    <div id="Mensaje_Enviar">
+        <input type="text" id="titulo" maxlength="100" name="u" placeholder="Titulo" required="required" />
+        <textarea rows="4" maxlength="600" id="description" name="u" placeholder="Descripcion" required="required"></textarea>
+
+        <input type="text" id="datepicker" placeholder="Fecha" required="required" />
+        
+
+        <input id="file-input" name="file-input" type="file" onchange="previewFile(this)" />
+        <label for="file-input" style="display:block">
+            <div class="imageninput">
+                Click para ingresar una imagen
+            </div>
+            <!--aqui iba un input con id="desplegar" esta abajo-->
+        </label>
+        <input id="desplegar" type="button" onclick="mostrar_ocultar()" class="btn btn-primary btn-block btn-large" value="desplegar" />
+
+        <img id="imgPhoto" src="" class="perfilimg">
+
+
+        <div class="imageninput">
+            <div class="cosa1">
+                Borrable:
+            </div>
+            <div class="cosa2">
+                <input id="switch-offColor" type="checkbox" data-off-color="warning">
+            </div>
+        </div>
+
+        <input id="desplegarCarrera" type="button" onclick="mostrar_ocultarCarrera()" class="btn btn-primary btn-block btn-large" value="Departamentos" />
+
+        <div id="carreraDiv">      
+        </div>
+
+        <br />
+        <input type="button" onclick="enviar()" class="btn btn-primary btn-block btn-large" value="Enviar" />
+        <h2 id="mensajeErrorEnviar"></h2>
+        <br />
+    </div>
+</div>
+

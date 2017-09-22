@@ -1,0 +1,26 @@
+﻿<div id="send" class="mensaje">
+    <div id="topmenu">
+        <ul>
+            <li id="M_admin" onclick="changeModul(1)">Enviar</li>
+            <li id="C_contraseña" onclick="changeModul(2)">Enviados</li>
+            <li id="departamento" onclick="changeModul(5)">Departamentos</li>
+            <li id="salir" onclick="changeModul(4)">Salir</li>
+        </ul>
+    </div>
+    <div id="inDep" style="width: 100%" class="mainDiv">
+        <br>
+        <input type="text" id="nombre" maxlength="100" name="n" placeholder="Nombre del departamento a agregar" required="required" />
+        <input type="button" onclick="insertarD()" class="btn btn-primary btn-block btn-large" value="Aceptar" />
+        <div id="mensajeDep"></div>
+        <br />
+    </div>
+
+    <div>
+        <div id="divPersona">
+            <a>hola</a>
+        </div>
+        <div id="divDepartamento">
+            <a>hola</a>
+        </div>
+    </div>
+</div>
