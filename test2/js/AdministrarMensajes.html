@@ -27,15 +27,18 @@
                 </div>
                 <div class="modal-body">                    
                     <form id="formulario">         
-                        <input type="text" id="tituloEd" name="titulo" class="form-control" value="" required />
-                        <input type="text" id="descripcionEd" class="form-control" value="" required />
-                        <input type="text" id="datepickerEd" placeholder="Fecha" required value="" class="hasDatepicker"/>
+                        <input type="text" id="tituloEd" name="titulo" placeholder="Titulo" class="form-control" value="" required />
+                        <input type="text" id="descripcionEd" placeholder="Descripcion" class="form-control" value="" required />
+                        <input type="text" id="datepickerEd" placeholder="Fecha" required value="" class="form-control"/>
+
                         <input id="file-input" name="file-input" type="file" onchange="previewFile(this)" />
                         <label for="file-input" style="display:block">
                             <div class="imageninput">
                                 Click para ingresar una imagen
                             </div>
+                            <!--aqui iba un input con id="desplegar" esta abajo-->
                         </label>
+
                         <input id="desplegar" type="button" onclick="" class="btn btn-primary btn-block btn-large" value="desplegar" />
 
                         <img id="imgPhotoEd" src="" class="perfilimg">
