@@ -208,6 +208,15 @@
     width: 100%;
 }
 
+table, th, td {
+    border: 1px solid grey;
+    border-collapse: collapse;
+    padding: 5%;
+    border-spacing: 5px;
+    background-color : rgba(62, 59, 59, 0.3);
+}
+
+
 .btnEl {
 
   color: #fff;
@@ -325,3 +334,4 @@
     }
   }
 }
+

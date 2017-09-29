@@ -225,7 +225,7 @@ function cambiarLoad() {
                             '<p>' +
                                 '<b>Descripci&oacute;n: </b>' + data[x].descripcion +
                             '</p>'+
-                           '<button type="button" data-toggle="modal" data-target="#modalEditar" class="btnEd" onclick="editarMensaje('+data[x].mensaje_ID+',\''+data[x].descripcion+'\',\''+data[x].fecha+'\',\''+data[x].titulo+'\')">' + 
+                           //'<button type="button" data-toggle="modal" data-target="#modalEditar" class="btnEd" onclick="editarMensaje('+data[x].mensaje_ID+',\''+data[x].descripcion+'\',\''+data[x].fecha+'\',\''+data[x].titulo+'\')">' + 
                            //     '<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Modificar' +
                            // '</button>' +
                             '<button type="button" class="btnEl" onclick="eliminarMensaje('+data[x].mensaje_ID+')">' +

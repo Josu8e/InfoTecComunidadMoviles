@@ -27,10 +27,9 @@
         <br>
         
         <div id="inPer">
-            <h2>Agregar miebros a departamento</h2>
+            <h2>Agregar miembros a departamento</h2>
             <div id="depDisp">
                 <h5>Departamentos disponibles</h5>
-                <input name="nombreD" placeholder="Nombre del departamento" />
                 <input list="sedes" placeholder="Sede">
                 <datalist id="sedes">
                     <option value="Cartago">
@@ -41,11 +40,34 @@
                     <option value="Comunidad">
                     <option value="Departamento">
                 </datalist>
+                <input name="nombreD" placeholder="Nombre del departamento"/>
             </div>
             <div id="agrePer" >
                 <h5>Personas disponibles</h5>
                 <input type="text" id="carnetP" maxlength="10" min="0" name="n" placeholder="Carnet institucional" />
             </div>
+            <div>
+                <h5>Nombre del Departamento</h5>
+                <table style="width : 100%">
+                    <tr>
+                        <th>Carné</th>
+                        <th>Nombre</th>
+                        <th>                   
+                        </th>
+                    </tr>
+                    <tr>
+                    <td>2013021847</td>
+                    <td>Josue Esquivel</td>
+                    <td>
+                        <button type="button" class="btnEl">
+                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Eliminar
+                        </button>
+                    </td>
+                    </tr>
+                    
+                </table>
+            </div>
+            
         </div>
         <br>
     </div>
