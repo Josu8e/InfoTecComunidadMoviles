@@ -626,6 +626,43 @@ function cambiarPass() {
         }
     }
 
+// funciones para agregar personas
+//=================================================================inicio
+    function cargarSedes() {
+        var url = 'infoTec/getSedes';
+        $.ajax({
+            url: url,
+            error: function (request, error) {
+                console.log(error);
+            }
+
+        }).then(function (data) {
+            var opciones = document.getElementById("sedes");
+            for (i = 0; i < data.length; i++) {
+                opciones.innerHTML += "<option>" + data[i].nombreSede + "</option>";
+            }
+        });
+
+    }
+    
+    function cargarDepartamentosSede(ids) {
+        var url = 'infoTec/getDEpartmentBySede/' + ids;
+        $.ajax({
+            url: url,
+            error: function (request, error) {
+                console.log(error);
+            }
+        }).then(function (data) {
+            var opciones = document.getElementById('departamentos');
+            for (i = 0; i < data.length; i++) {
+                opciones.innerHTML += "<option>" + data[i].nombre + "</option>";
+            }
+        });
+    }
+
+
+//===================================================================fin
+
     function push(depertamento) {
         var text = "";
         for (i = 0; i < depertamento.length; i++) {
