@@ -30,17 +30,19 @@
             <h2>Agregar miembros a departamento</h2>
             <div id="depDisp">
                 <h5>Departamentos disponibles</h5>
-                <input list="sedes" placeholder="Sede">
-                <datalist id="sedes">
-                    <option value="Cartago">
-                    <option value="San Carlos">
-                </datalist>
-                <input list="tipos" placeholder="Categoria">
+                <input list="sedes" placeholder="Sede" id="sedeInput">
+                <datalist id="sedes" onload="cargarSedes()"></datalist>
+                <script>cargarSedes();</script>
+                <input list="tipos" placeholder="Categoria" id="tiposInput" >
                 <datalist id="tipos">
                     <option value="Comunidad">
                     <option value="Departamento">
                 </datalist>
-                <input name="nombreD" placeholder="Nombre del departamento"/>
+                <input name="nombreD" placeholder="Nombre del departamento" list="departamentos"/>
+                <datalist id="departamentos">
+                    <option>Comunidad</option>
+                </datalist>
+
             </div>
             <div id="agrePer" >
                 <h5>Personas disponibles</h5>
