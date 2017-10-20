@@ -17,34 +17,37 @@
             <option value="sc">San Carlos</option>
         </select>
         <br>
-        <select id="tiposDip" width="50%" >
+        <select id="tiposDip" width="50%">
             <option value="d">Departamento</option>
             <option value="c">Comunidad </option>
         </select>
         <br>
+        <input list="encargados" placeholder="Engargado" id="tiposInput">
+        <datalist id="encargados">
+            <option value="Comunidad">
+            <option value="Departamento">
+        </datalist>
         <input type="button" onclick="insertarD()" class="btn btn-primary btn-block btn-large" value="Aceptar" />
         <div id="mensajeDep"></div>
         <br>
-        
+
         <div id="inPer">
             <h2>Agregar miembros a departamento</h2>
             <div id="depDisp">
                 <h5>Departamentos disponibles</h5>
-                <input list="sedes" placeholder="Sede" id="sedeInput">
-                <datalist id="sedes" onload="cargarSedes()"></datalist>
-                <script>cargarSedes();</script>
-                <input list="tipos" placeholder="Categoria" id="tiposInput" >
+                <input list="sedes" placeholder="Sede" id="sedeInput">              
+                <datalist id="sedes"> </datalist>
+                <input list="tipos" placeholder="Categoria" id="tiposInput">
                 <datalist id="tipos">
                     <option value="Comunidad">
                     <option value="Departamento">
                 </datalist>
-                <input name="nombreD" placeholder="Nombre del departamento" list="departamentos"/>
+                <input name="nombreD" placeholder="Nombre del departamento" list="departamentos" />
                 <datalist id="departamentos">
                     <option>Comunidad</option>
                 </datalist>
-
             </div>
-            <div id="agrePer" >
+            <div id="agrePer">
                 <h5>Personas disponibles</h5>
                 <input type="text" id="carnetP" maxlength="10" min="0" name="n" placeholder="Carnet institucional" />
             </div>
@@ -54,22 +57,20 @@
                     <tr>
                         <th>Carné</th>
                         <th>Nombre</th>
-                        <th>                   
+                        <th>
                         </th>
                     </tr>
                     <tr>
-                    <td>2013021847</td>
-                    <td>Josue Esquivel</td>
-                    <td>
-                        <button type="button" class="btnEl">
-                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Eliminar
-                        </button>
-                    </td>
+                        <td>2013021847</td>
+                        <td>Josue Esquivel</td>
+                        <td>
+                            <button type="button" class="btnEl">
+                                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Eliminar
+                            </button>
+                        </td>
                     </tr>
-                    
                 </table>
             </div>
-            
         </div>
         <br>
     </div>
