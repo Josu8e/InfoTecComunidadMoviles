@@ -49,8 +49,9 @@ function insertarDepDinamico(mensaje) {
         document.getElementById('MainDiv').innerHTML = departamento.responseText;
         document.getElementById("mensajeDep").innerHTML = "" + mensaje;
     };
-    departamento.send();
+    departamento.send()
 }
+
 function changeModul(num) {// cambia las vistas de la pagina
     if (num === 1) {//modulo de envio de mensajes
         EnviarMensajeDinamico();
@@ -627,7 +628,14 @@ function cambiarPass() {
     }
 
 // funciones para agregar personas
-//=================================================================inicio
+    //=================================================================inicio
+    document.getElementById("sedes").onload = cargarInformacion();
+
+    function cargarInformacion() {
+        console.log("llamo");
+        cargarSedes();
+    }
+
     function cargarSedes() {
         var url = 'infoTec/getSedes';
         $.ajax({
