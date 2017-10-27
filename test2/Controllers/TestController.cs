@@ -111,11 +111,17 @@ namespace test2.Controllers
                     conexion.getSedes(),
                     JsonRequestBehavior.AllowGet);
         }
-        //nuevo
-        public JsonResult getDEpartmentBySede(int idS)
+        public JsonResult getEncargados()
         {
             return Json(
-                conexion.getDEpartmentBySede(idS),
+                    conexion.getEncargados(),
+                    JsonRequestBehavior.AllowGet);
+        }
+        //nuevo
+        public JsonResult getDepartmentoFiltrados(string sede, string categoria)
+        {
+            return Json(
+                conexion.getDepartamentoFiltrados(sede, categoria),
                 JsonRequestBehavior.AllowGet);
         }
 

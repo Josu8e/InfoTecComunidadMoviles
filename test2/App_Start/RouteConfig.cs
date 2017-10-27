@@ -170,14 +170,23 @@ namespace test2
                         action = "getSedes"
                     }
             );
+            routes.MapRoute(
+                    "getEncargados",
+                    "getEncargados",
+                    new
+                    {
+                        Controller = "Test",
+                        action = "getEncargados"
+                    }
+            );
             //nuevo
             routes.MapRoute(
-                "getDEpartmentBySede",
-                "getDEpartmentBySede/{idS}",
+                "getDepartmentoFiltrados",
+                "getDepartmentoFiltrados/{sede, categoria}",
                 new
                 {
                     Controller = "Test",
-                    action = "getDEpartmentBySede"
+                    action = "getDepartmentFiltrados"
                 }
             );
 

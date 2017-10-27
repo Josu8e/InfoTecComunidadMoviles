@@ -313,7 +313,6 @@
     <Content Include="js\Scripts\knockout-2.2.0.debug.js" />
     <Content Include="js\Scripts\knockout-2.2.0.js" />
     <Content Include="js\Scripts\modernizr-2.6.2.js" />
-    <Content Include="logocomunidad.svg" />
     <Content Include="logoTec.png" />
     <Content Include="noImg.png" />
     <Content Include="switch\bootstrap-switch.css" />

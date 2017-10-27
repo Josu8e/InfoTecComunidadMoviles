@@ -520,18 +520,39 @@ namespace test2.Models
             }
             con.Close();
             return lista;
-
         }
-        //nuevo
-        public List<DTO_Departamento> getDEpartmentBySede(int idSede)
+        public List<DTO_Persona> getEncargados()
         {
             SqlCommand comand;
             string consult;
 
-            consult = string.Format("select d.nombre from departamentos as d inner Join Departamento_Sede as DS on d.nombre = DS.nombreDepartamento inner join Sedes as s on s.idSede = @idS");
+            consult = string.Format("select ID, nombre from Persona where rol != 'Estudiante'");
             comand = new SqlCommand(consult, con);
-            comand.Parameters.Add("@idS", System.Data.SqlDbType.Int);
-            comand.Parameters["@idS"].Value = idSede;
+            con.Open();
+            reader = comand.ExecuteReader();
+            List<DTO_Persona> lista = new List<DTO_Persona>();
+            while (reader.Read())
+            {
+                DTO_Persona dto = new DTO_Persona();
+                dto.ID = reader[0].ToString();
+                dto.nombre = reader[1].ToString();
+                lista.Add(dto);
+            }
+            con.Close();
+            return lista;
+        }
+
+        //nuevo
+        public List<DTO_Departamento> getDepartamentoFiltrados(string sede, string categoria)
+        {
+            SqlCommand comand;
+            string consult;
+            consult = string.Format("select d.nombre from departamentos as d inner Join Departamento_Sede as DS on d.nombre = DS.nombreDepartamento inner join Sedes as s on s.nombreSede = @sede where d.tipo = @categoria");
+            comand = new SqlCommand(consult, con);
+            comand.Parameters.Add("@sede", System.Data.SqlDbType.NChar);
+            comand.Parameters["@sede"].Value = sede;
+            comand.Parameters.Add("@categoria", System.Data.SqlDbType.NChar);
+            comand.Parameters["@categoria"].Value = categoria;
 
             con.Open();
             reader = comand.ExecuteReader();

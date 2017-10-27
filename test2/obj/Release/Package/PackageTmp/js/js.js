@@ -48,6 +48,10 @@ function insertarDepDinamico(mensaje) {
     departamento.onreadystatechange = function () {
         document.getElementById('MainDiv').innerHTML = departamento.responseText;
         document.getElementById("mensajeDep").innerHTML = "" + mensaje;
+        document.getElementById("sedePersona").addEventListener("change", cargarSedes);
+        document.getElementById("sedeDepartamento").addEventListener("change", cargarSedes);
+        document.getElementById("encargadoPersona").addEventListener("change", cargarEncargados);
+        document.getElementById("departamentoFiltrados").addEventListener("change", cargarDepartamentosFiltro);
     };
     departamento.send()
 }
@@ -434,7 +438,7 @@ function cambiarPass() {
             }
         }).then(function (data) {
             try {
-                if (data[0].tipo === "Administrador") {
+                if (data[0].tipo !== "Estudiante") {
                     userName = data[0].nombre;//global guarda nombre de usuario
                     idUser = user;// guardo el id del usuario
                     EnviarMensajeDinamico();// carga la siguiente ventana                            
@@ -629,43 +633,65 @@ function cambiarPass() {
 
 // funciones para agregar personas
     //=================================================================inicio
-    document.getElementById("sedes").onload = cargarInformacion();
-
-    function cargarInformacion() {
-        console.log("llamo");
-        cargarSedes();
-    }
-
+   
     function cargarSedes() {
         var url = 'infoTec/getSedes';
-        $.ajax({
-            url: url,
-            error: function (request, error) {
-                console.log(error);
-            }
+        var opciones = document.getElementById("sedes");
+        if (opciones.innerHTML == " ")
+        {
+            $.ajax({
+                url: url,
+                error: function (request, error) {
+                    console.log(error);
+                }
 
-        }).then(function (data) {
-            var opciones = document.getElementById("sedes");
-            for (i = 0; i < data.length; i++) {
-                opciones.innerHTML += "<option>" + data[i].nombreSede + "</option>";
-            }
-        });
+            }).then(function (data) {
 
+                for (i = 0; i < data.length; i++) {
+                    opciones.innerHTML += "<option>" + data[i].nombreSede + "</option>";
+                }
+            });
+        }
     }
+
+    function cargarEncargados() {
+        var url = 'infoTec/getEncargados';
+        var opciones = document.getElementById("encargados");
+        if (opciones.innerHTML == "") {
+            $.ajax({
+                url: url,
+                error: function (request, error) {
+                    console.log(error);
+                }
+
+            }).then(function (data) {
+
+                for (i = 0; i < data.length; i++) {
+                    opciones.innerHTML += "<option>" + data[i].nombre + " " + data[i].ID + "</option>";
+                }
+            });
+        }
+    } 
     
-    function cargarDepartamentosSede(ids) {
-        var url = 'infoTec/getDEpartmentBySede/' + ids;
-        $.ajax({
-            url: url,
-            error: function (request, error) {
-                console.log(error);
-            }
-        }).then(function (data) {
-            var opciones = document.getElementById('departamentos');
-            for (i = 0; i < data.length; i++) {
-                opciones.innerHTML += "<option>" + data[i].nombre + "</option>";
-            }
-        });
+    function cargarDepartamentosFiltro() {
+        var sed = document.getElementById("sedes");
+        var cat = document.getElementById("categorias");
+        var dep = document.getElementById("departamentos");
+        if (sed.innerHTML == " " || cat.innerHTML == "" || dep.innerHTML == "") {
+            var url = 'infoTec/getDepartamentoFiltrado/' + document.getElementById("sedePersona").value +"/"+ document.getElementById("categoriaPersona").value;
+            $.ajax({
+                url: url,
+                error: function (request, error) {
+                    console.log(error);
+                }
+
+            }).then(function (data) {
+
+                for (i = 0; i < data.length; i++) {
+                    opciones.innerHTML += "<option>" + data[i].nombre + " " + data[i].ID + "</option>";
+                }
+            });
+        }
     }
 
 

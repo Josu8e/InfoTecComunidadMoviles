@@ -11,22 +11,22 @@
         <h2>Agregar nuevo departamento</h2>
         <input type="text" id="nombre" maxlength="100" name="n" placeholder="Nombre del departamento a agregar" required="required" />
         <br>
-        <select id="sedesDisp" width="50%">
-            <option value="ca">Cartago</option>
-            <option value="lm">Limon</option>
-            <option value="sc">San Carlos</option>
-        </select>
+        <input list="sedes" placeholder="Sede" id="sedeDepartamento">
+        <datalist id="sedes"> </datalist>
         <br>
-        <select id="tiposDip" width="50%">
-            <option value="d">Departamento</option>
-            <option value="c">Comunidad </option>
-        </select>
+
+        <input list="categorias" placeholder="Categoria" id="categoriaDepartamento">
+        <datalist id="categorias">
+            <option>Comunidad</option>
+            <option>Departamento</option>
+            <option>Comisión</option>
+            <option>Grupo</option>
+        </datalist>       
         <br>
-        <input list="encargados" placeholder="Engargado" id="tiposInput">
-        <datalist id="encargados">
-            <option value="Comunidad">
-            <option value="Departamento">
-        </datalist>
+
+        <input list="encargados" placeholder="Engargado" id="encargadoPersona">
+        <datalist id="encargados"></datalist>
+
         <input type="button" onclick="insertarD()" class="btn btn-primary btn-block btn-large" value="Aceptar" />
         <div id="mensajeDep"></div>
         <br>
@@ -35,18 +35,21 @@
             <h2>Agregar miembros a departamento</h2>
             <div id="depDisp">
                 <h5>Departamentos disponibles</h5>
-                <input list="sedes" placeholder="Sede" id="sedeInput">              
+                <input list="sedes" placeholder="Sede" id="sedePersona">              
                 <datalist id="sedes"> </datalist>
-                <input list="tipos" placeholder="Categoria" id="tiposInput">
-                <datalist id="tipos">
-                    <option value="Comunidad">
-                    <option value="Departamento">
-                </datalist>
-                <input name="nombreD" placeholder="Nombre del departamento" list="departamentos" />
-                <datalist id="departamentos">
+
+                <input list="categorias" placeholder="Categoria" id="categoriaPersona">
+                <datalist id="categorias">
                     <option>Comunidad</option>
+                    <option>Departamento</option>
+                    <option>Comisión</option>
+                    <option>Grupo</option>
                 </datalist>
+
+                <input  list="departamentos" placeholder="Nombre del departamento" id="departamentoFiltrados"/>
+                <datalist id="departamentos"></datalist>
             </div>
+            
             <div id="agrePer">
                 <h5>Personas disponibles</h5>
                 <input type="text" id="carnetP" maxlength="10" min="0" name="n" placeholder="Carnet institucional" />
