@@ -52,6 +52,7 @@ function insertarDepDinamico(mensaje) {
         document.getElementById("sedeDepartamento").addEventListener("change", cargarSedes);
         document.getElementById("encargadoPersona").addEventListener("change", cargarEncargados);
         document.getElementById("departamentoFiltrados").addEventListener("change", cargarDepartamentosFiltro);
+        document.getElementById("carnetP").addEventListener("change", cargarPersonas);
     };
     departamento.send()
 }
@@ -667,18 +668,18 @@ function cambiarPass() {
             }).then(function (data) {
 
                 for (i = 0; i < data.length; i++) {
-                    opciones.innerHTML += "<option>" + data[i].nombre + " " + data[i].ID + "</option>";
+                    opciones.innerHTML += "<option>" + data[i].nombre + "</option>";
                 }
             });
         }
-    } 
-    
+    }
+
     function cargarDepartamentosFiltro() {
         var sed = document.getElementById("sedes");
         var cat = document.getElementById("categorias");
         var dep = document.getElementById("departamentos");
         if (sed.innerHTML == " " || cat.innerHTML == "" || dep.innerHTML == "") {
-            var url = 'infoTec/getDepartamentoFiltrado/' + document.getElementById("sedePersona").value +"/"+ document.getElementById("categoriaPersona").value;
+            var url = 'infoTec/getDepartmentosFiltrados/' + document.getElementById("sedePersona").value + "/" + document.getElementById("categoriaPersona").value;
             $.ajax({
                 url: url,
                 error: function (request, error) {
@@ -688,10 +689,49 @@ function cambiarPass() {
             }).then(function (data) {
 
                 for (i = 0; i < data.length; i++) {
-                    opciones.innerHTML += "<option>" + data[i].nombre + " " + data[i].ID + "</option>";
+                    dep.innerHTML += "<option>" + data[i].nombre + "</option>";
                 }
             });
         }
+        var nombreDep = document.getElementById('nombreDep');
+        var nombre = document.getElementById('departamentoFiltrados');
+        nombreDep.innerText = nombre.value;
+    }
+    function cargarPersonas() {
+        var url = 'infoTec/getPersonas';
+        var per = document.getElementById('personas');
+        if (per.innerHTML == "") {
+            $.ajax({
+                url: url,
+                error: function (request, error) {
+                    console.log(error);
+                }
+            }).then(function (data) {
+                var id = 'error';
+                for (i = 0; i < data.length; i++) {
+                    if (data[i].ID == "") {
+                        id = data[i].tipo;
+                    }
+                    else if (data[i].tipo == "") {
+                        id = data[i].ID;
+                    }
+                    console.log(data[i].nombre,id);
+                    per.innerHTML += "<option>" + data[i].nombre + " - " + id + "</option>";
+                }
+            });
+        }
+
+    }
+
+
+    function agregarAtabla() {
+        var text = document.getElementById("carnetP");
+        var datos = document.getElementById("carnetP").value;
+        datos = datos.split('-');
+
+        var tabla = document.getElementById("tablaPersonas");
+        tabla.innerHTML += '<tr><td>'+ datos[1] +'</td><td>'+datos[0]+'</td><td><button type="button" class="btnEl"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Eliminar</button></td></tr>';
+
     }
 
 

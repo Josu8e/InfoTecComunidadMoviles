@@ -171,6 +171,26 @@ namespace test2
                     }
             );
             routes.MapRoute(
+                "getDepartmentoFiltrados",
+                "getDepartmentosFiltrados/{sede}/{categoria}",
+                new
+                {
+                    Controller = "Test",
+                    action = "getDepartmentFiltrados"
+                }
+            );
+
+            routes.MapRoute(
+                "getPersonas",
+                "getPersonas",
+                new
+                {
+                    Controller = "Test",
+                    action = "getPersonas"
+                }
+            );
+
+            routes.MapRoute(
                     "getEncargados",
                     "getEncargados",
                     new
@@ -180,16 +200,7 @@ namespace test2
                     }
             );
             //nuevo
-            routes.MapRoute(
-                "getDepartmentoFiltrados",
-                "getDepartmentoFiltrados/{sede, categoria}",
-                new
-                {
-                    Controller = "Test",
-                    action = "getDepartmentFiltrados"
-                }
-            );
-
+      
             routes.MapRoute(//no mover de aqui
                 name: "Default",
                 url: "{controller}/{action}/{id}",

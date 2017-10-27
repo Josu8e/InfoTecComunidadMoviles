@@ -542,8 +542,8 @@ namespace test2.Models
             return lista;
         }
 
-        //nuevo
-        public List<DTO_Departamento> getDepartamentoFiltrados(string sede, string categoria)
+        //
+        public List<DTO_Departamento> getDepartmentFiltrados(string sede, string categoria)
         {
             SqlCommand comand;
             string consult;
@@ -561,6 +561,30 @@ namespace test2.Models
             {
                 DTO_Departamento dto = new DTO_Departamento();
                 dto.nombre = reader[0].ToString();
+                lista.Add(dto);
+            }
+            con.Close();
+            return lista;
+        }
+
+        public List<DTO_Persona> cargarPersonas()
+        {
+            List<DTO_Persona> lista;
+            SqlCommand comand;
+            string consult;
+            consult = string.Format("select nombre,carne,id from Persona");
+            comand = new SqlCommand(consult, con);
+
+
+            con.Open();
+            reader = comand.ExecuteReader();
+            lista = new List<DTO_Persona>();
+            while (reader.Read())
+            {
+                DTO_Persona dto = new DTO_Persona();
+                dto.nombre = reader[0].ToString();
+                dto.ID = reader[1].ToString();
+                dto.tipo = reader[2].ToString();
                 lista.Add(dto);
             }
             con.Close();

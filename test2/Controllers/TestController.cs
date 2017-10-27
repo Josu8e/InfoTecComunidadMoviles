@@ -118,11 +118,17 @@ namespace test2.Controllers
                     JsonRequestBehavior.AllowGet);
         }
         //nuevo
-        public JsonResult getDepartmentoFiltrados(string sede, string categoria)
+        public JsonResult getDepartmentFiltrados(string sede, string categoria)
         {
             return Json(
-                conexion.getDepartamentoFiltrados(sede, categoria),
+                conexion.getDepartmentFiltrados(sede, categoria),
                 JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult getPersonas()
+        {
+            return Json(
+                conexion.cargarPersonas(), JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult setPersonaToDepartment(string idP,string nombre)

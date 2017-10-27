@@ -52,25 +52,20 @@
             
             <div id="agrePer">
                 <h5>Personas disponibles</h5>
-                <input type="text" id="carnetP" maxlength="10" min="0" name="n" placeholder="Carnet institucional" />
+                <input list="personas" id="carnetP" placeholder="Carnet institucional" />
+                <datalist id="personas"></datalist>
+                <center>
+                    <button type="button" class=".btn-success" onclick="agregarAtabla()">Agregar </button>
+                </center>
             </div>
             <div>
-                <h5>Nombre del Departamento</h5>
-                <table style="width : 100%">
+                <h5 id="nombreDep"></h5>
+                <table id="tablaPersonas" style="width : 100%">
                     <tr>
                         <th>Carné</th>
                         <th>Nombre</th>
                         <th>
                         </th>
-                    </tr>
-                    <tr>
-                        <td>2013021847</td>
-                        <td>Josue Esquivel</td>
-                        <td>
-                            <button type="button" class="btnEl">
-                                <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Eliminar
-                            </button>
-                        </td>
                     </tr>
                 </table>
             </div>
