@@ -36,7 +36,7 @@ namespace test2
 
             routes.MapRoute(
                 "insertD",///nombre que quiera
-                "insertarDepartamento/{nombre}/{tipo}/{idSede}",///aparece url
+                "insertarDepartamento/{nombre}/{tipo}/{sede}/{encargado}",///aparece url
                 new
                 {
                     controller = "Test",

@@ -101,15 +101,15 @@ namespace test2.Models
             }
         }
 
-        public String insertarDepartamento(String nombre,string tipo,int idSede)/////INSERTAR DEPARTAMENTO
+        public String insertarDepartamento(String nombre,String tipo,String sede,String encargado)/////INSERTAR DEPARTAMENTO
         {
             SqlCommand comand;
             string consult;
-            string consult2;
             SqlCommand comand2;
+            string consult2;
             try
             {
-                consult = string.Format("insert into departamentos values (@nombre,@tipo)");//////////////////
+                consult = string.Format("insert into departamentos values (@nombre, @tipo, @encargado)");
                 comand = new SqlCommand(consult, con);
 
                 comand.Parameters.Add("@nombre", System.Data.SqlDbType.VarChar);
@@ -118,13 +118,16 @@ namespace test2.Models
                 comand.Parameters.Add("@tipo", System.Data.SqlDbType.VarChar);
                 comand.Parameters["@tipo"].Value = tipo;
 
-                consult2 = string.Format("insert into Departamento_Sede values (@nombre,@idSede)");
+                comand.Parameters.Add("@encargado", System.Data.SqlDbType.VarChar);
+                comand.Parameters["@encargado"].Value = encargado;
+
+                consult2 = string.Format("insert into Departamento_Sede values (@nombre,(select idSede from Sedes where nombreSede = @sede))");
                 comand2 = new SqlCommand(consult2, con);
 
                 comand2.Parameters.Add("@nombre", System.Data.SqlDbType.VarChar);
-                comand2.Parameters.Add("@idSede", System.Data.SqlDbType.Int);
                 comand2.Parameters["@nombre"].Value = nombre;
-                comand2.Parameters["@idSede"].Value = idSede;
+                comand2.Parameters.Add("@sede", System.Data.SqlDbType.NVarChar);                
+                comand2.Parameters["@sede"].Value = sede;
 
                 con.Open();
                 comand.ExecuteNonQuery();

@@ -24,7 +24,7 @@
         </datalist>       
         <br>
 
-        <input list="encargados" placeholder="Engargado" id="encargadoPersona">
+        <input list="encargados" placeholder="Carnet engargado" id="encargadoPersona">
         <datalist id="encargados"></datalist>
 
         <input type="button" onclick="insertarD()" class="btn btn-primary btn-block btn-large" value="Aceptar" />
@@ -54,12 +54,11 @@
                 <h5>Personas disponibles</h5>
                 <input list="personas" id="carnetP" placeholder="Carnet institucional" />
                 <datalist id="personas"></datalist>
-                <center>
-                    <button type="button" class=".btn-success" onclick="agregarAtabla()">Agregar </button>
-                </center>
+                <button type="button" class="btn btn-primary btn-block btn-large" onclick="agregarAtabla()"> Añadir</button>
             </div>
             <div>
-                <h5 id="nombreDep"></h5>
+                <h5 style="display:inline-block"> Departamento:</h5>
+                <h5 id="nombreDep" style="display:inline-block"></h5>
                 <table id="tablaPersonas" style="width : 100%">
                     <tr>
                         <th>Carné</th>
