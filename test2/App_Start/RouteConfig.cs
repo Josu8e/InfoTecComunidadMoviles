@@ -200,7 +200,16 @@ namespace test2
                     }
             );
             //nuevo
-      
+            routes.MapRoute(
+                    "getPersonabyDepartamento",
+                    "getPersonabyDepartamento/{nombreDepa}",
+                    new
+                    {
+                        Controller = "Test",
+                        action = "getPersonabyDepartamento"
+                    }
+            );
+
             routes.MapRoute(//no mover de aqui
                 name: "Default",
                 url: "{controller}/{action}/{id}",

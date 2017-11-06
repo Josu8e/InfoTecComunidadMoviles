@@ -170,5 +170,10 @@ namespace test2.Controllers
             return Json(conexion.getDepartementPerson(id), 
                 JsonRequestBehavior.AllowGet);
         }
+        public JsonResult getPersonabyDepartamento(string nombreDepa)
+        {
+            return Json(conexion.getPersonabyDepartamento(nombreDepa),
+                JsonRequestBehavior.AllowGet);
+        }
     }
 }

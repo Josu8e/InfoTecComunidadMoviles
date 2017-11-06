@@ -696,6 +696,25 @@ function cambiarPass() {
         var nombreDep = document.getElementById('nombreDep');
         var nombre = document.getElementById('departamentoFiltrados');
         nombreDep.innerText = nombre.value;
+
+        url = "infoTec/getPersonabyDepartamento/" + nombre.value;
+        $.ajax({
+            url: url,
+            error: function (request, error) {
+                console.log(error);
+            }
+
+        }).then(function (data) {
+
+            var tabla = document.getElementById("tablaPersonas");
+            tabla.innerHTML = "";
+            for (i = 0; i < data.length; i++) {
+                tabla.innerHTML += '<tr><td>' + "Cedula: " + data[i].ID + " - Carné: " + data[i].tipo + '</td><td>' + data[i].nombre + '</td><td><button type="button" class="btnEl"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Eliminar</button></td></tr>';
+            }
+        });
+        
+
+
     }
     function cargarPersonas() {
         var url = 'infoTec/getPersonas';
@@ -716,7 +735,7 @@ function cambiarPass() {
                         id = data[i].ID;
                     }
                     console.log(data[i].nombre,id);
-                    per.innerHTML += "<option>" + data[i].nombre + " - " + id + "</option>";
+                    per.innerHTML += "<option>"+ data[i].tipo +" - "+ data[i].nombre + " - " + data[i].ID + "</option>";
                 }
             });
         }
@@ -727,11 +746,30 @@ function cambiarPass() {
     function agregarAtabla() {
         var text = document.getElementById("carnetP");
         var datos = document.getElementById("carnetP").value;
+        var departamento = document.getElementById('departamentoFiltrados').value;
         datos = datos.split('-');
-
-        var tabla = document.getElementById("tablaPersonas");
-        tabla.innerHTML += '<tr><td>'+ datos[1] +'</td><td>'+datos[0]+'</td><td><button type="button" class="btnEl"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Eliminar</button></td></tr>';
-
+        
+        var url = "infoTec/setPersonaToDepartment/" + datos[0].replace(" ","") + "/" + departamento;
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: url,
+            error: function (request, error) {
+                document.getElementById("mensajeDep").innerHTML = '<div class="alert alert-warning"><strong>Atenci&oacute;n!</strong> Error!</div>';
+            }
+        }).then(function (data) {
+            try {
+                if (data == "succesfull") {
+                    var tabla = document.getElementById("tablaPersonas");
+                    tabla.innerHTML += '<tr><td>' + "Cedula: " + datos[0] + " - Carné: " + datos[2] + '</td><td>' + datos[1] + '</td><td><button type="button" class="btnEl"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Eliminar</button></td></tr>';
+                }
+                else {
+                    document.getElementById("mensajeDep").innerHTML = '<div class="alert alert-warning"><strong>Atenci&oacute;n!</strong> La Persona ya se inserto.</div>';
+                }
+            } catch (e) {
+                document.getElementById("mensajeDep").innerHTML = '<div class="alert alert-warning"><strong>Atenci&oacute;n!</strong> Eror!</div>';
+            }
+        });
     }
 
 
