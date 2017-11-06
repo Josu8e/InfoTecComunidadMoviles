@@ -20,8 +20,9 @@ function loginDinamico(mensaje) {
 }
 function EnviarMensajeDinamico() {
 
-    obtenerDepartamentos(function carrerasDinamicas() {
-        texto = '<p style="color:white"><input id="ALL" type="button" onclick="marcarTODOS()" class="btn btn-primary btn-block btn-large" value="Marcar todos" />';
+    obtenerDepartamentos(
+        function carrerasDinamicas() {
+        texto = '<br\> <input list="sedes" placeholder="Sede" id="sedeDepartamento"><datalist id = "sedes" > </datalist> <p style="color:white"><input id="ALL" type="button" onclick="marcarTODOS()"class="btn btn-primary btn-block btn-large" value="Marcar todos"/>';
         for (i = 0; i < listaCarreras.length; i++) {
             texto += '<div class="bg"> <div class="cosa1">' + listaCarreras[i] + ':</div> <div class="cosa2"><input id="' + listaIdCarreras[i] + '" value="' + listaCarreras[i] + '" class="right" type="checkbox" data-off-color="warning"/></div></div>';
         }
@@ -31,6 +32,7 @@ function EnviarMensajeDinamico() {
         client.onreadystatechange = function () {
             document.getElementById('MainDiv').innerHTML = client.responseText;
             document.getElementById('carreraDiv').innerHTML = texto;
+            document.getElementById("sedeDepartamento").addEventListener("change", cargarSedes);
 
             for (i = 0; i < listaIdCarreras.length; i++) {
                 $("#" + listaIdCarreras[i]).bootstrapSwitch();
@@ -77,29 +79,31 @@ function changeModul(num) {// cambia las vistas de la pagina
 function insertarD() {///////////////////////////////////////////////////////////////////////////
    
     var nombre = document.getElementById("nombre").value;
-    if (nombre.length == 0) {
-        document.getElementById("mensajeDep").innerHTML = '<div class="alert alert-warning"><strong>Atenci&oacute;n!</strong> Debe ingresar un nombre para el departamento.</div>';
+    var sede = document.getElementById("sedeDepartamento").value;
+    var categoria = document.getElementById("categoriaDepartamento").value;
+    var encargado = document.getElementById("encargadoPersona").value.split(" - ")[1];
+    if (nombre.length == 0 || sede.length == 0 || categoria.length == 0 || encargado == 0) {
+        document.getElementById("mensajeDep").innerHTML = '<div class="alert alert-warning"><strong>Atenci&oacute;n!</strong> Debe completar todos los datos.</div>';
     }
     else {
-    var url = "infoTec/insertarDepartamento/" + nombre;//IIS
+        var url = "infoTec/insertarDepartamento/" + nombre + '/' + sede + '/' + categoria + '/' + encargado;//IIS
+        console.log(url);
         document.getElementById("inDep").innerHTML = "<div id=\"topmenu\"><h3>Verificando nombre...<h3></div>";
         $.ajax({
             type: "POST",
             dataType: "json",
-            data: { 'nombre': nombre },
             url: url,
             error: function (request, error) {
                 document.getElementById("mensajeDep").innerHTML = '<div class="alert alert-danger"><strong>Error!</strong> Error al insertar el departamento.</div>';
             }
         }).then(function (data) {
-            try {
-                if (data === "successful") {
-                    console.log(2);
-                    document.getElementById("mensajeDep").innerHTML = '<div class="alert alert-success"><strong>Listo!</strong> Departamento agregado de manera exitosa.</div>';
-                    insertarFireBase(nombre);
-                }
-            } catch (e) {
-                document.getElementById("mensajeDep").innerHTML = '<div class="alert alert-warning"><strong>Atenci&oacute;n!</strong> El departamento ya existe.</div>';
+            console.log(data);
+            if (data === "successful") {
+                document.getElementById("mensajeDep").innerHTML = '<div class="alert alert-success"><strong>Listo!</strong> Departamento agregado.</div>';
+                insertarFireBase(nombre);
+            }
+            else {
+                document.getElementById("mensajeDep").innerHTML = '<div id=\"topmenu\"><h3>El departamento ya existe<h3></div>';
             }
         });
     }    
@@ -668,7 +672,7 @@ function cambiarPass() {
             }).then(function (data) {
 
                 for (i = 0; i < data.length; i++) {
-                    opciones.innerHTML += "<option>" + data[i].nombre + "</option>";
+                    opciones.innerHTML += "<option>" + data[i].nombre + " - " + data[i].ID + "</option>";
                 }
             });
         }
@@ -734,8 +738,12 @@ function cambiarPass() {
                     else if (data[i].tipo == "") {
                         id = data[i].ID;
                     }
+<<<<<<< HEAD
                     console.log(data[i].nombre,id);
                     per.innerHTML += "<option>"+ data[i].tipo +" - "+ data[i].nombre + " - " + data[i].ID + "</option>";
+=======
+                    per.innerHTML += "<option>" + data[i].nombre + " - " + id + "</option>";
+>>>>>>> 376863df004c01b436b329feb9bf3412ab477a86
                 }
             });
         }
