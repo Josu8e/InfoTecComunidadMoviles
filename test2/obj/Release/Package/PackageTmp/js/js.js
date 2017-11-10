@@ -711,15 +711,38 @@ function cambiarPass() {
         }).then(function (data) {
 
             var tabla = document.getElementById("tablaPersonas");
-            tabla.innerHTML = "";
             for (i = 0; i < data.length; i++) {
-                tabla.innerHTML += '<tr><td>' + "Cedula: " + data[i].ID + " - Carné: " + data[i].tipo + '</td><td>' + data[i].nombre + '</td><td><button type="button" class="btnEl"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Eliminar</button></td></tr>';
+                tabla.innerHTML += '<tr><td>' + "Cedula: " + data[i].ID + " - Carn&eacute; : " + data[i].tipo + '</td><td>' + data[i].nombre + '</td><td><button type="button" class="btnEl" onclick="eliminarFila(this)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Eliminar</button></td></tr>';
             }
         });
-        
-
-
     }
+
+    function eliminarFila(n) {
+        var i = n.parentNode.parentNode.rowIndex;
+        var tabla = document.getElementById("tablaPersonas");
+        var id = tabla.rows[i].cells[0].innerHTML;
+        var nombreDep = document.getElementById("nombreDep").innerText;
+
+        id = id.split(" ");
+        id = id[1];
+        var url = "infoTec/deletePeopleFromDepartment/" + nombreDep + "/" + id;
+        try {
+            $.ajax({
+                url: url,
+                error: function (request, error) {
+                    console.log(error);
+                }
+            }).then(function (data) {
+                if (data == 'succesfull')
+                    document.getElementById("tablaPersonas").deleteRow(i);
+            });
+            
+        }
+        catch (e) {
+            console.log(e);
+        }
+    }
+
     function cargarPersonas() {
         var url = 'infoTec/getPersonas';
         var per = document.getElementById('personas');
@@ -738,12 +761,11 @@ function cambiarPass() {
                     else if (data[i].tipo == "") {
                         id = data[i].ID;
                     }
-<<<<<<< HEAD
                     console.log(data[i].nombre,id);
                     per.innerHTML += "<option>"+ data[i].tipo +" - "+ data[i].nombre + " - " + data[i].ID + "</option>";
-=======
+
                     per.innerHTML += "<option>" + data[i].nombre + " - " + id + "</option>";
->>>>>>> 376863df004c01b436b329feb9bf3412ab477a86
+
                 }
             });
         }
@@ -769,7 +791,7 @@ function cambiarPass() {
             try {
                 if (data == "succesfull") {
                     var tabla = document.getElementById("tablaPersonas");
-                    tabla.innerHTML += '<tr><td>' + "Cedula: " + datos[0] + " - Carné: " + datos[2] + '</td><td>' + datos[1] + '</td><td><button type="button" class="btnEl"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Eliminar</button></td></tr>';
+                    tabla.innerHTML += '<tr><td>' + "Cedula: " + datos[0] + " - Carn&eacute; : " + datos[2] + '</td><td>' + datos[1] + '</td><td><button onclick="eliminarFila()" type="button" class="btnEl"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Eliminar</button></td></tr>';
                 }
                 else {
                     document.getElementById("mensajeDep").innerHTML = '<div class="alert alert-warning"><strong>Atenci&oacute;n!</strong> La Persona ya se inserto.</div>';

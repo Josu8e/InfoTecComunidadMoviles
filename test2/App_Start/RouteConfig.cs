@@ -170,6 +170,17 @@ namespace test2
                         action = "getSedes"
                     }
             );
+
+            routes.MapRoute(
+                    "deletePeopleFromDepartment",
+                    "deletePeopleFromDepartment/{nombreDep}/{idP}",
+                    new
+                    {
+                        Controller = "Test",
+                        action = "deletePeopleFromDepartment"
+                    }
+            );
+
             routes.MapRoute(
                 "getDepartmentoFiltrados",
                 "getDepartmentosFiltrados/{sede}/{categoria}",
