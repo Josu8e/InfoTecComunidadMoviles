@@ -828,7 +828,7 @@ function cambiarPass() {
     }
 
     function aux(text) {
-        var myFirebaseRef = new Firebase(" https://infotec-61239.firebaseio.com/");
+        var myFirebaseRef = new Firebase(" https://infotec-d1598.firebaseio.com/");
         myFirebaseRef.child("departamentos/" + text).once("value", function (data) {
             var valor = data.val() + 1;
             var pushing = JSON.parse('{"' + text + '":' + valor + '}');
