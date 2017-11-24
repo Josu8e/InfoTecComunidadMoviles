@@ -22,9 +22,9 @@ function EnviarMensajeDinamico() {
 
     obtenerDepartamentos(
         function carrerasDinamicas() {
-        texto = '<br\> <input id="ALL" type="button" onclick="marcarTODOS()"class="btn btn-primary btn-block btn-large" value="Marcar todos"/>';
+            texto = '<br\> <input id="ALL" type="button" onclick="marcarTODOS()"class="btn btn-primary btn-block btn-large" value="Marcar todos"/> <br\>';
         for (i = 0; i < listaCarreras.length; i++) {
-            texto += '<div class="bg"> <div class="cosa1">' + listaCarreras[i] + ':</div> <div class="cosa2"><input id="' + listaIdCarreras[i] + '" value="' + listaCarreras[i] + '" class="right" type="checkbox" data-off-color="warning"/></div></div>';
+            texto += '<div class="bg" style=" visibility:hidden"> <div class="cosa1">' + listaCarreras[i] + ':</div> <div class="cosa2"><input id="' + listaIdCarreras[i] + '" value="' + listaCarreras[i] + '" class="right" type="checkbox" data-off-color="warning"/></div></div>';
         }
         texto += '</p>';
         var client = new XMLHttpRequest();
@@ -127,8 +127,7 @@ function obtenerDepartamentos(funcion) {
             for (i = 0; i < data.length; i++) {
                 listaCarreras[i] = data[i].toString();
                 listaIdCarreras[i] = generarID(data[i].toString());
-                //console.log(listaCarreras[i]);
-                //console.log(listaIdCarreras[i]);
+                console.log(data[i].toString());
             }
             funcion();
         } catch (e) {
@@ -468,7 +467,8 @@ function cambiarPass() {
     }
 
     function mostrar_ocultarCarrera() {
-        if (document.getElementById("desplegarCarrera").value === "Departamentos") {
+        var sede = document.getElementById("sedeMensaje").value;
+        if (document.getElementById("desplegarCarrera").value === "Departamentos" && sede.length != 0) {
             var distancia = (listaCarreras.length * 63) + 63;
             document.getElementById("carreraDiv").style.height = '' + distancia + 'px';//para animacion
             document.getElementById("desplegarCarrera").value = "Ocultar";
