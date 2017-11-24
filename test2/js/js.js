@@ -701,6 +701,15 @@ function cambiarPass() {
         var nombre = document.getElementById('departamentoFiltrados');
         nombreDep.innerText = nombre.value;
 
+        recargarTabla();
+
+        
+    }
+
+
+    function recargarTabla() {
+        var nombre = document.getElementById('departamentoFiltrados');
+
         url = "infoTec/getPersonabyDepartamento/" + nombre.value;
         $.ajax({
             url: url,
@@ -711,6 +720,7 @@ function cambiarPass() {
         }).then(function (data) {
 
             var tabla = document.getElementById("tablaPersonas");
+            tabla.innerHTML = '<table id="tablaPersonas" style="width : 100%"><tr><th>Carn&eacute</th><th>Nombre</th><th></th></tr></table>';
             for (i = 0; i < data.length; i++) {
                 tabla.innerHTML += '<tr><td>' + "Cedula: " + data[i].ID + " - Carn&eacute; : " + data[i].tipo + '</td><td>' + data[i].nombre + '</td><td><button type="button" class="btnEl" onclick="eliminarFila(this)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Eliminar</button></td></tr>';
             }
@@ -790,8 +800,7 @@ function cambiarPass() {
         }).then(function (data) {
             try {
                 if (data == "succesfull") {
-                    var tabla = document.getElementById("tablaPersonas");
-                    tabla.innerHTML += '<tr><td>' + "Cedula: " + datos[0] + " - Carn&eacute; : " + datos[2] + '</td><td>' + datos[1] + '</td><td><button onclick="eliminarFila()" type="button" class="btnEl"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Eliminar</button></td></tr>';
+                    recargarTabla();
                 }
                 else {
                     document.getElementById("mensajeDep").innerHTML = '<div class="alert alert-warning"><strong>Atenci&oacute;n!</strong> La Persona ya se inserto.</div>';
@@ -819,7 +828,7 @@ function cambiarPass() {
     }
 
     function aux(text) {
-        var myFirebaseRef = new Firebase(" https://infotec-61239.firebaseio.com/");
+        var myFirebaseRef = new Firebase(" https://infotec-d1598.firebaseio.com/");
         myFirebaseRef.child("departamentos/" + text).once("value", function (data) {
             var valor = data.val() + 1;
             var pushing = JSON.parse('{"' + text + '":' + valor + '}');
