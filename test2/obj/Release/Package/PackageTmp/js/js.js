@@ -22,7 +22,7 @@ function EnviarMensajeDinamico() {
 
     obtenerDepartamentos(
         function carrerasDinamicas() {
-        texto = '<br\> <input list="sedes" placeholder="Sede" id="sedeDepartamento"><datalist id = "sedes" > </datalist> <p style="color:white"><input id="ALL" type="button" onclick="marcarTODOS()"class="btn btn-primary btn-block btn-large" value="Marcar todos"/>';
+        texto = '<br\> <input id="ALL" type="button" onclick="marcarTODOS()"class="btn btn-primary btn-block btn-large" value="Marcar todos"/>';
         for (i = 0; i < listaCarreras.length; i++) {
             texto += '<div class="bg"> <div class="cosa1">' + listaCarreras[i] + ':</div> <div class="cosa2"><input id="' + listaIdCarreras[i] + '" value="' + listaCarreras[i] + '" class="right" type="checkbox" data-off-color="warning"/></div></div>';
         }
@@ -32,7 +32,7 @@ function EnviarMensajeDinamico() {
         client.onreadystatechange = function () {
             document.getElementById('MainDiv').innerHTML = client.responseText;
             document.getElementById('carreraDiv').innerHTML = texto;
-            document.getElementById("sedeDepartamento").addEventListener("change", cargarSedes);
+            document.getElementById("sedeMensaje").addEventListener("change", cargarSedes);
 
             for (i = 0; i < listaIdCarreras.length; i++) {
                 $("#" + listaIdCarreras[i]).bootstrapSwitch();
@@ -88,7 +88,7 @@ function insertarD() {//////////////////////////////////////////////////////////
     else {
         var url = "infoTec/insertarDepartamento/" + nombre + '/' + sede + '/' + categoria + '/' + encargado;//IIS
         console.log(url);
-        document.getElementById("inDep").innerHTML = "<div id=\"topmenu\"><h3>Verificando nombre...<h3></div>";
+        document.getElementById("mensajeDep").innerHTML = "<div id=\"topmenu\"><h3>Verificando nombre...<h3></div>";
         $.ajax({
             type: "POST",
             dataType: "json",
