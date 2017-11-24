@@ -22,7 +22,7 @@ function EnviarMensajeDinamico() {
 
     obtenerDepartamentos(
         function carrerasDinamicas() {
-        texto = '<br\> <input list="sedes" placeholder="Sede" id="sedeDepartamento"><datalist id = "sedes" > </datalist> <p style="color:white"><input id="ALL" type="button" onclick="marcarTODOS()"class="btn btn-primary btn-block btn-large" value="Marcar todos"/>';
+        texto = '<br\> <input id="ALL" type="button" onclick="marcarTODOS()"class="btn btn-primary btn-block btn-large" value="Marcar todos"/>';
         for (i = 0; i < listaCarreras.length; i++) {
             texto += '<div class="bg"> <div class="cosa1">' + listaCarreras[i] + ':</div> <div class="cosa2"><input id="' + listaIdCarreras[i] + '" value="' + listaCarreras[i] + '" class="right" type="checkbox" data-off-color="warning"/></div></div>';
         }
@@ -32,7 +32,7 @@ function EnviarMensajeDinamico() {
         client.onreadystatechange = function () {
             document.getElementById('MainDiv').innerHTML = client.responseText;
             document.getElementById('carreraDiv').innerHTML = texto;
-            document.getElementById("sedeDepartamento").addEventListener("change", cargarSedes);
+            document.getElementById("sedeMensaje").addEventListener("change", cargarSedes);
 
             for (i = 0; i < listaIdCarreras.length; i++) {
                 $("#" + listaIdCarreras[i]).bootstrapSwitch();
@@ -700,7 +700,49 @@ function cambiarPass() {
         var nombreDep = document.getElementById('nombreDep');
         var nombre = document.getElementById('departamentoFiltrados');
         nombreDep.innerText = nombre.value;
+
+        url = "infoTec/getPersonabyDepartamento/" + nombre.value;
+        $.ajax({
+            url: url,
+            error: function (request, error) {
+                console.log(error);
+            }
+
+        }).then(function (data) {
+
+            var tabla = document.getElementById("tablaPersonas");
+            for (i = 0; i < data.length; i++) {
+                tabla.innerHTML += '<tr><td>' + "Cedula: " + data[i].ID + " - Carn&eacute; : " + data[i].tipo + '</td><td>' + data[i].nombre + '</td><td><button type="button" class="btnEl" onclick="eliminarFila(this)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Eliminar</button></td></tr>';
+            }
+        });
     }
+
+    function eliminarFila(n) {
+        var i = n.parentNode.parentNode.rowIndex;
+        var tabla = document.getElementById("tablaPersonas");
+        var id = tabla.rows[i].cells[0].innerHTML;
+        var nombreDep = document.getElementById("nombreDep").innerText;
+
+        id = id.split(" ");
+        id = id[1];
+        var url = "infoTec/deletePeopleFromDepartment/" + nombreDep + "/" + id;
+        try {
+            $.ajax({
+                url: url,
+                error: function (request, error) {
+                    console.log(error);
+                }
+            }).then(function (data) {
+                if (data == 'succesfull')
+                    document.getElementById("tablaPersonas").deleteRow(i);
+            });
+            
+        }
+        catch (e) {
+            console.log(e);
+        }
+    }
+
     function cargarPersonas() {
         var url = 'infoTec/getPersonas';
         var per = document.getElementById('personas');
@@ -719,7 +761,11 @@ function cambiarPass() {
                     else if (data[i].tipo == "") {
                         id = data[i].ID;
                     }
+                    console.log(data[i].nombre,id);
+                    per.innerHTML += "<option>"+ data[i].tipo +" - "+ data[i].nombre + " - " + data[i].ID + "</option>";
+
                     per.innerHTML += "<option>" + data[i].nombre + " - " + id + "</option>";
+
                 }
             });
         }
@@ -730,11 +776,30 @@ function cambiarPass() {
     function agregarAtabla() {
         var text = document.getElementById("carnetP");
         var datos = document.getElementById("carnetP").value;
+        var departamento = document.getElementById('departamentoFiltrados').value;
         datos = datos.split('-');
-
-        var tabla = document.getElementById("tablaPersonas");
-        tabla.innerHTML += '<tr><td>'+ datos[1] +'</td><td>'+datos[0]+'</td><td><button type="button" class="btnEl"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Eliminar</button></td></tr>';
-
+        
+        var url = "infoTec/setPersonaToDepartment/" + datos[0].replace(" ","") + "/" + departamento;
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: url,
+            error: function (request, error) {
+                document.getElementById("mensajeDep").innerHTML = '<div class="alert alert-warning"><strong>Atenci&oacute;n!</strong> Error!</div>';
+            }
+        }).then(function (data) {
+            try {
+                if (data == "succesfull") {
+                    var tabla = document.getElementById("tablaPersonas");
+                    tabla.innerHTML += '<tr><td>' + "Cedula: " + datos[0] + " - Carn&eacute; : " + datos[2] + '</td><td>' + datos[1] + '</td><td><button onclick="eliminarFila()" type="button" class="btnEl"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Eliminar</button></td></tr>';
+                }
+                else {
+                    document.getElementById("mensajeDep").innerHTML = '<div class="alert alert-warning"><strong>Atenci&oacute;n!</strong> La Persona ya se inserto.</div>';
+                }
+            } catch (e) {
+                document.getElementById("mensajeDep").innerHTML = '<div class="alert alert-warning"><strong>Atenci&oacute;n!</strong> Eror!</div>';
+            }
+        });
     }
 
 

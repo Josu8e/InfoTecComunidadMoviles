@@ -101,6 +101,30 @@ namespace test2.Models
             }
         }
 
+        public string deletePeopleFromDepartment(string nombreDep,int idP)
+        {
+            SqlCommand comand;
+            string consult;
+            try
+            {
+                consult = string.Format("delete from Persona_departamentos where nombreDep = @nombreD and IDPer = @idp");
+                comand = new SqlCommand(consult, con);
+                comand.Parameters.Add("@nombreD", System.Data.SqlDbType.NVarChar);
+                comand.Parameters.Add("@idp", System.Data.SqlDbType.NVarChar);
+                comand.Parameters["@nombreD"].Value = nombreDep;
+                comand.Parameters["@idp"].Value = idP;
+                con.Open();
+                comand.ExecuteNonQuery();
+                con.Close();
+                return "succesfull";
+
+            }
+            catch(Exception ex)
+            {
+                return ex.Message;
+            }
+        }
+
         public String insertarDepartamento(String nombre,String tipo,String sede,String encargado)/////INSERTAR DEPARTAMENTO
         {
             SqlCommand comand;
@@ -502,6 +526,33 @@ namespace test2.Models
                 return e.Message;
             }
 
+        }
+        public List<DTO_Persona> getPersonabyDepartamento(string nombreDepa)
+        {
+            List<DTO_Persona> lista = new List<DTO_Persona>();
+            string consult;
+            SqlCommand comand;
+            con.Open();
+            consult = string.Format("select p.Nombre, p.ID, p.carne From Persona as p inner Join Persona_departamentos as Pd on p.ID = Pd.IDPer inner join departamentos as d on Pd.nombreDep = d.nombre where d.nombre = @nombreDepa");
+            comand = new SqlCommand(consult, con);
+            comand.Parameters.Add("@nombreDepa", System.Data.SqlDbType.NChar);
+            comand.Parameters["@nombreDepa"].Value = nombreDepa;
+
+            reader = comand.ExecuteReader();
+                
+            while (reader.Read())
+            {
+                DTO_Persona dto = new DTO_Persona();
+                dto.nombre = reader[0].ToString();
+                dto.ID = reader[1].ToString();
+                dto.tipo = reader[2].ToString();
+                lista.Add(dto);
+            }
+            con.Close();
+            
+
+
+            return lista;
         }
         //nuevo
         public List<DTO_Sede> getSedes()
