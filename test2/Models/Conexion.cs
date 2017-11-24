@@ -620,6 +620,27 @@ namespace test2.Models
             con.Close();
             return lista;
         }
+        
+        public List<DTO_Departamento> getDepartamentosPorSede(string sede)
+        {
+            SqlCommand comand;
+            string consult;
+            consult = string.Format("select d.nombre from departamentos as d inner Join Departamento_Sede as DS on d.nombre = DS.nombreDepartamento inner join Sedes as s on s.nombreSede = @sede");
+            comand = new SqlCommand(consult, con);
+            comand.Parameters.Add("@sede", System.Data.SqlDbType.NChar);
+            comand.Parameters["@sede"].Value = sede;
+            con.Open();
+            reader = comand.ExecuteReader();
+            List<DTO_Departamento> lista = new List<DTO_Departamento>();
+            while (reader.Read())
+            {
+                DTO_Departamento dto = new DTO_Departamento();
+                dto.nombre = reader[0].ToString();
+                lista.Add(dto);
+            }
+            con.Close();
+            return lista;
+        }
 
         public List<DTO_Persona> cargarPersonas()
         {

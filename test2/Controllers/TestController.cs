@@ -171,6 +171,12 @@ namespace test2.Controllers
                 JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult getDepartamentosPorSede(string nombre)
+        {
+            return Json(conexion.getDepartamentosPorSede(nombre),
+                JsonRequestBehavior.AllowGet);
+        }
+
         public JsonResult deletePeopleFromDepartment(string nombreDep, int idP)
         {
             return Json(conexion.deletePeopleFromDepartment(nombreDep, idP),

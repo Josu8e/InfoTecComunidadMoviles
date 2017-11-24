@@ -192,6 +192,16 @@ namespace test2
             );
 
             routes.MapRoute(
+                "getDepartamentosPorSede",
+                "getDepartamentosPorSede/{sede}",
+                new
+                {
+                    Controller = "Test",
+                    action = "getDepartamentosPorSede"
+                }
+             );
+
+            routes.MapRoute(
                 "getPersonas",
                 "getPersonas",
                 new
