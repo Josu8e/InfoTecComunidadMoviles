@@ -171,9 +171,9 @@ namespace test2.Controllers
                 JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult getDepartamentosPorSede(string nombre)
+        public JsonResult getDepartamentosPorSede(String sede)
         {
-            return Json(conexion.getDepartamentosPorSede(nombre),
+            return Json(conexion.getDepartamentosPorSede(sede),
                 JsonRequestBehavior.AllowGet);
         }
 

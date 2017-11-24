@@ -24,8 +24,9 @@ function EnviarMensajeDinamico() {
         function carrerasDinamicas() {
             texto = '<br\> <input id="ALL" type="button" onclick="marcarTODOS()"class="btn btn-primary btn-block btn-large" value="Marcar todos"/> <br\>';
         for (i = 0; i < listaCarreras.length; i++) {
-            texto += '<div class="bg" style=" visibility:hidden"> <div class="cosa1">' + listaCarreras[i] + ':</div> <div class="cosa2"><input id="' + listaIdCarreras[i] + '" value="' + listaCarreras[i] + '" class="right" type="checkbox" data-off-color="warning"/></div></div>';
-        }
+            texto += '<div class="bg" style=" visibility:hidden"> id="'+i+'" <div class="cosa1">' + listaCarreras[i] + ':</div> <div class="cosa2"><input id="' + listaIdCarreras[i] + '" value="' + listaCarreras[i] + '" class="right" type="checkbox" data-off-color="warning"/></div></div>';
+            }
+        console.log(texto);
         texto += '</p>';
         var client = new XMLHttpRequest();
         client.open('GET', '/infoTec/js/EnviarMensaje.html');
@@ -127,7 +128,33 @@ function obtenerDepartamentos(funcion) {
             for (i = 0; i < data.length; i++) {
                 listaCarreras[i] = data[i].toString();
                 listaIdCarreras[i] = generarID(data[i].toString());
-                console.log(data[i].toString());
+            }
+            funcion();
+        } catch (e) {
+            console.log("error de lectura");
+        }
+    });
+}
+
+function obtenerDepartamentosPorSede(funcion, sede) {
+    var url = "infoTec/getDepartamentosPorSede/"+sede+"";//IIS
+    console.log(url);
+    $.ajax({
+        url: url,
+        error: function (request, error) {
+            console.log(error);
+        }
+    }).then(function (data) {
+        try {
+            for (i = 0; i < data.length; i++) {
+                for (j = 0; j < listaCarreras.length; j++)
+                {
+                    console.log(data[i].nombre.toString())
+                    if (listaCarreras[j] == data[i].nombre.toString()) {
+                        console.log(document.getElementById(j).innerHTML);
+                        document.getElementById(j).visibility = visible;
+                    }
+                }
             }
             funcion();
         } catch (e) {
@@ -469,9 +496,11 @@ function cambiarPass() {
     function mostrar_ocultarCarrera() {
         var sede = document.getElementById("sedeMensaje").value;
         if (document.getElementById("desplegarCarrera").value === "Departamentos" && sede.length != 0) {
-            var distancia = (listaCarreras.length * 63) + 63;
-            document.getElementById("carreraDiv").style.height = '' + distancia + 'px';//para animacion
-            document.getElementById("desplegarCarrera").value = "Ocultar";
+            obtenerDepartamentosPorSede(function mostrarDep() {
+                var distancia = (listaCarreras.length * 63) + 63;
+                document.getElementById("carreraDiv").style.height = '' + distancia + 'px';//para animacion
+                document.getElementById("desplegarCarrera").value = "Ocultar";
+            }, document.getElementById("sedeMensaje").value);          
         } else {
             document.getElementById("carreraDiv").style.height = "0px";
             document.getElementById("desplegarCarrera").value = "Departamentos";
