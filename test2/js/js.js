@@ -88,7 +88,7 @@ function insertarD() {//////////////////////////////////////////////////////////
     else {
         var url = "infoTec/insertarDepartamento/" + nombre + '/' + sede + '/' + categoria + '/' + encargado;//IIS
         console.log(url);
-        document.getElementById("inDep").innerHTML = "<div id=\"topmenu\"><h3>Verificando nombre...<h3></div>";
+        document.getElementById("mensajeDep").innerHTML = "<div id=\"topmenu\"><h3>Verificando nombre...<h3></div>";
         $.ajax({
             type: "POST",
             dataType: "json",
