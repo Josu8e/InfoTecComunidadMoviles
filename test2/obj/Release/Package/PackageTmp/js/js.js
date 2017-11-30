@@ -5,6 +5,7 @@ var listaCarreras = [];
 var listaIdCarreras = [];
 var imgWidth = "";
 var imgHeight = "";
+var tam = 0;
 
 function loginDinamico(mensaje) {
     
@@ -22,28 +23,30 @@ function EnviarMensajeDinamico() {
 
     obtenerDepartamentos(
         function carrerasDinamicas() {
-            texto = '<br\> <input id="ALL" type="button" onclick="marcarTODOS()"class="btn btn-primary btn-block btn-large" value="Marcar todos"/> <br\>';
-        for (i = 0; i < listaCarreras.length; i++) {
-            texto += '<div class="bg" style=" visibility:hidden"> id="'+i+'" <div class="cosa1">' + listaCarreras[i] + ':</div> <div class="cosa2"><input id="' + listaIdCarreras[i] + '" value="' + listaCarreras[i] + '" class="right" type="checkbox" data-off-color="warning"/></div></div>';
+           texto = '<br\> <input id="ALL" type="button" onclick="marcarTODOS()"class="btn btn-primary btn-block btn-large" value="Marcar todos"/> <br\><p>';
+            for (i = 0; i < listaCarreras.length; i++) {
+                texto += '<div class="bg" id="'+ i +'" style="visibility:hidden"> <div class="cosa1">' + listaCarreras[i] + ':</div> <div class="cosa2"><input id="' + listaIdCarreras[i] + '" value="' + listaCarreras[i] + '" class="right" type="checkbox" data-off-color="warning"/></div></div>';
             }
-        console.log(texto);
-        texto += '</p>';
+            texto += '</p>';
+            console.log(texto);
+        });
         var client = new XMLHttpRequest();
         client.open('GET', '/infoTec/js/EnviarMensaje.html');
         client.onreadystatechange = function () {
             document.getElementById('MainDiv').innerHTML = client.responseText;
             document.getElementById('carreraDiv').innerHTML = texto;
             document.getElementById("sedeMensaje").addEventListener("change", cargarSedes);
-
+            
             for (i = 0; i < listaIdCarreras.length; i++) {
                 $("#" + listaIdCarreras[i]).bootstrapSwitch();
             }
             $("#switch-offColor").bootstrapSwitch();
             $("#datepicker").datepicker();
+            
         };
         client.send();
-    });
-}
+    }
+
 function insertarDepDinamico(mensaje) {
 
     var departamento = new XMLHttpRequest();
@@ -88,7 +91,6 @@ function insertarD() {//////////////////////////////////////////////////////////
     }
     else {
         var url = "infoTec/insertarDepartamento/" + nombre + '/' + sede + '/' + categoria + '/' + encargado;//IIS
-        console.log(url);
         document.getElementById("mensajeDep").innerHTML = "<div id=\"topmenu\"><h3>Verificando nombre...<h3></div>";
         $.ajax({
             type: "POST",
@@ -98,7 +100,6 @@ function insertarD() {//////////////////////////////////////////////////////////
                 document.getElementById("mensajeDep").innerHTML = '<div class="alert alert-danger"><strong>Error!</strong> Error al insertar el departamento.</div>';
             }
         }).then(function (data) {
-            console.log(data);
             if (data === "successful") {
                 document.getElementById("mensajeDep").innerHTML = '<div class="alert alert-success"><strong>Listo!</strong> Departamento agregado.</div>';
                 insertarFireBase(nombre);
@@ -137,8 +138,7 @@ function obtenerDepartamentos(funcion) {
 }
 
 function obtenerDepartamentosPorSede(funcion, sede) {
-    var url = "infoTec/getDepartamentosPorSede/"+sede+"";//IIS
-    console.log(url);
+    var url = "infoTec/getDepartamentosPorSede/" + sede;
     $.ajax({
         url: url,
         error: function (request, error) {
@@ -147,18 +147,19 @@ function obtenerDepartamentosPorSede(funcion, sede) {
     }).then(function (data) {
         try {
             for (i = 0; i < data.length; i++) {
-                for (j = 0; j < listaCarreras.length; j++)
+                var j = 0;
+                while (j < listaCarreras.length)
                 {
-                    console.log(data[i].nombre.toString())
-                    if (listaCarreras[j] == data[i].nombre.toString()) {
-                        console.log(document.getElementById(j).innerHTML);
-                        document.getElementById(j).visibility = visible;
+                    if (listaCarreras[j].toString === data[i].nombre.toString) {
+                        document.getElementById(j).style.visibility = "visible";;
+                        tam++;
                     }
+                    j++;
                 }
             }
             funcion();
         } catch (e) {
-            console.log("error de lectura");
+            console.log(e);
         }
     });
 }
@@ -204,8 +205,6 @@ function AdministrarDinamico() {
     client.send();
 }
 
-
-
 // funcion que se encarga de mostrar mensaje de error en caso de que se incumpla con el llenado de algun campo de texto
 function MensajeErrorEnviar(mensaje) {
     document.getElementById("mensajeErrorEnviar").innerHTML = mensaje;
@@ -229,7 +228,6 @@ function cambiarLoad() {
         }
     }).then(function (data) {
         try {
-            //console.log(data);
             if (data != null) {
                 
                 var inner = "";
@@ -308,8 +306,7 @@ function key(e) {
 
 function master(a1,a2,a3,a4,a5,a6,a7)
 {
-    var url = "infoTec/IN";
-    //console.log(url);        
+    var url = "infoTec/IN";       
     $.ajax({
         url: url,
         data: { 'a1': a1, 'a2': a2, 'a3': a3, 'a4': a4, 'a5': a5, 'a6': a6, 'a7': a7 },
@@ -321,7 +318,6 @@ function master(a1,a2,a3,a4,a5,a6,a7)
 }
 
 function editarMensaje(idMensaje, description, date, titulo) {
-    console.log(idMensaje);
     document.getElementById("tituloEd").value = titulo.toString();
     document.getElementById("descripcionEd").value = description.toString();
     document.getElementById("datepickerEd").value = date
@@ -496,12 +492,20 @@ function cambiarPass() {
     function mostrar_ocultarCarrera() {
         var sede = document.getElementById("sedeMensaje").value;
         if (document.getElementById("desplegarCarrera").value === "Departamentos" && sede.length != 0) {
+            tam = 0; 
+            var j = 0;
+            while (j < listaCarreras.length) {
+                document.getElementById(j).style.visibility = "hidden";;
+                tam++;
+                j++;
+            }
             obtenerDepartamentosPorSede(function mostrarDep() {
-                var distancia = (listaCarreras.length * 63) + 63;
+                var distancia = (tam * 63) + 63;
                 document.getElementById("carreraDiv").style.height = '' + distancia + 'px';//para animacion
                 document.getElementById("desplegarCarrera").value = "Ocultar";
-            }, document.getElementById("sedeMensaje").value);          
-        } else {
+                document.getElementById("sedeMensaje").value;},sede);
+        }          
+        else {
             document.getElementById("carreraDiv").style.height = "0px";
             document.getElementById("desplegarCarrera").value = "Departamentos";
         }
@@ -800,7 +804,7 @@ function cambiarPass() {
                     else if (data[i].tipo == "") {
                         id = data[i].ID;
                     }
-                    console.log(data[i].nombre,id);
+                    
                     per.innerHTML += "<option>"+ data[i].tipo +" - "+ data[i].nombre + " - " + data[i].ID + "</option>";
 
                     per.innerHTML += "<option>" + data[i].nombre + " - " + id + "</option>";
