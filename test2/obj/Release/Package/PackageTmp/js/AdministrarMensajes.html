@@ -7,26 +7,30 @@
             <li id="salir" onclick="changeModul(4)">Salir</li>
         </ul>
     </div>    
+
     <div id="Mensaje_admin" style="width: 100%" class="mainDiv">
-        <br /><br /><br /><br /><br />  
+        <br/><br/><br/><br/><br/>  
         <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="false">     
         </div>  
         <div id="errorModDel"></div>
     </div>
 
+    <!--se necesita este div??-->
     <div id="modalDeEditar">
-
     </div>
 
     <div class="modal fade" id="modalEditar" role="dialog">        
         <div class="modal-dialog">            
-            <div class="modal-content">               
+            <div class="modal-content">  
+                
                 <div class="modal-header">                    
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4 class="modal-title"><b>Edici&oacute;n de informaci&oacute;n de evento</b></h4>                    
                 </div>
+
                 <div class="modal-body">                    
-                    <form id="formulario">         
+                    <form id="formulario"> 
+                        
                         <input type="text" id="tituloEd" name="titulo" placeholder="Titulo" class="form-control" value="" required />
                         <input type="text" id="descripcionEd" placeholder="Descripcion" class="form-control" value="" required />
                         <input type="text" id="datepickerEd" placeholder="Fecha" required value="" class="form-control"/>
@@ -36,7 +40,6 @@
                             <div class="imageninput">
                                 Click para ingresar una imagen
                             </div>
-                            <!--aqui iba un input con id="desplegar" esta abajo-->
                         </label>
 
                         <input id="desplegar" type="button" onclick="" class="btn btn-primary btn-block btn-large" value="desplegar" />
@@ -45,13 +48,21 @@
                         <button class="btn btn-primary" onclick="">
                             Guardar
                         </button>
+
                     </form>
+
                 </div>
+
                 <div id="notificacionEd"></div>
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
                 </div>
+
             </div>
+
         </div>
+
     </div>
+
 </div>

@@ -7,13 +7,16 @@
             <li id="salir" onclick="changeModul(4)">Salir</li>
         </ul>
     </div>
+
     <div id="inDep" style="width: 100%" class="mainDiv">
+
         <h2>Agregar nuevo departamento</h2>
         <input type="text" id="nombre" maxlength="100" name="n" placeholder="Nombre del departamento a agregar" required="required" />
-        <br>
+        <br/>
+
         <input list="sedes" placeholder="Sede" id="sedeDepartamento">
         <datalist id="sedes"> </datalist>
-        <br>
+        <br/>
 
         <input list="categorias" placeholder="Categoria" id="categoriaDepartamento">
         <datalist id="categorias">
@@ -22,7 +25,7 @@
             <option>Comisión</option>
             <option>Grupo</option>
         </datalist>       
-        <br>
+        <br/>
 
         <input list="encargados" placeholder="Carnet engargado" id="encargadoPersona">
         <datalist id="encargados"></datalist>
@@ -32,7 +35,9 @@
         <br>
 
         <div id="inPer">
+
             <h2>Agregar miembros a departamento</h2>
+
             <div id="depDisp">
                 <h5>Departamentos disponibles</h5>
                 <input list="sedes" placeholder="Sede" id="sedePersona">              
@@ -48,7 +53,7 @@
 
                 <input  list="departamentos" placeholder="Nombre del departamento" id="departamentoFiltrados"/>
                 <datalist id="departamentos"></datalist>
-       </div>
+            </div>
             
             <div id="agrePer">
                 <h5>Personas disponibles</h5>
@@ -56,6 +61,7 @@
                 <datalist id="personas"></datalist>
                 <button type="button" class="btn btn-primary btn-block btn-large" onclick="agregarAtabla()"> Añadir</button>
             </div>
+
             <div>
                 <h5 style="display:inline-block"> Departamento:</h5>
                 <h5 id="nombreDep" style="display:inline-block"></h5>
@@ -68,7 +74,10 @@
                     </tr>
                 </table>
             </div>
+
         </div>
-        <br>
+        <br/>
+
     </div>
+
 </div>

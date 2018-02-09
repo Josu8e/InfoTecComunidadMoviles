@@ -12,10 +12,11 @@ namespace test2
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            
+
+            //Endpoint para el login
             routes.MapRoute(
-                "logRr",
-                "log/{id}/{pass}",
+                "logRr",//esto se pone en el url en js.js
+                "log/{id}/{pass}",//asi se llama en el testcontroller 
                 new
                 {
                     controller = "Test",
@@ -23,7 +24,7 @@ namespace test2
                 }
             );
 
-            // endpoint cambiar contraseña
+            //Endpoint cambiar contraseña
             routes.MapRoute(
                 "changePass",
                 "cambiarContra/{nPass}/{id}",
@@ -34,26 +35,29 @@ namespace test2
                 }
            );
 
+            //Endpoint para insertar un departamento
             routes.MapRoute(
-                "insertD",///nombre que quiera
-                "insertarDepartamento/{nombre}/{tipo}/{sede}/{encargado}",///aparece url
+                "insertD",
+                "insertarDepartamento/{nombre}/{tipo}/{sede}/{encargado}",
                 new
                 {
                     controller = "Test",
-                    action = "Departamentos",///nombre TestController
+                    action = "Departamentos",
                 }
             );
 
+            //Endpoint para obtener los departamentos 
             routes.MapRoute(
-                "OD",///nombre que quiera
-                "obtenerD",///aparece url
+                "OD",
+                "obtenerD",
                 new
                 {
                     controller = "Test",
-                    action = "obtenerD",///nombre TestController
+                    action = "obtenerD",
                 }
             );
 
+            //
             routes.MapRoute(
                 "setVisto",
                 "setVisto/{id}/{idm}",
@@ -64,16 +68,18 @@ namespace test2
                 }
             );
 
+            //Endpoint para enviar el correo con la contraseña provisional 
             routes.MapRoute(
                 "SendEmail",
-                "SendEmail", // esto se pone en el url en js.js
+                "SendEmail",
                 new
                 {
                     controller = "Test",
-                    action = "SendEmail", // asi se llama la funcion en TestController
+                    action = "SendEmail",
                 }
            );
 
+            //No se usa  
             routes.MapRoute(
                 "gomR",
                 "getOwnMessage/{id}",
@@ -83,6 +89,8 @@ namespace test2
                     action = "getOwnMessage",
                 }
             );
+
+            //Endpoint para registrar un nuevo mensaje 
             routes.MapRoute(
                 "insertR",
                 "nuevoMensaje",
@@ -92,6 +100,8 @@ namespace test2
                     action = "nuevoMensaje",
                 }
             );
+
+            //Endpoint para obtener los mensajes que el usuario loggeado ha enviado
             routes.MapRoute(
                 "AdmiM",
                 "AdminMensaje",
@@ -101,6 +111,8 @@ namespace test2
                     action = "AdminM",
                 }
             );
+
+            //Endpoint para registrar a una persona 
             routes.MapRoute(
                 "IN",
                 "IN/{id}/{nombre}/{contra}/{rol}/{correo}/{carne}/{estadoCivil}/{fechaNacimiento}/{sexo}/{direccion}/{apellido1}/{apellido2}",
@@ -110,6 +122,8 @@ namespace test2
                     action = "IN",
                 }
             );
+
+            //No se usa 
             routes.MapRoute(
                 "DeleteownMessajeR",
                 "delleteownmensaje/{id_m}/{id_p}",
@@ -120,6 +134,7 @@ namespace test2
                 }
             );
 
+            //Endpoint para eliminar un mensaje 
             routes.MapRoute(
                 "DeleteMensaje",
                 "eliminarMensaje/{id_m}",
@@ -130,6 +145,7 @@ namespace test2
                 }
             );
 
+            //No se usa 
             routes.MapRoute(
                 "getDepartementPerson",
                 "getDepartementPerson/{id}",
@@ -140,7 +156,8 @@ namespace test2
                 }
             );
 
-            routes.MapRoute( //nuevo
+            //No se usa 
+            routes.MapRoute(
                 "buscarPersonas",
                 "buscarPersonas/{id}/{control}",
                 new
@@ -150,7 +167,7 @@ namespace test2
                 }
             );
 
-            //nuevo
+            //Endpoint para agregar una persona a un departamento
             routes.MapRoute(
                 "setPersonaToDepartment",
                 "setPersonaToDepartment/{idP}/{nombre}",
@@ -160,7 +177,8 @@ namespace test2
                     action = "setPersonaToDepartment"
                 }
              );
-            //nuevo
+
+            //Endpoint para obtener todas las sedes
             routes.MapRoute(
                     "getSedes",
                     "getSedes",
@@ -171,6 +189,7 @@ namespace test2
                     }
             );
 
+            //Endpoint para eliminar a una persona de un departamento
             routes.MapRoute(
                     "deletePeopleFromDepartment",
                     "deletePeopleFromDepartment/{nombreDep}/{idP}",
@@ -181,6 +200,7 @@ namespace test2
                     }
             );
 
+            //Endpoint para obtener un departamento segun un filtro 
             routes.MapRoute(
                 "getDepartmentoFiltrados",
                 "getDepartmentosFiltrados/{sede}/{categoria}",
@@ -190,7 +210,8 @@ namespace test2
                     action = "getDepartmentFiltrados"
                 }
             );
-
+        
+            //Endpoint para obtener todos los departamentos de una sede
             routes.MapRoute(
                 "getDepartamentosPorSede",
                 "getDepartamentosPorSede/{sede}",
@@ -201,6 +222,7 @@ namespace test2
                 }
              );
 
+            //Endpoint para obtener la informacion de una persona 
             routes.MapRoute(
                 "getPersonas",
                 "getPersonas",
@@ -211,6 +233,7 @@ namespace test2
                 }
             );
 
+            //Endpoint para obtener a todas las personas que no son estudiantes 
             routes.MapRoute(
                     "getEncargados",
                     "getEncargados",
@@ -220,7 +243,8 @@ namespace test2
                         action = "getEncargados"
                     }
             );
-            //nuevo
+
+            //Endpoint para obtener los miembros de un departamento 
             routes.MapRoute(
                     "getPersonabyDepartamento",
                     "getPersonabyDepartamento/{nombreDepa}",
@@ -231,7 +255,8 @@ namespace test2
                     }
             );
 
-            routes.MapRoute(//no mover de aqui
+            //No borrar 
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
