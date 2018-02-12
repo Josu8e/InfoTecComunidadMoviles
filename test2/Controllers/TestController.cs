@@ -31,11 +31,7 @@ namespace test2.Controllers
 
             return Json(new { Error = true, Message = "Operación HTTP desconocida" });
         }
-<<<<<<< HEAD
-        
-=======
 
->>>>>>> 2ef24b85aad12bf135d527646b74e2910dddb128
         public JsonResult getOwnMessage(String id)
         {
             switch (Request.HttpMethod)
