@@ -11,8 +11,6 @@ namespace test2.Controllers
 {
     public class TestController : Controller
     {
-        //
-        // GET: /Test/
         public Conexion conexion = new Conexion();
 
 
@@ -33,7 +31,11 @@ namespace test2.Controllers
 
             return Json(new { Error = true, Message = "Operación HTTP desconocida" });
         }
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> 2ef24b85aad12bf135d527646b74e2910dddb128
         public JsonResult getOwnMessage(String id)
         {
             switch (Request.HttpMethod)
@@ -45,6 +47,7 @@ namespace test2.Controllers
             }
             return Json(new { Error = true, Message = "Operación HTTP desconocida" });
         }
+
         public JsonResult AdminM(String remitente)
         {
             return Json(conexion.AdminM(remitente),
@@ -64,12 +67,12 @@ namespace test2.Controllers
             return Json(
                     conexion.insertarDepartamento(nombre,tipo,sede,encargado), JsonRequestBehavior.AllowGet);
         }
+
         public JsonResult IN(string id, string nombre, string contra, string rol, string correo, string carne, string estadoCivil, string fechaNacimiento, char sexo, string direccion, string apellido1, string apellido2)
         {
             
             return Json(conexion.IN(id, nombre, contra, rol, correo, carne, estadoCivil, fechaNacimiento, sexo, direccion, apellido1, apellido2),
-                    JsonRequestBehavior.AllowGet);
-            
+                    JsonRequestBehavior.AllowGet);    
         }
 
         public JsonResult nuevoMensaje(String titulo, String Descripcion, String fecha, string imagen, String remitente, String borrable, string departamento)
@@ -85,6 +88,7 @@ namespace test2.Controllers
                   conexion.editarMensaje(ID, titulo, Descripcion, fecha, imagen, borrable)
                     , JsonRequestBehavior.AllowGet);
         }
+
         public JsonResult DelOwnM(int id_m, int id_p)
         {
             return Json(
@@ -105,6 +109,7 @@ namespace test2.Controllers
                     conexion.buscarPersonas(id,control),
                     JsonRequestBehavior.AllowGet);
         }
+
         //nuevo
         public JsonResult getSedes()
         {
@@ -112,12 +117,14 @@ namespace test2.Controllers
                     conexion.getSedes(),
                     JsonRequestBehavior.AllowGet);
         }
+
         public JsonResult getEncargados()
         {
             return Json(
                     conexion.getEncargados(),
                     JsonRequestBehavior.AllowGet);
         }
+
         //nuevo
         public JsonResult getDepartmentFiltrados(string sede, string categoria)
         {
@@ -153,7 +160,8 @@ namespace test2.Controllers
         public JsonResult setVisto(string id, int idm)
         {
             return Json(conexion.setVisto(id, idm), JsonRequestBehavior.AllowGet);
-        }            
+        }  
+        
         /// <summary>
         /// Función para cambiar contraseña
         /// </summary>
@@ -172,9 +180,9 @@ namespace test2.Controllers
                 JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult getDepartamentosPorSede(string nombre)
+        public JsonResult getDepartamentosPorSede(String sede)
         {
-            return Json(conexion.getDepartamentosPorSede(nombre),
+            return Json(conexion.getDepartamentosPorSede(sede),
                 JsonRequestBehavior.AllowGet);
         }
 

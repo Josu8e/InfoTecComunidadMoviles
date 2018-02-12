@@ -181,15 +181,8 @@ namespace test2.Models
             con.Close();
             return lista;
         }
-        /// <summary>
+
         /// Función encargada de la edición de mensajes o eventos creados
-        /// </summary>
-        /// <param name="titulo">Nuevo título</param>
-        /// <param name="Descripcion">Nueva descripción</param>
-        /// <param name="fecha">Nueva fecha</param>
-        /// <param name="imagen">Nueva imagen</param>
-        /// <param name="borrable">Nueva opción de borrable si o no</param>
-        /// <returns></returns>
         public string editarMensaje(int ID, string titulo, string Descripcion, string fecha, string imagen, string borrable)
         {
             SqlCommand comand;
@@ -225,7 +218,6 @@ namespace test2.Models
                 return ex.Message;
             }
         }
-
 
         /// <summary>
         /// Funcion encargada de ir a la base de datos a cambiar la contraseña
@@ -309,19 +301,6 @@ namespace test2.Models
                 comand.Parameters.Add("@direccion", System.Data.SqlDbType.VarChar);
                 comand.Parameters.Add("@apellido1", System.Data.SqlDbType.VarChar);
                 comand.Parameters.Add("@apellido2", System.Data.SqlDbType.VarChar);
-                /*comand.Parameters.AddWithValue("@id", id);
-                comand.Parameters.AddWithValue("@nombre", nombre);
-                comand.Parameters.AddWithValue("@contra", contra);
-                comand.Parameters.AddWithValue("@rol", rol);
-                comand.Parameters.AddWithValue("@correo", correo);
-                comand.Parameters.AddWithValue("@carne", carne);
-                comand.Parameters.AddWithValue("@estadoCivil", estadoCivil);
-                comand.Parameters.AddWithValue("@fechaNacimiento", fechaNacimiento);
-                comand.Parameters.AddWithValue("@sexo", sexo);
-                comand.Parameters.AddWithValue("@direccion", direccion);
-                comand.Parameters.AddWithValue("@apellido1", apellido1);
-                comand.Parameters.AddWithValue("@apellido2", apellido2);*/
-
 
                 // Asignando los valores a los atributos
                 comand.Parameters["@id"].Value = id;
@@ -337,8 +316,7 @@ namespace test2.Models
                 comand.Parameters["@apellido1"].Value = apellido1;
                 comand.Parameters["@apellido2"].Value = apellido2;
 
-
-                //-----------------------------------------------
+                
                 con.Open();
                 comand.ExecuteNonQuery();
                 con.Close();
@@ -400,6 +378,7 @@ namespace test2.Models
             con.Close();
             return lista;
         }
+
         /// <summary>
         /// Función encargada de la inserción de un nuevo mensaje (evento)
         /// </summary>
@@ -449,6 +428,7 @@ namespace test2.Models
                 return ex.Message;
             }
         }
+
         public List<DTO_Departamento> getDepartementPerson(string id)
         {
             con.Open();
@@ -527,6 +507,7 @@ namespace test2.Models
             }
 
         }
+
         public List<DTO_Persona> getPersonabyDepartamento(string nombreDepa)
         {
             List<DTO_Persona> lista = new List<DTO_Persona>();
@@ -554,7 +535,7 @@ namespace test2.Models
 
             return lista;
         }
-        //nuevo
+       
         public List<DTO_Sede> getSedes()
         {
             SqlCommand comand;
@@ -575,6 +556,7 @@ namespace test2.Models
             con.Close();
             return lista;
         }
+
         public List<DTO_Persona> getEncargados()
         {
             SqlCommand comand;
@@ -625,7 +607,7 @@ namespace test2.Models
         {
             SqlCommand comand;
             string consult;
-            consult = string.Format("select d.nombre from departamentos as d inner Join Departamento_Sede as DS on d.nombre = DS.nombreDepartamento inner join Sedes as s on s.nombreSede = @sede");
+            consult = string.Format("select d.nombre from departamentos as d inner Join Departamento_Sede as DS on d.nombre = DS.nombreDepartamento inner Join (select s.idSede,s.nombreSede from Sedes as s where s.nombreSede = @sede) as w on w.idSede = DS.idSede");
             comand = new SqlCommand(consult, con);
             comand.Parameters.Add("@sede", System.Data.SqlDbType.NChar);
             comand.Parameters["@sede"].Value = sede;
@@ -729,6 +711,8 @@ namespace test2.Models
         }
     }
 }
+
+
 //insert into  Mensaje (titulo,Descripcion,fecha,imagen,remitente) values ('Ferias de idea','Los jovenes enprendedores del tec mostaran su ideas en pasillos frente a la bola','2016-10-02','','CA maritza')
 
 /*

@@ -1,11 +1,14 @@
+//Variables globales 
+var tam = 0;
 var userName = "";
 var idUser = "";
 var texto = "";
-var listaCarreras = [];
-var listaIdCarreras = [];
 var imgWidth = "";
 var imgHeight = "";
+var listaCarreras = [];
+var listaIdCarreras = [];
 
+//Carga el html del login a la pagina
 function loginDinamico(mensaje) {
     
     var client = new XMLHttpRequest();
@@ -18,31 +21,38 @@ function loginDinamico(mensaje) {
     }
     client.send();
 }
+
+//Carga el html de enviar mensajes a la pagina
 function EnviarMensajeDinamico() {
 
+    //Callback que carga las carreras a la pagina 
     obtenerDepartamentos(
         function carrerasDinamicas() {
-        texto = '<br\> <input id="ALL" type="button" onclick="marcarTODOS()"class="btn btn-primary btn-block btn-large" value="Marcar todos"/>';
-        for (i = 0; i < listaCarreras.length; i++) {
-            texto += '<div class="bg"> <div class="cosa1">' + listaCarreras[i] + ':</div> <div class="cosa2"><input id="' + listaIdCarreras[i] + '" value="' + listaCarreras[i] + '" class="right" type="checkbox" data-off-color="warning"/></div></div>';
-        }
-        texto += '</p>';
+           texto = '<br\> <input id="ALL" type="button" onclick="marcarTODOS()"class="btn btn-primary btn-block btn-large" value="Marcar todos"/> <br\><p>';
+            for (i = 0; i < listaCarreras.length; i++) {
+                texto += '<div class="bg" id="'+ i +'" style="visibility:hidden"> <div class="cosa1">' + listaCarreras[i] + ':</div> <div class="cosa2"><input id="' + listaIdCarreras[i] + '" value="' + listaCarreras[i] + '" class="right" type="checkbox" data-off-color="warning"/></div></div>';
+            }
+            texto += '</p>';
+
         var client = new XMLHttpRequest();
         client.open('GET', '/infoTec/js/EnviarMensaje.html');
         client.onreadystatechange = function () {
             document.getElementById('MainDiv').innerHTML = client.responseText;
             document.getElementById('carreraDiv').innerHTML = texto;
             document.getElementById("sedeMensaje").addEventListener("change", cargarSedes);
-
+            
             for (i = 0; i < listaIdCarreras.length; i++) {
                 $("#" + listaIdCarreras[i]).bootstrapSwitch();
             }
             $("#switch-offColor").bootstrapSwitch();
             $("#datepicker").datepicker();
+            
         };
         client.send();
-    });
+       });
 }
+
+//Carga el html de administracion de departamentos a la pagina
 function insertarDepDinamico(mensaje) {
 
     var departamento = new XMLHttpRequest();
@@ -59,7 +69,8 @@ function insertarDepDinamico(mensaje) {
     departamento.send()
 }
 
-function changeModul(num) {// cambia las vistas de la pagina
+//Cambia las vistas de la pagina
+function changeModul(num) {
     if (num === 1) {//modulo de envio de mensajes
         EnviarMensajeDinamico();
     }
@@ -72,49 +83,53 @@ function changeModul(num) {// cambia las vistas de la pagina
     else if (num === 4) {//salir
         loginDinamico("");
     }
-    else if (num === 5) {//modulo de departamentos 
+    else if (num === 5) {//modulo de administracion de departamentos 
         insertarDepDinamico("");
     }
 }
-function insertarD() {///////////////////////////////////////////////////////////////////////////
+
+//Registra un departamento nuevo
+function insertarD() {
    
     var nombre = document.getElementById("nombre").value;
     var sede = document.getElementById("sedeDepartamento").value;
     var categoria = document.getElementById("categoriaDepartamento").value;
     var encargado = document.getElementById("encargadoPersona").value.split(" - ")[1];
+
     if (nombre.length == 0 || sede.length == 0 || categoria.length == 0 || encargado == 0) {
         document.getElementById("mensajeDep").innerHTML = '<div class="alert alert-warning"><strong>Atenci&oacute;n!</strong> Debe completar todos los datos.</div>';
     }
+
     else {
         var url = "infoTec/insertarDepartamento/" + nombre + '/' + sede + '/' + categoria + '/' + encargado;//IIS
-        console.log(url);
         document.getElementById("mensajeDep").innerHTML = "<div id=\"topmenu\"><h3>Verificando nombre...<h3></div>";
         $.ajax({
             type: "POST",
             dataType: "json",
             url: url,
             error: function (request, error) {
-                document.getElementById("mensajeDep").innerHTML = '<div class="alert alert-danger"><strong>Error!</strong> Error al insertar el departamento.</div>';
+                document.getElementById("mensajeDep").innerHTML = '<div class="alert alert-danger"><strong>Error</strong> Error al insertar el departamento.</div>';
             }
         }).then(function (data) {
-            console.log(data);
             if (data === "successful") {
-                document.getElementById("mensajeDep").innerHTML = '<div class="alert alert-success"><strong>Listo!</strong> Departamento agregado.</div>';
+                document.getElementById("mensajeDep").innerHTML = '<div class="alert alert-success"><strong>Listo</strong> Departamento agregado.</div>';
                 insertarFireBase(nombre);
             }
             else {
-                document.getElementById("mensajeDep").innerHTML = '<div id=\"topmenu\"><h3>El departamento ya existe<h3></div>';
+                document.getElementById("mensajeDep").innerHTML = '<div id=\"topmenu\"><h3>Departamento ya existentente<h3></div>';
             }
         });
     }    
 }
 
+//Genera un ID para cada carrera basado en el nombre
 function generarID(nombre) {
     var nueva = "";
     nueva = nombre.split(" ").join("_");
     return nueva;
 }
 
+//Obtiene el nombre de todos los departamentos existentes en la base de datos
 function obtenerDepartamentos(funcion) {
     var url = "infoTec/obtenerD";//IIS
     $.ajax({
@@ -127,8 +142,6 @@ function obtenerDepartamentos(funcion) {
             for (i = 0; i < data.length; i++) {
                 listaCarreras[i] = data[i].toString();
                 listaIdCarreras[i] = generarID(data[i].toString());
-                //console.log(listaCarreras[i]);
-                //console.log(listaIdCarreras[i]);
             }
             funcion();
         } catch (e) {
@@ -137,6 +150,37 @@ function obtenerDepartamentos(funcion) {
     });
 }
 
+//Recibe una sede y retorna todos los departamentos que pertenecen a esta 
+function obtenerDepartamentosPorSede(funcion, sede) {
+    console.log(sede);
+    var url = "infoTec/getDepartamentosPorSede/" + sede;
+    $.ajax({
+        url: url,
+        error: function (request, error) {
+            console.log(error);
+        }
+    }).then(function (data) {
+        try {
+            for (i = 0; i < data.length; i++) {
+                var j = 0;
+                while (j < listaCarreras.length)
+                {
+                    if (listaCarreras[j].toString === data[i].nombre.toString) {
+                        document.getElementById(j).style.visibility = "visible";
+                        tam++;
+                        console.log(data[i].nombre);
+                    }
+                    j++;
+                }
+            }
+            funcion();
+        } catch (e) {
+            console.log(e);
+        }
+    });
+}
+
+//Cambia las opciones del menu principal segun el modulo en el que se encuentre 
 function cambiar() {
     if (document.getElementById("M_admin").innerHTML === "Enviados") {
         document.getElementById("M_admin").innerHTML = "Enviar";
@@ -155,42 +199,60 @@ function cambiar() {
 
 }
 
+/*
+function cambiar() {
+    if (document.getElementById("M_admin").innerHTML === "Enviados") {
+        document.getElementById("M_admin").innerHTML = "Enviar";
+        document.getElementById("Mensaje_Enviar").style.visibility = "hidden";
+        document.getElementById("Mensaje_Enviar").style.display = "none";
+        document.getElementById("Mensaje_admin").style.visibility = "visible";
+        document.getElementById("Mensaje_admin").style.display = "inherit";
+        cambiarLoad();
+    } else {
+        document.getElementById("M_admin").innerHTML = "Enviados";
+        document.getElementById("Mensaje_admin").style.visibility = "hidden";
+        document.getElementById("Mensaje_admin").style.display = "none";
+        document.getElementById("Mensaje_Enviar").style.visibility = "visible";
+        document.getElementById("Mensaje_Enviar").style.display = "inherit";
+    }
+}
+
+*/ 
+//Carga el html para cambiar la contraseña a la pagina
 function CPasswordDinamico() {
     var client = new XMLHttpRequest();
     client.open('GET', '/infoTec/js/ChangePass.html');
     client.onreadystatechange = function () {
         
-        document.getElementById('MainDiv').innerHTML = client.responseText;
-        //document.getElementById("UserName").innerHTML = userName; //nombre del usuario                                        
+        document.getElementById('MainDiv').innerHTML = client.responseText;                                       
     }
     client.send();
 }
 
+//Carga el html de administrar mensajes a la pagina
 function AdministrarDinamico() {
 
     var client = new XMLHttpRequest();
     client.open('GET', '/infoTec/js/AdministrarMensajes.html');
     client.onreadystatechange = function () {
         document.getElementById('MainDiv').innerHTML = client.responseText;
-        cambiarLoad();
-        //document.getElementById("UserName").innerHTML = userName; //nombre del usuario                                        
+        cambiarLoad();                                     
     }
     client.send();
 }
 
-
-
-// funcion que se encarga de mostrar mensaje de error en caso de que se incumpla con el llenado de algun campo de texto
+//Muestra mensajes de error en caso de que se incumpla con el llenado de algun campo de texto
 function MensajeErrorEnviar(mensaje) {
     document.getElementById("mensajeErrorEnviar").innerHTML = mensaje;
 }
 
-function MensajeDinamico(mensaje, Enviante) {
-    
+//Muestra mensajes de estados de los procesos que se realizan en la pagina
+function MensajeDinamico(mensaje, Enviante) {    
     document.getElementById("send").innerHTML = '<div id="topmenu"><h3>' + mensaje + '</h3><div>'    
     + ' <input id="continuar" type="button" onclick="EnviarMensajeDinamico()" class="btn btn-primary btn-block btn-large" value="Continuar" />';
 }
 
+//Obtiene y muestra los mensajes que posee el usuario 
 function cambiarLoad() {
     var url = "infoTec/AdminMensaje/";//IIS    
     //url = "http://localhost:50175/log/" + user + "/" + password;//c#        
@@ -203,7 +265,6 @@ function cambiarLoad() {
         }
     }).then(function (data) {
         try {
-            //console.log(data);
             if (data != null) {
                 
                 var inner = "";
@@ -235,9 +296,6 @@ function cambiarLoad() {
                             '<p>' +
                                 '<b>Descripci&oacute;n: </b>' + data[x].descripcion +
                             '</p>'+
-                           //'<button type="button" data-toggle="modal" data-target="#modalEditar" class="btnEd" onclick="editarMensaje('+data[x].mensaje_ID+',\''+data[x].descripcion+'\',\''+data[x].fecha+'\',\''+data[x].titulo+'\')">' + 
-                           //     '<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Modificar' +
-                           // '</button>' +
                             '<button type="button" class="btnEl" onclick="eliminarMensaje('+data[x].mensaje_ID+')">' +
                                 '<span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Eliminar' +
                             '</button>' +
@@ -256,34 +314,17 @@ function cambiarLoad() {
     });
 }
 
-
-function cambiar() {
-    if (document.getElementById("M_admin").innerHTML === "Enviados") {
-        document.getElementById("M_admin").innerHTML = "Enviar";
-        document.getElementById("Mensaje_Enviar").style.visibility = "hidden";
-        document.getElementById("Mensaje_Enviar").style.display = "none";
-        document.getElementById("Mensaje_admin").style.visibility = "visible";
-        document.getElementById("Mensaje_admin").style.display = "inherit";
-        cambiarLoad();
-    } else {
-        document.getElementById("M_admin").innerHTML = "Enviados";
-        document.getElementById("Mensaje_admin").style.visibility = "hidden";
-        document.getElementById("Mensaje_admin").style.display = "none";
-        document.getElementById("Mensaje_Enviar").style.visibility = "visible";
-        document.getElementById("Mensaje_Enviar").style.display = "inherit";
-    }
-}
-
+//Realiza la comprobacion del login al presionarse la tecla enter
 function key(e) {
     if (e.keyCode == 13) {
         login();
     }
 }
 
+//Registra una persona nueva en la base de datos  
 function master(a1,a2,a3,a4,a5,a6,a7)
 {
-    var url = "infoTec/IN";
-    //console.log(url);        
+    var url = "infoTec/IN";       
     $.ajax({
         url: url,
         data: { 'a1': a1, 'a2': a2, 'a3': a3, 'a4': a4, 'a5': a5, 'a6': a6, 'a7': a7 },
@@ -294,15 +335,16 @@ function master(a1,a2,a3,a4,a5,a6,a7)
     });
 }
 
+//PREGUNTAR
+//
 function editarMensaje(idMensaje, description, date, titulo) {
-    console.log(idMensaje);
     document.getElementById("tituloEd").value = titulo.toString();
     document.getElementById("descripcionEd").value = description.toString();
     document.getElementById("datepickerEd").value = date
     var error = '<div class="alert alert-danger"><strong>Error!</strong> El correo ingresado no existe en el sistema.</div>';
 }
 
-// funcion encargada de eliminar un mensaje
+//
 function eliminarMensaje(idMensaje) {
     var listo = '<div class="alert alert-success"><strong>Listo!</strong> Se le ha enviado su contrase&ntilde;a al correo.</div>';
     var error = '<div class="alert alert-danger"><strong>Error!</strong> El correo ingresado no existe en el sistema.</div>';
@@ -320,10 +362,7 @@ function eliminarMensaje(idMensaje) {
     });
 }
 
-//-----------------------------------------
-//----------  ENVIAR CONTRASEÑA  ----------
-//-----------------------------------------
-
+//Envia una contraseña temporal al correo para poder recuperar la contraseña  
 function emailSend() {
     // notificaciones
     var vacio = '<div class="alert alert-warning"><strong>Atenci&oacute;n!</strong> Debe indicar el correo al cual desea enviar la informaci&oacute;n.</div>';
@@ -391,34 +430,34 @@ function emailSend() {
     }
 }
 
+//Inserta cada nuevo departamento creado a Firebase
 function insertarFireBase(nombre) {
     var myFirebaseRef = new Firebase(" https://infotec-d1598.firebaseio.com/");
     var dep = JSON.parse('{"' + nombre + '":' + 0 + '}');
     myFirebaseRef.update(dep);
 }
 
-// funcion encargada de realizar el cambio de contraseña
+//Realiza el cambio de contraseña a nivel de base de datos
 function cambiarPass() {
     var contraNueva = document.getElementById("cn").value;
     var contraNueva1 = document.getElementById("cn1").value;
 
-    if (contraNueva.length == 0 | contraNueva1.length == 0) // si algun campo esta vacio
+    if (contraNueva.length == 0 | contraNueva1.length == 0) 
         document.getElementById("notificacion").innerHTML = '<div class="alert alert-warning"><strong>Atenci&oacute;n!</strong> No pueden haber espacios vacios.</div>';
+
     else if (contraNueva != contraNueva1)
         document.getElementById("notificacion").innerHTML = '<div class="alert alert-danger"><strong>Error!</strong> La contrase&ntilde;a nueva no es igual a la confirmaci&oacute;n de contrase&ntilde;a ingresada.</div>';
+
     else {
-        // haciendo el cambio de contraseña
         var url = "infoTec/cambiarContra/" + contraNueva + "/" + idUser;
         try{
             $.ajax({
                 url: url,
                 data: {},
                 error: function (request, error) {
-                    //error
                     document.getElementById("notificacion").innerHTML = '<div class="alert alert-danger"><strong>Error!</strong> La contrase&ntilde;a no pudo ser cambiada.</div>';
                 }
             }).then(function (data) {
-                //exito
                 document.getElementById("notificacion").innerHTML = '<div class="alert alert-success"><strong>Listo!</strong> La contrase&ntilde;a se ha cambiado.</div>';
             });
         }
@@ -428,289 +467,237 @@ function cambiarPass() {
     }
 }
 
-    //funcion de login
-    function login() {
-        var user = document.getElementById("id").value;
+//Realiza el login 
+function login() {
+    var user = document.getElementById("id").value;
 
-        var password = document.getElementById("password").value;
-        var url = "infoTec/log/" + user + "/" + password;//IIS
-        document.getElementById("log").innerHTML = "<br><h1>Verificando datos...</h1>"
+    var password = document.getElementById("password").value;
+    var url = "infoTec/log/" + user + "/" + password;//IIS
+    document.getElementById("log").innerHTML = "<br><h1>Verificando datos...</h1>"
 
+    $.ajax({
+        url: url,
+        error: function (request, error) {
+            loginDinamico("Error de conexion");
+        }
+    }).then(function (data) {
+        try {
+            if (data[0].tipo !== "Estudiante") {
+                userName = data[0].nombre;//global guarda nombre de usuario
+                idUser = user;// guardo el id del usuario
+                EnviarMensajeDinamico();                          
+            } else {
+                loginDinamico("No tienes permisos administrador");
+            }
+        } catch (e) {
+            loginDinamico("Usuario incorrecto");
+        }
+    });
+}
+
+//Muestra u oculta la imagen que se le asigne a un mensaje en el momento de su creacion 
+var h = "0px";
+function mostrar_ocultar() {
+    if (document.getElementById("desplegar").value === "Desplegar") {
+        document.getElementById("desplegar").value = "Ocultar";
+        document.getElementById("imgPhoto").style.height = h;
+    } else {
+        document.getElementById("imgPhoto").style.height = "0px";
+        document.getElementById("desplegar").value = "Desplegar";
+    }
+}
+
+function re() {//PREGUNTAR
+
+    if (document.getElementById("desplegar").value === "Ocultar") {
+        document.getElementById("imgPhoto").style.height = "auto";
+        var elem = document.getElementById("imgPhoto");
+        h = window.getComputedStyle(elem, null).getPropertyValue('height');
+        document.getElementById("imgPhoto").style.height = imgHeight;
+    } else {
+        document.getElementById("imgPhoto").style.height = "auto";
+        var elem = document.getElementById("imgPhoto");
+        h = window.getComputedStyle(elem, null).getPropertyValue('height');
+        document.getElementById("imgPhoto").style.height = 0;
+    }
+}
+
+//Muestra todos los departamentos de una sede
+function mostrar_ocultarCarrera() {
+    var sede = document.getElementById("sedeMensaje").value;
+    if (document.getElementById("desplegarCarrera").value === "Departamentos" && sede.length != 0) {
+        tam = 0; 
+        j = 0;
+        while (j < listaCarreras.length) {
+            document.getElementById(j).style.visibility = 'hidden';
+            document.getElementById(j).style.visibility = 'none';
+            j++;
+        }
+
+        obtenerDepartamentosPorSede(function mostrarDep() {
+            var distancia = (tam * 63) + 63;
+            document.getElementById("carreraDiv").style.height = '' + distancia + 'px';//para animacion
+            document.getElementById("desplegarCarrera").value = "Ocultar";
+            document.getElementById("sedeMensaje").value;},sede);
+    }          
+    else {
+        document.getElementById("carreraDiv").style.height = "0px";
+        document.getElementById("desplegarCarrera").value = "Departamentos";
+    }
+}
+
+//Permite seleccionar una imagen de los archivos 
+function previewFile(pick) {
+    var preview = document.getElementById("imgPhoto");
+    var file = pick.files[0];
+    var reader = new FileReader();
+
+    reader.addEventListener("load", function () {
+        dataURL = reader.result;
+        preview.src = reader.result;
+
+        var img = new Image();
+        img.src = reader.result;
+        imgHeight = img.height;
+        imgWidth = img.width;
+        h = img.height
+        console.log(img.height);
+        console.log(h);
+
+        document.getElementById("desplegar").value = "Ocultar";
+        re();
+    }, false);
+        
+    reader.onload = function (file) {
+        var img = new Image();
+
+        img.src = reader.result;
+        imgHeight = img.height;
+        imgWidth = img.width;
+        h = img.height
+    }
+
+    if (file) {
+        reader.readAsDataURL(file);
+    }
+}
+
+//Valida la fecha seleccionada cuando se envia el mensaje
+function validarFecha(strFecha) {
+    var fechaSistema = new Date();
+
+    var diaAct = fechaSistema.getDate();
+    var mesAct = fechaSistema.getMonth() + 1; // sumo 1 porque inicia en 0 hasta 11
+    var anioAct = fechaSistema.getFullYear();
+
+    var mesSelec = strFecha[0] + strFecha[1];
+    var diaSelec = strFecha[3] + strFecha[4];
+    var anioSelec = strFecha[6] + strFecha[7] + strFecha[8] + strFecha[9];
+
+    
+    if (anioSelec < anioAct)
+        return false;        
+    else {
+        if (mesSelec < mesAct)
+            return false;
+        else {
+            if (mesSelec == mesAct & anioSelec == anioAct & diaSelec > diaAct)
+                return true;
+
+            else if (mesSelec > mesAct | anioSelec > anioAct)
+                return true;
+            else
+                return false;
+        }
+    }
+    return false; //en caso de que no entre a nada quiere decir que la fecha seleccionada no es valida          
+}
+
+//Verifica la informacion del mensaje y de estar correcta lo envia 
+function enviar() {
+    var titulo = document.getElementById("titulo").value;
+    var Descripcion = document.getElementById("description").value;
+
+    var fecha = document.getElementById("datepicker").value;
+
+    var strFecha = fecha.toString();
+
+    var Enviante = userName;//cambio
+
+    var imagen = document.getElementById("imgPhoto").src;
+
+    if (imagen == "http://localhost/infoTec")
+        imagen = "";
+
+    var borrable = document.getElementById("switch-offColor").checked;
+    var departamento = "";
+    var selected = 0;
+
+    for (i = 0; i < listaIdCarreras.length; i++) {// verifica las carreras marcadas
+        if (document.getElementById(listaIdCarreras[i]).checked == true) {
+            departamento = departamento + document.getElementById(listaIdCarreras[i]).value + ",";
+            selected = 1;
+        }
+    }
+    if (selected === 1 && titulo !== "" && Descripcion !== "" && strFecha !== "" && validarFecha(strFecha) && imgHeight <= 1500 && imgWidth <= 1500) {
+
+        var url = "infoTec/nuevoMensaje";//IIS
+        document.getElementById("send").innerHTML = "<div id=\"topmenu\"><h3>Enviando mensaje...<h3></div>";
         $.ajax({
+            type: "POST",
+            dataType: "json",
+            data: { 'titulo': titulo, 'descripcion': Descripcion, 'fecha': strFecha, 'imagen': imagen, 'remitente': Enviante, 'borrable': borrable, 'departamento': departamento },
             url: url,
             error: function (request, error) {
-                loginDinamico("Error de conexion");
+                MensajeDinamico("Error de conexion", Enviante);
             }
         }).then(function (data) {
             try {
-                if (data[0].tipo !== "Estudiante") {
-                    userName = data[0].nombre;//global guarda nombre de usuario
-                    idUser = user;// guardo el id del usuario
-                    EnviarMensajeDinamico();// carga la siguiente ventana                            
+                if (data == "successful") {
+                    push(departamento);//send push notification
+
+                    MensajeDinamico("Mensaje Enviado", Enviante);
                 } else {
-                    loginDinamico("No tienes permisos administrador");
+                    MensajeDinamico("No se guardo el mensaje", Enviante);
                 }
             } catch (e) {
-                loginDinamico("Usuario incorrecto");
+                MensajeDinamico("Incorrecto", Enviante);
             }
         });
     }
+    else if (imgHeight>1500 || imgWidth>1500)
+        MensajeErrorEnviar("Imagen muy grande por favor utilice una m&aacute;s peque&ntilde;a")
 
-    var h = "0px";
-    function mostrar_ocultar() {
-        if (document.getElementById("desplegar").value === "Desplegar") {
-            document.getElementById("desplegar").value = "Ocultar";
-            document.getElementById("imgPhoto").style.height = h;
-        } else {
-            document.getElementById("imgPhoto").style.height = "0px";
-            document.getElementById("desplegar").value = "Desplegar";
-        }
-    }
-
-    function mostrar_ocultarCarrera() {
-        if (document.getElementById("desplegarCarrera").value === "Departamentos") {
-            var distancia = (listaCarreras.length * 63) + 63;
-            document.getElementById("carreraDiv").style.height = '' + distancia + 'px';//para animacion
-            document.getElementById("desplegarCarrera").value = "Ocultar";
-        } else {
-            document.getElementById("carreraDiv").style.height = "0px";
-            document.getElementById("desplegarCarrera").value = "Departamentos";
-        }
-    }
-    function re() {
-
-        if (document.getElementById("desplegar").value === "Ocultar") {
-            document.getElementById("imgPhoto").style.height = "auto";
-            var elem = document.getElementById("imgPhoto");
-            h = window.getComputedStyle(elem, null).getPropertyValue('height');
-            document.getElementById("imgPhoto").style.height = imgHeight;
-        } else {
-            document.getElementById("imgPhoto").style.height = "auto";
-            var elem = document.getElementById("imgPhoto");
-            h = window.getComputedStyle(elem, null).getPropertyValue('height');
-            document.getElementById("imgPhoto").style.height = 0;
-        }
-    }
-    function previewFile(pick) {
-        var preview = document.getElementById("imgPhoto");
-        var file = pick.files[0];
-        var reader = new FileReader();
-
-        reader.addEventListener("load", function () {
-            dataURL = reader.result;
-            preview.src = reader.result;
-
-            var img = new Image();
-            img.src = reader.result;
-            imgHeight = img.height;
-            imgWidth = img.width;
-            h = img.height
-            console.log(img.height);
-            console.log(h);
-
-            document.getElementById("desplegar").value = "Ocultar";
-            re();
-        }, false);
+    else if (!validarFecha(strFecha)) 
+        MensajeErrorEnviar("Fecha invalida");
         
-        reader.onload = function (file) {
-            var img = new Image();
-
-            img.src = reader.result;
-            imgHeight = img.height;
-            imgWidth = img.width;
-            h = img.height
-        }
-
-        if (file) {
-            reader.readAsDataURL(file);
-        }
-    }
-
-    // funcion encargada de validar la fecha seleccionada cuando se envia el mensaje comparandola con la fecha del sistema
-    function validarFecha(strFecha) {
-        // fecha actual obtenida desde el sistema
-        var fechaSistema = new Date();
-
-        var diaAct = fechaSistema.getDate();
-        var mesAct = fechaSistema.getMonth() + 1; // sumo 1 porque inicia en 0 hasta 11
-        var anioAct = fechaSistema.getFullYear();
-
-        var mesSelec = strFecha[0] + strFecha[1];
-        var diaSelec = strFecha[3] + strFecha[4];
-        var anioSelec = strFecha[6] + strFecha[7] + strFecha[8] + strFecha[9];
-
-        //document.write("Fecha elegida ",diaSelec,"/",mesSelec,"/",anioSelec);
-        // validaciones por anio
-        if (anioSelec < anioAct)
-            return false;        
-        else {
-            // validaciones por mes
-            if (mesSelec < mesAct)
-                return false;
-            else {
-                if (mesSelec == mesAct & anioSelec == anioAct & diaSelec > diaAct)
-                    return true;
-
-                else if (mesSelec > mesAct | anioSelec > anioAct)
-                    return true;
-                else
-                    return false;
-            }
-        }
-        return false; //  en caso de que no entre a nada quiere decir que la fecha seleccionada no es valida          
-    }
-
-    function enviar() {
-        var titulo = document.getElementById("titulo").value;
-        var Descripcion = document.getElementById("description").value;
-
-        var fecha = document.getElementById("datepicker").value;
-
-        var strFecha = fecha.toString();
-
-        var Enviante = userName;//cambio
-
-        var imagen = document.getElementById("imgPhoto").src;
-
-        if (imagen == "http://localhost/infoTec")
-            imagen = "";
-
-        var borrable = document.getElementById("switch-offColor").checked;
-        var departamento = "";
-        var selected = 0;
-
-        for (i = 0; i < listaIdCarreras.length; i++) {// verifica las carreras marcadas
-            if (document.getElementById(listaIdCarreras[i]).checked == true) {
-                departamento = departamento + document.getElementById(listaIdCarreras[i]).value + ",";
-                selected = 1;
-            }
-        }
-        if (selected === 1 && titulo !== "" && Descripcion !== "" && strFecha !== "" && validarFecha(strFecha) && imgHeight <= 1500 && imgWidth <= 1500) {
-
-            var url = "infoTec/nuevoMensaje";//IIS
-            document.getElementById("send").innerHTML = "<div id=\"topmenu\"><h3>Enviando mensaje...<h3></div>";
-            $.ajax({
-                type: "POST",
-                dataType: "json",
-                data: { 'titulo': titulo, 'descripcion': Descripcion, 'fecha': strFecha, 'imagen': imagen, 'remitente': Enviante, 'borrable': borrable, 'departamento': departamento },
-                url: url,
-                error: function (request, error) {
-                    MensajeDinamico("Error de conexion", Enviante);
-                }
-            }).then(function (data) {
-                try {
-                    if (data == "successful") {
-                        push(departamento);//send push notification
-
-                        MensajeDinamico("Mensaje Enviado", Enviante);
-                    } else {
-                        MensajeDinamico("No se guardo el mensaje", Enviante);
-                    }
-                } catch (e) {
-                    MensajeDinamico("Incorrecto", Enviante);
-                }
-            });
-        }
-        else if (imgHeight>1500 || imgWidth>1500)
-            MensajeErrorEnviar("Imagen muy grande por favor utilice una m&aacute;s peque&ntilde;a")
-
-        else if (!validarFecha(strFecha)) 
-            MensajeErrorEnviar("Fecha invalida");
+    else 
+        MensajeErrorEnviar("Debe seleccionar una carrera");
         
-        else 
-            MensajeErrorEnviar("Debe seleccionar una carrera");
-        
-    }
-    function marcarTODOS() {//marca y desmarca los switches de los departamentos
-        if (document.getElementById("ALL").value == "Marcar todos") {// si el valor esta en Marcar todos
-            for (i = 0; i < listaIdCarreras.length; i++) {
-                $("#" + listaIdCarreras[i]).bootstrapSwitch('state', true);
-            }
-            document.getElementById("ALL").value = "Desmarcar todos"
+}
+
+//Marca y desmarca los switches de los departamentos
+function marcarTODOS() {
+    if (document.getElementById("ALL").value == "Marcar todos") {
+        for (i = 0; i < listaIdCarreras.length; i++) {
+            $("#" + listaIdCarreras[i]).bootstrapSwitch('state', true);
         }
-        else {// si el valor esta en Desmarcar todos
-            for (i = 0; i < listaIdCarreras.length; i++) {
-                $("#" + listaIdCarreras[i]).bootstrapSwitch('state', false);
-            }
-            document.getElementById("ALL").value = "Marcar todos"
-        }
+        document.getElementById("ALL").value = "Desmarcar todos"
     }
-
-// funciones para agregar personas
-    //=================================================================inicio
-   
-    function cargarSedes() {
-        var url = 'infoTec/getSedes';
-        var opciones = document.getElementById("sedes");
-        if (opciones.innerHTML == " ")
-        {
-            $.ajax({
-                url: url,
-                error: function (request, error) {
-                    console.log(error);
-                }
-
-            }).then(function (data) {
-
-                for (i = 0; i < data.length; i++) {
-                    opciones.innerHTML += "<option>" + data[i].nombreSede + "</option>";
-                }
-            });
+    else {
+        for (i = 0; i < listaIdCarreras.length; i++) {
+            $("#" + listaIdCarreras[i]).bootstrapSwitch('state', false);
         }
+        document.getElementById("ALL").value = "Marcar todos"
     }
+}
 
-    function cargarEncargados() {
-        var url = 'infoTec/getEncargados';
-        var opciones = document.getElementById("encargados");
-        if (opciones.innerHTML == "") {
-            $.ajax({
-                url: url,
-                error: function (request, error) {
-                    console.log(error);
-                }
-
-            }).then(function (data) {
-
-                for (i = 0; i < data.length; i++) {
-                    opciones.innerHTML += "<option>" + data[i].nombre + " - " + data[i].ID + "</option>";
-                }
-            });
-        }
-    }
-
-    function cargarDepartamentosFiltro() {
-        var sed = document.getElementById("sedes");
-        var cat = document.getElementById("categorias");
-        var dep = document.getElementById("departamentos");
-        if (sed.innerHTML == " " || cat.innerHTML == "" || dep.innerHTML == "") {
-            var url = 'infoTec/getDepartmentosFiltrados/' + document.getElementById("sedePersona").value + "/" + document.getElementById("categoriaPersona").value;
-            $.ajax({
-                url: url,
-                error: function (request, error) {
-                    console.log(error);
-                }
-
-            }).then(function (data) {
-
-                for (i = 0; i < data.length; i++) {
-                    dep.innerHTML += "<option>" + data[i].nombre + "</option>";
-                }
-            });
-        }
-        var nombreDep = document.getElementById('nombreDep');
-        var nombre = document.getElementById('departamentoFiltrados');
-        nombreDep.innerText = nombre.value;
-
-        recargarTabla();
-
-        
-    }
-
-
-    function recargarTabla() {
-        var nombre = document.getElementById('departamentoFiltrados');
-
-        url = "infoTec/getPersonabyDepartamento/" + nombre.value;
+//Carga todas las sedes registradas en la base de datos
+function cargarSedes() {
+    var url = 'infoTec/getSedes';
+    var opciones = document.getElementById("sedes");
+    if (opciones.innerHTML == " ")
+    {
         $.ajax({
             url: url,
             error: function (request, error) {
@@ -719,113 +706,180 @@ function cambiarPass() {
 
         }).then(function (data) {
 
-            var tabla = document.getElementById("tablaPersonas");
-            tabla.innerHTML = '<table id="tablaPersonas" style="width : 100%"><tr><th>Carn&eacute</th><th>Nombre</th><th></th></tr></table>';
             for (i = 0; i < data.length; i++) {
-                tabla.innerHTML += '<tr><td>' + "Cedula: " + data[i].ID + " - Carn&eacute; : " + data[i].tipo + '</td><td>' + data[i].nombre + '</td><td><button type="button" class="btnEl" onclick="eliminarFila(this)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Eliminar</button></td></tr>';
+                opciones.innerHTML += "<option>" + data[i].nombreSede + "</option>";
             }
         });
     }
+}
 
-    function eliminarFila(n) {
-        var i = n.parentNode.parentNode.rowIndex;
-        var tabla = document.getElementById("tablaPersonas");
-        var id = tabla.rows[i].cells[0].innerHTML;
-        var nombreDep = document.getElementById("nombreDep").innerText;
-
-        id = id.split(" ");
-        id = id[1];
-        var url = "infoTec/deletePeopleFromDepartment/" + nombreDep + "/" + id;
-        try {
-            $.ajax({
-                url: url,
-                error: function (request, error) {
-                    console.log(error);
-                }
-            }).then(function (data) {
-                if (data == 'succesfull')
-                    document.getElementById("tablaPersonas").deleteRow(i);
-            });
-            
-        }
-        catch (e) {
-            console.log(e);
-        }
-    }
-
-    function cargarPersonas() {
-        var url = 'infoTec/getPersonas';
-        var per = document.getElementById('personas');
-        if (per.innerHTML == "") {
-            $.ajax({
-                url: url,
-                error: function (request, error) {
-                    console.log(error);
-                }
-            }).then(function (data) {
-                var id = 'error';
-                for (i = 0; i < data.length; i++) {
-                    if (data[i].ID == "") {
-                        id = data[i].tipo;
-                    }
-                    else if (data[i].tipo == "") {
-                        id = data[i].ID;
-                    }
-                    console.log(data[i].nombre,id);
-                    per.innerHTML += "<option>"+ data[i].tipo +" - "+ data[i].nombre + " - " + data[i].ID + "</option>";
-
-                    per.innerHTML += "<option>" + data[i].nombre + " - " + id + "</option>";
-
-                }
-            });
-        }
-
-    }
-
-
-    function agregarAtabla() {
-        var text = document.getElementById("carnetP");
-        var datos = document.getElementById("carnetP").value;
-        var departamento = document.getElementById('departamentoFiltrados').value;
-        datos = datos.split('-');
-        
-        var url = "infoTec/setPersonaToDepartment/" + datos[0].replace(" ","") + "/" + departamento;
+//Carga a todos las personas que no son estudiantes 
+function cargarEncargados() {
+    var url = 'infoTec/getEncargados';
+    var opciones = document.getElementById("encargados");
+    if (opciones.innerHTML == "") {
         $.ajax({
-            type: "POST",
-            dataType: "json",
             url: url,
             error: function (request, error) {
-                document.getElementById("mensajeDep").innerHTML = '<div class="alert alert-warning"><strong>Atenci&oacute;n!</strong> Error!</div>';
+                console.log(error);
             }
+
         }).then(function (data) {
-            try {
-                if (data == "succesfull") {
-                    recargarTabla();
-                }
-                else {
-                    document.getElementById("mensajeDep").innerHTML = '<div class="alert alert-warning"><strong>Atenci&oacute;n!</strong> La Persona ya se inserto.</div>';
-                }
-            } catch (e) {
-                document.getElementById("mensajeDep").innerHTML = '<div class="alert alert-warning"><strong>Atenci&oacute;n!</strong> Eror!</div>';
+
+            for (i = 0; i < data.length; i++) {
+                opciones.innerHTML += "<option>" + data[i].nombre + " - " + data[i].ID + "</option>";
             }
         });
     }
+}
 
-
-//===================================================================fin
-
-    function push(depertamento) {
-        var text = "";
-        for (i = 0; i < depertamento.length; i++) {
-            if (depertamento[i] !== ",") {
-                text += depertamento[i];//concadena los departamentos     
+//Carga el departamento que cumplan con el filtro de sede, categoria y el nombre
+function cargarDepartamentosFiltro() {
+    var sed = document.getElementById("sedes");
+    var cat = document.getElementById("categorias");
+    var dep = document.getElementById("departamentos");
+    if (sed.innerHTML == " " || cat.innerHTML == "" || dep.innerHTML == "") {
+        var url = 'infoTec/getDepartmentosFiltrados/' + document.getElementById("sedePersona").value + "/" + document.getElementById("categoriaPersona").value;
+        $.ajax({
+            url: url,
+            error: function (request, error) {
+                console.log(error);
             }
-            else {// entra cuando ya llego a una coma enviando la notificacion push
-                aux(text);
-                text = "";
+
+        }).then(function (data) {
+
+            for (i = 0; i < data.length; i++) {
+                dep.innerHTML += "<option>" + data[i].nombre + "</option>";
             }
+        });
+    }
+    var nombreDep = document.getElementById('nombreDep');
+    var nombre = document.getElementById('departamentoFiltrados');
+    nombreDep.innerText = nombre.value;
+
+    recargarTabla();        
+}
+
+//Actualiza la tabla donde se muestran los miembros de un departamento
+function recargarTabla() {
+    var nombre = document.getElementById('departamentoFiltrados');
+
+    url = "infoTec/getPersonabyDepartamento/" + nombre.value;
+    $.ajax({
+        url: url,
+        error: function (request, error) {
+            console.log(error);
+        }
+
+    }).then(function (data) {
+
+        var tabla = document.getElementById("tablaPersonas");
+        tabla.innerHTML = '<table id="tablaPersonas" style="width : 100%"><tr><th>Carn&eacute</th><th>Nombre</th><th></th></tr></table>';
+        for (i = 0; i < data.length; i++) {
+            tabla.innerHTML += '<tr><td>' + "Cedula: " + data[i].ID + " - Carn&eacute; : " + data[i].tipo + '</td><td>' + data[i].nombre + '</td><td><button type="button" class="btnEl" onclick="eliminarFila(this)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Eliminar</button></td></tr>';
+        }
+    });
+}
+
+//Elimina a una persona de un departamento
+function eliminarFila(n) {
+    var i = n.parentNode.parentNode.rowIndex;
+    var tabla = document.getElementById("tablaPersonas");
+    var id = tabla.rows[i].cells[0].innerHTML;
+    var nombreDep = document.getElementById("nombreDep").innerText;
+
+    id = id.split(" ");
+    id = id[1];
+    var url = "infoTec/deletePeopleFromDepartment/" + nombreDep + "/" + id;
+    try {
+        $.ajax({
+            url: url,
+            error: function (request, error) {
+                console.log(error);
+            }
+        }).then(function (data) {
+            if (data == 'succesfull')
+                document.getElementById("tablaPersonas").deleteRow(i);
+        });
+            
+    }
+    catch (e) {
+        console.log(e);
+    }
+}
+
+//Carga la informacion de una persona segun su carnet institucional o su cedula 
+function cargarPersonas() {
+    var url = 'infoTec/getPersonas';
+    var per = document.getElementById('personas');
+    if (per.innerHTML == "") {
+        $.ajax({
+            url: url,
+            error: function (request, error) {
+                console.log(error);
+            }
+        }).then(function (data) {
+            var id = 'error';
+            for (i = 0; i < data.length; i++) {
+                if (data[i].ID == "") {
+                    id = data[i].tipo;
+                }
+                else if (data[i].tipo == "") {
+                    id = data[i].ID;
+                }
+                    
+                per.innerHTML += "<option>"+ data[i].tipo +" - "+ data[i].nombre + " - " + data[i].ID + "</option>";
+
+                per.innerHTML += "<option>" + data[i].nombre + " - " + id + "</option>";
+
+            }
+        });
+    }
+}
+
+//Agrega una persona a un departamento
+function agregarAtabla() {
+    var text = document.getElementById("carnetP");
+    var datos = document.getElementById("carnetP").value;
+    var departamento = document.getElementById('departamentoFiltrados').value;
+    datos = datos.split('-');
+        
+    var url = "infoTec/setPersonaToDepartment/" + datos[0].replace(" ","") + "/" + departamento;
+    $.ajax({
+        type: "POST",
+        dataType: "json",
+        url: url,
+        error: function (request, error) {
+            document.getElementById("mensajeDep").innerHTML = '<div class="alert alert-warning"><strong>Atenci&oacute;n!</strong> Error!</div>';
+        }
+    }).then(function (data) {
+        try {
+            if (data == "succesfull") {
+                recargarTabla();
+            }
+            else {
+                document.getElementById("mensajeDep").innerHTML = '<div class="alert alert-warning"><strong>Atenci&oacute;n!</strong> La Persona ya se inserto.</div>';
+            }
+        } catch (e) {
+            document.getElementById("mensajeDep").innerHTML = '<div class="alert alert-warning"><strong>Atenci&oacute;n!</strong> Eror!</div>';
+        }
+    });
+}
+
+
+//Extrae el nombre de un departamento de un texto
+function push(depertamento) {
+    var text = "";
+    for (i = 0; i < depertamento.length; i++) {
+        if (depertamento[i] !== ",") {
+            text += depertamento[i];  
+        }
+        else {// entra cuando ya llego a una coma enviando la notificacion push
+            aux(text);
+            text = "";
         }
     }
+<<<<<<< HEAD
     
     function aux(text) {
         var myFirebaseRef = new Firebase("https://infotec-d1598.firebaseio.com/");
@@ -836,3 +890,17 @@ function cambiarPass() {
             myFirebaseRef.child("departamentos").update(pushing);
         });
     }
+=======
+}
+
+//Recibe el nombre de un departamento y actualiza la cantidad de notificacion que a obtenido en Firebase
+function aux(text) {
+    var myFirebaseRef = new Firebase(" https://infotec-d1598.firebaseio.com/");
+    myFirebaseRef.child("departamentos/" + text).once("value", function (data) {
+        var valor = data.val() + 1;
+        var pushing = JSON.parse('{"' + text + '":' + valor + '}');
+        console.log(pushing);
+        myFirebaseRef.child("departamentos").update(pushing);
+    });
+}
+>>>>>>> 2ef24b85aad12bf135d527646b74e2910dddb128
