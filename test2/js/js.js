@@ -392,7 +392,7 @@ function emailSend() {
 }
 
 function insertarFireBase(nombre) {
-    var myFirebaseRef = new Firebase(" https://infotec-61239.firebaseio.com/departamentos");
+    var myFirebaseRef = new Firebase(" https://infotec-d1598.firebaseio.com/");
     var dep = JSON.parse('{"' + nombre + '":' + 0 + '}');
     myFirebaseRef.update(dep);
 }
@@ -826,9 +826,9 @@ function cambiarPass() {
             }
         }
     }
-
+    
     function aux(text) {
-        var myFirebaseRef = new Firebase(" https://infotec-d1598.firebaseio.com/");
+        var myFirebaseRef = new Firebase("https://infotec-d1598.firebaseio.com/");
         myFirebaseRef.child("departamentos/" + text).once("value", function (data) {
             var valor = data.val() + 1;
             var pushing = JSON.parse('{"' + text + '":' + valor + '}');

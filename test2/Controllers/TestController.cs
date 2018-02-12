@@ -33,6 +33,7 @@ namespace test2.Controllers
 
             return Json(new { Error = true, Message = "Operación HTTP desconocida" });
         }
+        
         public JsonResult getOwnMessage(String id)
         {
             switch (Request.HttpMethod)
