@@ -8,7 +8,11 @@ var imgHeight = "";
 var listaCarreras = [];
 var listaIdCarreras = [];
 
-//Carga el html del login a la pagina
+/// <summary>
+/// Carga el html del login a la pagina
+/// </summary>
+/// <param name="mensaje">Mensaje de error en caso de que la informacion sea incorrecta</param>
+/// <returns></returns>
 function loginDinamico(mensaje) {
     
     var client = new XMLHttpRequest();
@@ -22,7 +26,11 @@ function loginDinamico(mensaje) {
     client.send();
 }
 
-//Carga el html de enviar mensajes a la pagina
+/// <summary>
+/// Carga el html de enviar mensajes a la pagina
+/// </summary>
+/// <param></param>
+/// <returns></returns>
 function EnviarMensajeDinamico() {
 
     //Callback que carga las carreras a la pagina 
@@ -52,7 +60,11 @@ function EnviarMensajeDinamico() {
        });
 }
 
-//Carga el html de administracion de departamentos a la pagina
+/// <summary>
+/// Carga el html de administracion de departamentos a la pagina
+/// </summary>
+/// <param name="mensaje">Mensaje de error en caso de que falte informacion o que el departamento ya exista</param>
+/// <returns></returns>
 function insertarDepDinamico(mensaje) {
 
     var departamento = new XMLHttpRequest();
@@ -69,7 +81,11 @@ function insertarDepDinamico(mensaje) {
     departamento.send()
 }
 
-//Cambia las vistas de la pagina
+/// <summary>
+/// Cambia las vistas de la pagina
+/// </summary>
+/// <param name="num">El numero que representa el html a cargar</param>
+/// <returns></returns>
 function changeModul(num) {
     if (num === 1) {//modulo de envio de mensajes
         EnviarMensajeDinamico();
@@ -88,7 +104,11 @@ function changeModul(num) {
     }
 }
 
-//Registra un departamento nuevo
+/// <summary>
+/// Registra un departamento nuevo
+/// </summary>
+/// <param></param>
+/// <returns></returns>
 function insertarD() {
    
     var nombre = document.getElementById("nombre").value;
@@ -122,14 +142,22 @@ function insertarD() {
     }    
 }
 
-//Genera un ID para cada carrera basado en el nombre
+/// <summary>
+/// Genera un ID para cada carrera basado en el nombre
+/// </summary>
+/// <param name="nombre">El nombre del departamento</param>
+/// <returns name"nueva">El ID del departamento</returns>
 function generarID(nombre) {
     var nueva = "";
     nueva = nombre.split(" ").join("_");
     return nueva;
 }
 
-//Obtiene el nombre de todos los departamentos existentes en la base de datos
+/// <summary>
+/// Obtiene el nombre de todos los departamentos existentes en la base de datos
+/// </summary>
+/// <param name="funcion">Funcion que inserta los departamentos en el html</param>
+/// <returns></returns>
 function obtenerDepartamentos(funcion) {
     var url = "infoTec/obtenerD";//IIS
     $.ajax({
@@ -150,7 +178,12 @@ function obtenerDepartamentos(funcion) {
     });
 }
 
-//Recibe una sede y retorna todos los departamentos que pertenecen a esta 
+/// <summary>
+/// Recibe una sede y retorna todos los departamentos que pertenecen a esta
+/// </summary>
+/// <param name="funcion">Funcion que torna visible los departamentos de la sede en el html</param>
+/// <param name="sede">Nombre de la sede para buscar los departamentos asociados a esta</param>
+/// <returns></returns>
 function obtenerDepartamentosPorSede(funcion, sede) {
     console.log(sede);
     var url = "infoTec/getDepartamentosPorSede/" + sede;
@@ -168,7 +201,6 @@ function obtenerDepartamentosPorSede(funcion, sede) {
                     if (listaCarreras[j].toString === data[i].nombre.toString) {
                         document.getElementById(j).style.visibility = "visible";
                         tam++;
-                        console.log(data[i].nombre);
                     }
                     j++;
                 }
@@ -180,7 +212,11 @@ function obtenerDepartamentosPorSede(funcion, sede) {
     });
 }
 
-//Cambia las opciones del menu principal segun el modulo en el que se encuentre 
+/// <summary>
+/// Cambia las opciones del menu principal segun el modulo en el que se encuentre 
+/// </summary>
+/// <param></param>
+/// <returns></returns>
 function cambiar() {
     if (document.getElementById("M_admin").innerHTML === "Enviados") {
         document.getElementById("M_admin").innerHTML = "Enviar";
@@ -217,8 +253,13 @@ function cambiar() {
     }
 }
 
-*/ 
-//Carga el html para cambiar la contraseña a la pagina
+*/
+
+/// <summary>
+/// Carga el html para cambiar la contraseña a la pagina
+/// </summary>
+/// <param></param>
+/// <returns></returns>
 function CPasswordDinamico() {
     var client = new XMLHttpRequest();
     client.open('GET', '/infoTec/js/ChangePass.html');
@@ -229,7 +270,11 @@ function CPasswordDinamico() {
     client.send();
 }
 
-//Carga el html de administrar mensajes a la pagina
+/// <summary>
+/// Carga el html de administrar mensajes a la pagina
+/// </summary>
+/// <param></param>
+/// <returns></returns>
 function AdministrarDinamico() {
 
     var client = new XMLHttpRequest();
@@ -241,18 +286,30 @@ function AdministrarDinamico() {
     client.send();
 }
 
-//Muestra mensajes de error en caso de que se incumpla con el llenado de algun campo de texto
+/// <summary>
+/// Muestra mensajes de error en caso de que se incumpla con el llenado de algun campo de texto
+/// </summary>
+/// <param name="mensaje">Mensaje de error a mostrar</param>
+/// <returns></returns>
 function MensajeErrorEnviar(mensaje) {
     document.getElementById("mensajeErrorEnviar").innerHTML = mensaje;
 }
 
-//Muestra mensajes de estados de los procesos que se realizan en la pagina
+/// <summary>
+/// Muestra mensaje cuando se ha creado un evento correctamente
+/// </summary>
+/// <param name="mensaje">Mensaje de estado</param>
+/// <returns></returns>
 function MensajeDinamico(mensaje, Enviante) {    
     document.getElementById("send").innerHTML = '<div id="topmenu"><h3>' + mensaje + '</h3><div>'    
     + ' <input id="continuar" type="button" onclick="EnviarMensajeDinamico()" class="btn btn-primary btn-block btn-large" value="Continuar" />';
 }
 
-//Obtiene y muestra los mensajes que posee el usuario 
+/// <summary>
+/// Obtiene y muestra los mensajes que posee el usuario
+/// </summary>
+/// <param></param>
+/// <returns></returns> 
 function cambiarLoad() {
     var url = "infoTec/AdminMensaje/";//IIS    
     //url = "http://localhost:50175/log/" + user + "/" + password;//c#        
@@ -314,14 +371,28 @@ function cambiarLoad() {
     });
 }
 
-//Realiza la comprobacion del login al presionarse la tecla enter
+/// <summary>
+/// Realiza la comprobacion del login al presionarse la tecla enter
+/// </summary>
+/// <param name="e">Evento del teclado</param>
+/// <returns></returns> 
 function key(e) {
     if (e.keyCode == 13) {
         login();
     }
 }
 
-//Registra una persona nueva en la base de datos  
+/// <summary>
+/// Registra una persona nueva en la base de datos 
+/// </summary>
+/// <param name="a1">Informacion de la persona</param>
+/// <param name="a2">Informacion de la persona</param>
+/// <param name="a3">Informacion de la persona</param>
+/// <param name="a4">Informacion de la persona</param>
+/// <param name="a5">Informacion de la persona</param>
+/// <param name="a6">Informacion de la persona</param>
+/// <param name="a7">Informacion de la persona</param>
+/// <returns></returns> 
 function master(a1,a2,a3,a4,a5,a6,a7)
 {
     var url = "infoTec/IN";       
@@ -335,16 +406,20 @@ function master(a1,a2,a3,a4,a5,a6,a7)
     });
 }
 
-//PREGUNTAR
-//
+/*
 function editarMensaje(idMensaje, description, date, titulo) {
     document.getElementById("tituloEd").value = titulo.toString();
     document.getElementById("descripcionEd").value = description.toString();
     document.getElementById("datepickerEd").value = date
     var error = '<div class="alert alert-danger"><strong>Error!</strong> El correo ingresado no existe en el sistema.</div>';
 }
+*/
 
-//
+/// <summary>
+/// Elimina un mensaje que haya sido enviado por el usuario en sesion 
+/// </summary>
+/// <param name="idMensaje">Id del mensaje a eliminar</param>
+/// <returns></returns> 
 function eliminarMensaje(idMensaje) {
     var listo = '<div class="alert alert-success"><strong>Listo!</strong> Se le ha enviado su contrase&ntilde;a al correo.</div>';
     var error = '<div class="alert alert-danger"><strong>Error!</strong> El correo ingresado no existe en el sistema.</div>';
@@ -362,9 +437,12 @@ function eliminarMensaje(idMensaje) {
     });
 }
 
-//Envia una contraseña temporal al correo para poder recuperar la contraseña  
+/// <summary>
+/// Envia una contraseña temporal al correo para poder recuperar la contraseña
+/// </summary>
+/// <param></param>
+/// <returns></returns> 
 function emailSend() {
-    // notificaciones
     var vacio = '<div class="alert alert-warning"><strong>Atenci&oacute;n!</strong> Debe indicar el correo al cual desea enviar la informaci&oacute;n.</div>';
     var email = document.getElementById("email").value;
 
@@ -430,14 +508,22 @@ function emailSend() {
     }
 }
 
-//Inserta cada nuevo departamento creado a Firebase
+/// <summary>
+/// Inserta cada nuevo departamento creado a Firebase
+/// </summary>
+/// <param name="nombre">Nombre del departamento a insertar</param>
+/// <returns></returns> 
 function insertarFireBase(nombre) {
     var myFirebaseRef = new Firebase(" https://infotec-d1598.firebaseio.com/");
     var dep = JSON.parse('{"' + nombre + '":' + 0 + '}');
     myFirebaseRef.update(dep);
 }
 
-//Realiza el cambio de contraseña a nivel de base de datos
+/// <summary>
+/// Realiza el cambio de contraseña a nivel de base de datos
+/// </summary>
+/// <param></param>
+/// <returns></returns> 
 function cambiarPass() {
     var contraNueva = document.getElementById("cn").value;
     var contraNueva1 = document.getElementById("cn1").value;
@@ -467,7 +553,11 @@ function cambiarPass() {
     }
 }
 
-//Realiza el login 
+/// <summary>
+/// Realiza el login 
+/// </summary>
+/// <param></param>
+/// <returns></returns> 
 function login() {
     var user = document.getElementById("id").value;
 
@@ -495,7 +585,11 @@ function login() {
     });
 }
 
-//Muestra u oculta la imagen que se le asigne a un mensaje en el momento de su creacion 
+/// <summary>
+/// Muestra u oculta la imagen que se le asigne a un mensaje en el momento de su creacion
+/// </summary>
+/// <param></param>
+/// <returns></returns> 
 var h = "0px";
 function mostrar_ocultar() {
     if (document.getElementById("desplegar").value === "Desplegar") {
@@ -507,7 +601,12 @@ function mostrar_ocultar() {
     }
 }
 
-function re() {//PREGUNTAR
+/// <summary>
+/// Renderiza la imagen que se le asigne a un mensaje en el momento de su creacion
+/// </summary>
+/// <param></param>
+/// <returns></returns> 
+function re() {
 
     if (document.getElementById("desplegar").value === "Ocultar") {
         document.getElementById("imgPhoto").style.height = "auto";
@@ -522,7 +621,11 @@ function re() {//PREGUNTAR
     }
 }
 
-//Muestra todos los departamentos de una sede
+/// <summary>
+/// Muestra todos los departamentos de una sede
+/// </summary>
+/// <param></param>
+/// <returns></returns> 
 function mostrar_ocultarCarrera() {
     var sede = document.getElementById("sedeMensaje").value;
     if (document.getElementById("desplegarCarrera").value === "Departamentos" && sede.length != 0) {
@@ -546,7 +649,11 @@ function mostrar_ocultarCarrera() {
     }
 }
 
-//Permite seleccionar una imagen de los archivos 
+/// <summary>
+/// Permite seleccionar una imagen de los archivos 
+/// </summary>
+/// <param name="pick">Imagen que se selecciona de los documentos para un mensaje</param>
+/// <returns></returns> 
 function previewFile(pick) {
     var preview = document.getElementById("imgPhoto");
     var file = pick.files[0];
@@ -560,9 +667,7 @@ function previewFile(pick) {
         img.src = reader.result;
         imgHeight = img.height;
         imgWidth = img.width;
-        h = img.height
-        console.log(img.height);
-        console.log(h);
+        h = img.height;
 
         document.getElementById("desplegar").value = "Ocultar";
         re();
@@ -582,7 +687,11 @@ function previewFile(pick) {
     }
 }
 
-//Valida la fecha seleccionada cuando se envia el mensaje
+/// <summary>
+/// Valida la fecha seleccionada cuando se envia el mensaje
+/// </summary>
+/// <param name="strFecha">Fecha a validar</param>
+/// <returns></returns> 
 function validarFecha(strFecha) {
     var fechaSistema = new Date();
 
@@ -613,7 +722,11 @@ function validarFecha(strFecha) {
     return false; //en caso de que no entre a nada quiere decir que la fecha seleccionada no es valida          
 }
 
-//Verifica la informacion del mensaje y de estar correcta lo envia 
+/// <summary>
+/// Verifica la informacion del mensaje y de estar correcta lo envia 
+/// </summary>
+/// <param></param>
+/// <returns></returns>
 function enviar() {
     var titulo = document.getElementById("titulo").value;
     var Descripcion = document.getElementById("description").value;
@@ -676,7 +789,11 @@ function enviar() {
         
 }
 
-//Marca y desmarca los switches de los departamentos
+/// <summary>
+/// Marca y desmarca los switches de los departamentos
+/// </summary>
+/// <param></param>
+/// <returns></returns>
 function marcarTODOS() {
     if (document.getElementById("ALL").value == "Marcar todos") {
         for (i = 0; i < listaIdCarreras.length; i++) {
@@ -692,7 +809,11 @@ function marcarTODOS() {
     }
 }
 
-//Carga todas las sedes registradas en la base de datos
+/// <summary>
+/// Carga todas las sedes registradas en la base de datos
+/// </summary>
+/// <param></param>
+/// <returns></returns>
 function cargarSedes() {
     var url = 'infoTec/getSedes';
     var opciones = document.getElementById("sedes");
@@ -713,7 +834,11 @@ function cargarSedes() {
     }
 }
 
-//Carga a todos las personas que no son estudiantes 
+/// <summary>
+/// Carga a todos las personas que no son estudiantes 
+/// </summary>
+/// <param></param>
+/// <returns></returns>
 function cargarEncargados() {
     var url = 'infoTec/getEncargados';
     var opciones = document.getElementById("encargados");
@@ -733,7 +858,11 @@ function cargarEncargados() {
     }
 }
 
-//Carga el departamento que cumplan con el filtro de sede, categoria y el nombre
+/// <summary>
+/// Carga el departamento que cumplan con el filtro de sede, categoria y el nombre
+/// </summary>
+/// <param></param>
+/// <returns></returns>
 function cargarDepartamentosFiltro() {
     var sed = document.getElementById("sedes");
     var cat = document.getElementById("categorias");
@@ -760,7 +889,11 @@ function cargarDepartamentosFiltro() {
     recargarTabla();        
 }
 
-//Actualiza la tabla donde se muestran los miembros de un departamento
+/// <summary>
+/// Actualiza la tabla donde se muestran los miembros de un departamento
+/// </summary>
+/// <param></param>
+/// <returns></returns>
 function recargarTabla() {
     var nombre = document.getElementById('departamentoFiltrados');
 
@@ -781,7 +914,11 @@ function recargarTabla() {
     });
 }
 
-//Elimina a una persona de un departamento
+/// <summary>
+/// Elimina a una persona de un departamento
+/// </summary>
+/// <param name="n">Numero de la fila a eliminar</param>
+/// <returns></returns>
 function eliminarFila(n) {
     var i = n.parentNode.parentNode.rowIndex;
     var tabla = document.getElementById("tablaPersonas");
@@ -808,7 +945,11 @@ function eliminarFila(n) {
     }
 }
 
-//Carga la informacion de una persona segun su carnet institucional o su cedula 
+/// <summary>
+/// Carga la informacion de una persona segun su carnet institucional o su cedula 
+/// </summary>
+/// <param></param>
+/// <returns></returns>
 function cargarPersonas() {
     var url = 'infoTec/getPersonas';
     var per = document.getElementById('personas');
@@ -837,7 +978,11 @@ function cargarPersonas() {
     }
 }
 
-//Agrega una persona a un departamento
+/// <summary>
+/// Agrega una persona a un departamento
+/// </summary>
+/// <param></param>
+/// <returns></returns>
 function agregarAtabla() {
     var text = document.getElementById("carnetP");
     var datos = document.getElementById("carnetP").value;
@@ -866,20 +1011,22 @@ function agregarAtabla() {
     });
 }
 
-
-//Extrae el nombre de un departamento de un texto
+/// <summary>
+/// Extrae el nombre de un departamento de un texto
+/// </summary>
+/// <param name="departamento">Nombre del departamento</param>
+/// <returns></returns>
 function push(depertamento) {
     var text = "";
     for (i = 0; i < depertamento.length; i++) {
         if (depertamento[i] !== ",") {
-            text += depertamento[i];  
+            text += depertamento[i];
         }
         else {// entra cuando ya llego a una coma enviando la notificacion push
             aux(text);
             text = "";
         }
     }
-<<<<<<< HEAD
     
     function aux(text) {
         var myFirebaseRef = new Firebase("https://infotec-d1598.firebaseio.com/");
@@ -890,10 +1037,13 @@ function push(depertamento) {
             myFirebaseRef.child("departamentos").update(pushing);
         });
     }
-=======
 }
 
-//Recibe el nombre de un departamento y actualiza la cantidad de notificacion que a obtenido en Firebase
+/// <summary>
+/// Recibe el nombre de un departamento y actualiza la cantidad de notificacion que a obtenido en Firebase
+/// </summary>
+/// <param name="text">Nombre del departamento ha actualizar</param>
+/// <returns></returns>
 function aux(text) {
     var myFirebaseRef = new Firebase(" https://infotec-d1598.firebaseio.com/");
     myFirebaseRef.child("departamentos/" + text).once("value", function (data) {
@@ -903,4 +1053,3 @@ function aux(text) {
         myFirebaseRef.child("departamentos").update(pushing);
     });
 }
->>>>>>> 2ef24b85aad12bf135d527646b74e2910dddb128
