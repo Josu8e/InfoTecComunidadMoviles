@@ -514,7 +514,7 @@ function emailSend() {
 /// <param name="nombre">Nombre del departamento a insertar</param>
 /// <returns></returns> 
 function insertarFireBase(nombre) {
-    var myFirebaseRef = new Firebase(" https://infotec-d1598.firebaseio.com/");
+    var myFirebaseRef = new Firebase(" https://infotec-61239.firebaseio.com/");
     var dep = JSON.parse('{"' + nombre + '":' + 0 + '}');
     myFirebaseRef.update(dep);
 }
@@ -1027,6 +1027,10 @@ function push(depertamento) {
             text = "";
         }
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> e529a442b43d63e387d421a6b9cd8c6f1ab28b18
     
     function aux(text) {
         var myFirebaseRef = new Firebase("https://infotec-d1598.firebaseio.com/");
@@ -1053,3 +1057,7 @@ function aux(text) {
         myFirebaseRef.child("departamentos").update(pushing);
     });
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> e529a442b43d63e387d421a6b9cd8c6f1ab28b18
