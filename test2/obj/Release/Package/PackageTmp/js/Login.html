@@ -3,7 +3,7 @@
     <h1>InfoTec</h1>
 
     <div class="cuadro">
-        <input type="text" maxlength="10" id="id" name="u" placeholder="Usuario" required="required" />
+        <input type="text" maxlength="11" id="id" name="u" placeholder="Usuario" required="required" pattern="{1}([-]{1}){4}[-]{4}" />
         <input type="password" id="password" clasname="p" placeholder="Contraseña" required="required" />
         <input type="button" onclick="login()" class="btn btn-primary btn-block btn-large" value="Ingresar" />
 

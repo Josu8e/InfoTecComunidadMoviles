@@ -432,7 +432,7 @@ function emailSend() {
 
 //Inserta cada nuevo departamento creado a Firebase
 function insertarFireBase(nombre) {
-    var myFirebaseRef = new Firebase(" https://infotec-61239.firebaseio.com/");
+    var myFirebaseRef = new Firebase(" https://infotec-d1598.firebaseio.com/");
     var dep = JSON.parse('{"' + nombre + '":' + 0 + '}');
     myFirebaseRef.update(dep);
 }
@@ -858,6 +858,7 @@ function agregarAtabla() {
                 recargarTabla();
             }
             else {
+                Console.log(data);
                 document.getElementById("mensajeDep").innerHTML = '<div class="alert alert-warning"><strong>Atenci&oacute;n!</strong> La Persona ya se inserto.</div>';
             }
         } catch (e) {
@@ -894,7 +895,7 @@ function push(depertamento) {
 
 //Recibe el nombre de un departamento y actualiza la cantidad de notificacion que a obtenido en Firebase
 function aux(text) {
-    var myFirebaseRef = new Firebase(" https://infotec-d1598.firebaseio.com/");
+    var myFirebaseRef = new Firebase("https://infotec-d1598.firebaseio.com/");
     myFirebaseRef.child("departamentos/" + text).once("value", function (data) {
         var valor = data.val() + 1;
         var pushing = JSON.parse('{"' + text + '":' + valor + '}');

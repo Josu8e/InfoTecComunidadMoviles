@@ -57,7 +57,6 @@ namespace test2.Models
             comand.Parameters.Add("@EMAIL", System.Data.SqlDbType.VarChar);
 
             comand.Parameters["@EMAIL"].Value = email;
-            
             reader = comand.ExecuteReader();
 
             List<datos> lista = new List<datos>();
@@ -520,7 +519,6 @@ namespace test2.Models
             comand.Parameters["@nombreDepa"].Value = nombreDepa;
 
             reader = comand.ExecuteReader();
-                
             while (reader.Read())
             {
                 DTO_Persona dto = new DTO_Persona();
