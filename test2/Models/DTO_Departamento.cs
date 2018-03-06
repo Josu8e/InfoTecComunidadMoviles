@@ -7,6 +7,7 @@ namespace test2.Models
 {
     public class DTO_Departamento
     {
+        public String codigoDep { get; set; }
         public String nombre { get; set; }
     }
 }

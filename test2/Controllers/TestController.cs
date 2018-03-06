@@ -182,7 +182,7 @@ namespace test2.Controllers
                 JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult deletePeopleFromDepartment(string nombreDep, int idP)
+        public JsonResult deletePeopleFromDepartment(string nombreDep, string idP)
         {
             return Json(conexion.deletePeopleFromDepartment(nombreDep, idP),
                 JsonRequestBehavior.AllowGet);

@@ -100,13 +100,13 @@ namespace test2.Models
             }
         }
 
-        public string deletePeopleFromDepartment(string nombreDep,int idP)
+        public string deletePeopleFromDepartment(string nombreDep,string idP)
         {
             SqlCommand comand;
             string consult;
             try
             {
-                consult = string.Format("delete from Persona_departamentos where nombreDep = @nombreD and IDPer = @idp");
+                consult = string.Format("delete from Persona_departamentos where codigoDep = @nombreD and IDPer = @idp");
                 comand = new SqlCommand(consult, con);
                 comand.Parameters.Add("@nombreD", System.Data.SqlDbType.NVarChar);
                 comand.Parameters.Add("@idp", System.Data.SqlDbType.NVarChar);
@@ -513,7 +513,7 @@ namespace test2.Models
             string consult;
             SqlCommand comand;
             con.Open();
-            consult = string.Format("select p.Nombre, p.ID, p.carne From Persona as p inner Join Persona_departamentos as Pd on p.ID = Pd.IDPer inner join departamentos as d on Pd.nombreDep = d.nombre where d.nombre = @nombreDepa");
+            consult = string.Format("select p.Nombre, p.ID, p.carne From Persona as p inner Join Persona_departamentos as Pd on p.ID = Pd.IDPer inner join departamentos as d on Pd.codigoDep = d.codigoDep where d.codigoDep = @nombreDepa");
             comand = new SqlCommand(consult, con);
             comand.Parameters.Add("@nombreDepa", System.Data.SqlDbType.NChar);
             comand.Parameters["@nombreDepa"].Value = nombreDepa;
@@ -529,7 +529,7 @@ namespace test2.Models
             }
             con.Close();
             
-
+            
 
             return lista;
         }
@@ -581,7 +581,7 @@ namespace test2.Models
         {
             SqlCommand comand;
             string consult;
-            consult = string.Format("select d.nombre from departamentos as d inner Join Departamento_Sede as DS on d.nombre = DS.nombreDepartamento inner join Sedes as s on s.nombreSede = @sede where d.tipo = @categoria");
+            consult = string.Format("select d.codigoDep,d.nombre from departamentos as d inner Join Departamento_Sede as DS on d.nombre = DS.nombreDepartamento inner join Sedes as s on s.nombreSede = @sede where d.tipo = @categoria");
             comand = new SqlCommand(consult, con);
             comand.Parameters.Add("@sede", System.Data.SqlDbType.NChar);
             comand.Parameters["@sede"].Value = sede;
@@ -594,7 +594,8 @@ namespace test2.Models
             while (reader.Read())
             {
                 DTO_Departamento dto = new DTO_Departamento();
-                dto.nombre = reader[0].ToString();
+                dto.codigoDep = reader[0].ToString();
+                dto.nombre = reader[1].ToString();
                 lista.Add(dto);
             }
             con.Close();

@@ -878,7 +878,7 @@ function cargarDepartamentosFiltro() {
         }).then(function (data) {
 
             for (i = 0; i < data.length; i++) {
-                dep.innerHTML += "<option>" + data[i].nombre + "</option>";
+                dep.innerHTML += "<option>"+ data[i].codigoDep +" - "+ data[i].nombre + "</option>";
             }
         });
     }
@@ -896,8 +896,9 @@ function cargarDepartamentosFiltro() {
 /// <returns></returns>
 function recargarTabla() {
     var nombre = document.getElementById('departamentoFiltrados');
+    nombre = nombre.value.split(" - ");
 
-    url = "infoTec/getPersonabyDepartamento/" + nombre.value;
+    url = "infoTec/getPersonabyDepartamento/" + nombre[0];
     $.ajax({
         url: url,
         error: function (request, error) {
@@ -925,9 +926,9 @@ function eliminarFila(n) {
     var id = tabla.rows[i].cells[0].innerHTML;
     var nombreDep = document.getElementById("nombreDep").innerText;
 
-    id = id.split(" ");
-    id = id[1];
-    var url = "infoTec/deletePeopleFromDepartment/" + nombreDep + "/" + id;
+    id = id.split(" ")[1];
+    nombreDep = nombreDep.split(" - ")[0];
+    url = "infoTec/deletePeopleFromDepartment/" + nombreDep + "/" + id;
     try {
         $.ajax({
             url: url,
@@ -987,9 +988,10 @@ function agregarAtabla() {
     var text = document.getElementById("carnetP");
     var datos = document.getElementById("carnetP").value;
     var departamento = document.getElementById('departamentoFiltrados').value;
-    datos = datos.split('-');
+    datos = datos.split(' - ');
+    departamento = departamento.split(' - ');
         
-    var url = "infoTec/setPersonaToDepartment/" + datos[0].replace(" ","") + "/" + departamento;
+    var url = "infoTec/setPersonaToDepartment/" + datos[0] + "/" + departamento[0];
     $.ajax({
         type: "POST",
         dataType: "json",
@@ -1028,10 +1030,6 @@ function push(depertamento) {
             text = "";
         }
     }
-<<<<<<< HEAD
-=======
-
->>>>>>> e529a442b43d63e387d421a6b9cd8c6f1ab28b18
     
     function aux(text) {
         var myFirebaseRef = new Firebase("https://infotec-d1598.firebaseio.com/");
@@ -1058,7 +1056,3 @@ function aux(text) {
         myFirebaseRef.child("departamentos").update(pushing);
     });
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> e529a442b43d63e387d421a6b9cd8c6f1ab28b18
