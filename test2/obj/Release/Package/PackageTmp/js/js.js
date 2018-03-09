@@ -112,6 +112,7 @@ function changeModul(num) {
 function insertarD() {
    
     var nombre = document.getElementById("nombre").value;
+    var codigoDep = document.getElementById("codigoDep").value;
     var sede = document.getElementById("sedeDepartamento").value;
     var categoria = document.getElementById("categoriaDepartamento").value;
     var encargado = document.getElementById("encargadoPersona").value.split(" - ")[1];
@@ -121,7 +122,11 @@ function insertarD() {
     }
 
     else {
-        var url = "infoTec/insertarDepartamento/" + nombre + '/' + sede + '/' + categoria + '/' + encargado;//IIS
+        if (codigoDep.length == 0)
+        {
+            codigoDep = nombre.substr(0, 2) + sede.substr(0, 2) + categoria.substr(0, 2) + (Math.floor(Math.random() * (100 - 10)) + 10);
+        }
+        var url = "infoTec/insertarDepartamento/" + nombre + '/' + sede + '/' + categoria + '/' + encargado + '/'+ codigoDep + '/';//IIS
         document.getElementById("mensajeDep").innerHTML = "<div id=\"topmenu\"><h3>Verificando nombre...<h3></div>";
         $.ajax({
             type: "POST",
@@ -133,7 +138,7 @@ function insertarD() {
         }).then(function (data) {
             if (data === "successful") {
                 document.getElementById("mensajeDep").innerHTML = '<div class="alert alert-success"><strong>Listo</strong> Departamento agregado.</div>';
-                insertarFireBase(nombre);
+                insertarFireBase(codigoDep);
             }
             else {
                 document.getElementById("mensajeDep").innerHTML = '<div id=\"topmenu\"><h3>Departamento ya existentente<h3></div>';
@@ -168,8 +173,8 @@ function obtenerDepartamentos(funcion) {
     }).then(function (data) {
         try {
             for (i = 0; i < data.length; i++) {
-                listaCarreras[i] = data[i].toString();
-                listaIdCarreras[i] = generarID(data[i].toString());
+                listaCarreras[i] = data[i].nombre.toString();
+                listaIdCarreras[i] = generarID(data[i].codigoDep.toString());
             }
             funcion();
         } catch (e) {
@@ -513,9 +518,9 @@ function emailSend() {
 /// </summary>
 /// <param name="nombre">Nombre del departamento a insertar</param>
 /// <returns></returns> 
-function insertarFireBase(nombre) {
+function insertarFireBase(codigoDep) {
     var myFirebaseRef = new Firebase(" https://infotec-d1598.firebaseio.com/");
-    var dep = JSON.parse('{"' + nombre + '":' + 0 + '}');
+    var dep = JSON.parse('{"' + codigoDep + '":' + 0 + '}');
     myFirebaseRef.update(dep);
 }
 
@@ -1019,11 +1024,11 @@ function agregarAtabla() {
 /// </summary>
 /// <param name="departamento">Nombre del departamento</param>
 /// <returns></returns>
-function push(depertamento) {
+function push(codigoDep) {
     var text = "";
-    for (i = 0; i < depertamento.length; i++) {
-        if (depertamento[i] !== ",") {
-            text += depertamento[i];
+    for (i = 0; i < codigoDep.length; i++) {
+        if (codigoDep[i] !== ",") {
+            text += codigoDep[i];
         }
         else {// entra cuando ya llego a una coma enviando la notificacion push
             aux(text);

@@ -38,7 +38,7 @@ namespace test2
             //Endpoint para insertar un departamento
             routes.MapRoute(
                 "insertD",
-                "insertarDepartamento/{nombre}/{tipo}/{sede}/{encargado}",
+                "insertarDepartamento/{nombre}/{codigoDep}/{tipo}/{sede}/{encargado}",
                 new
                 {
                     controller = "Test",
