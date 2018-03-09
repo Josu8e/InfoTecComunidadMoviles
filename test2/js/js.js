@@ -996,7 +996,7 @@ function agregarAtabla() {
     datos = datos.split(' - ');
     departamento = departamento.split(' - ');
         
-    var url = "infoTec/setPersonaToDepartment/" + datos[0] + "/" + departamento[0];
+    url = "infoTec/setPersonaToDepartment/" + datos[0] + "/" + departamento[0];
     $.ajax({
         type: "POST",
         dataType: "json",
