@@ -972,7 +972,7 @@ function cargarPersonas() {
                     
                 per.innerHTML += "<option>"+ data[i].tipo +" - "+ data[i].nombre + " - " + data[i].ID + "</option>";
 
-                per.innerHTML += "<option>" + data[i].nombre + " - " + id + "</option>";
+                //per.innerHTML += "<option>" + data[i].nombre + " - " + id + "</option>";
 
             }
         });

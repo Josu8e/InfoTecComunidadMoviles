@@ -486,8 +486,8 @@ namespace test2.Models
             string consult;
             try
             {
-                //Mensaje (titulo,Descripcion,fecha,imagen,remitente)
-                consult = string.Format("insert into Persona_departamentos (codigoDep,IDPer) values (@id,@nombre)");
+
+                consult = string.Format("insert into Persona_departamentos (codigoDep,IDPer) values (@nombre,@id)");
 
                 comand = new SqlCommand(consult, con);
 
