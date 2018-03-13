@@ -124,7 +124,7 @@ namespace test2.Models
             }
         }
 
-        public String insertarDepartamento(String nombre,String tipo,String sede,String encargado)/////INSERTAR DEPARTAMENTO
+        public String insertarDepartamento(String nombre,String codigoDep, String tipo,String sede,String encargado)/////INSERTAR DEPARTAMENTO
         {
             SqlCommand comand;
             string consult;
@@ -132,11 +132,14 @@ namespace test2.Models
             string consult2;
             try
             {
-                consult = string.Format("insert into departamentos values (@nombre, @tipo, @encargado)");
+                consult = string.Format("insert into departamentos values (@nombre, @tipo, @encargado, @codigoDep)");
                 comand = new SqlCommand(consult, con);
 
                 comand.Parameters.Add("@nombre", System.Data.SqlDbType.VarChar);
                 comand.Parameters["@nombre"].Value = nombre;
+
+                comand.Parameters.Add("@codigoDep", System.Data.SqlDbType.VarChar);
+                comand.Parameters["@codigoDep"].Value = codigoDep;
 
                 comand.Parameters.Add("@tipo", System.Data.SqlDbType.VarChar);
                 comand.Parameters["@tipo"].Value = tipo;
@@ -144,11 +147,12 @@ namespace test2.Models
                 comand.Parameters.Add("@encargado", System.Data.SqlDbType.VarChar);
                 comand.Parameters["@encargado"].Value = encargado;
 
-                consult2 = string.Format("insert into Departamento_Sede values (@nombre,(select idSede from Sedes where nombreSede = @sede))");
+                consult2 = string.Format("insert into Departamento_Sede values (@codigoDep, (select idSede from Sedes where nombreSede = @sede))");
                 comand2 = new SqlCommand(consult2, con);
 
-                comand2.Parameters.Add("@nombre", System.Data.SqlDbType.VarChar);
-                comand2.Parameters["@nombre"].Value = nombre;
+                comand2.Parameters.Add("@codigoDep", System.Data.SqlDbType.VarChar);
+                comand2.Parameters["@codigoDep"].Value = codigoDep;
+
                 comand2.Parameters.Add("@sede", System.Data.SqlDbType.NVarChar);                
                 comand2.Parameters["@sede"].Value = sede;
 
@@ -164,18 +168,20 @@ namespace test2.Models
             }
         }
 
-        public List<String> obtenerDepartamentos()
+        public List<DTO_Departamento> obtenerDepartamentos()
         {
             con.Open();
             consult = string.Format("select * from departamentos");
             comand = new SqlCommand(consult, con);
             reader = comand.ExecuteReader();
 
-            List<String> lista = new List<String>();
+            List<DTO_Departamento> lista = new List<DTO_Departamento>();
             while (reader.Read())
             {
-                String nombre = reader[0].ToString();
-                lista.Add(nombre);
+                DTO_Departamento dep = new DTO_Departamento();
+                dep.codigoDep = reader[0].ToString();
+                dep.nombre = reader[0].ToString();
+                lista.Add(dep);
             }
             con.Close();
             return lista;

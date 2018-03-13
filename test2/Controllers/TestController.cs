@@ -57,11 +57,11 @@ namespace test2.Controllers
                     , JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult Departamentos(String nombre,String tipo,String sede,String encargado)////Consulta departamentos
+        public JsonResult Departamentos(String nombre, String codigoDep, String tipo, String sede, String encargado)////Consulta departamentos
         {
 
             return Json(
-                    conexion.insertarDepartamento(nombre,tipo,sede,encargado), JsonRequestBehavior.AllowGet);
+                    conexion.insertarDepartamento(nombre,codigoDep,tipo,sede,encargado), JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult IN(string id, string nombre, string contra, string rol, string correo, string carne, string estadoCivil, string fechaNacimiento, char sexo, string direccion, string apellido1, string apellido2)
