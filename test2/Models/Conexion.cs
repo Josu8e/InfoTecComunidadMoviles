@@ -124,7 +124,7 @@ namespace test2.Models
             }
         }
 
-        public String insertarDepartamento(String nombre,String codigoDep, String tipo,String sede,String encargado)/////INSERTAR DEPARTAMENTO
+        public String insertarDepartamento(String nombre,String tipo,String encargado, String codigoDep, String sede)/////INSERTAR DEPARTAMENTO
         {
             SqlCommand comand;
             string consult;
@@ -147,7 +147,7 @@ namespace test2.Models
                 comand.Parameters.Add("@encargado", System.Data.SqlDbType.VarChar);
                 comand.Parameters["@encargado"].Value = encargado;
 
-                consult2 = string.Format("insert into Departamento_Sede values (@codigoDep, (select idSede from Sedes where nombreSede = @sede))");
+                consult2 = string.Format("insert into Departamento_Sede values (@codigoDep, @sede)");
                 comand2 = new SqlCommand(consult2, con);
 
                 comand2.Parameters.Add("@codigoDep", System.Data.SqlDbType.VarChar);
@@ -160,7 +160,7 @@ namespace test2.Models
                 comand.ExecuteNonQuery();
                 comand2.ExecuteNonQuery();
                 con.Close();
-                return "successful";
+                return "success";
             }
             catch (Exception ex)
             {
@@ -546,7 +546,7 @@ namespace test2.Models
             SqlCommand comand;
             string consult;
             
-            consult = string.Format("select * from Sedes");
+            consult = string.Format("select idSede, nombreSede from Sedes");
             comand = new SqlCommand(consult, con);
             con.Open();
             reader = comand.ExecuteReader();
@@ -609,11 +609,11 @@ namespace test2.Models
             return lista;
         }
         
-        public List<DTO_Departamento> getDepartamentosPorSede(string sede)
+        public List<DTO_Departamento> getDepartamentosPorSede(String sede)
         {
             SqlCommand comand;
             string consult;
-            consult = string.Format("select d.nombre from departamentos as d inner Join Departamento_Sede as DS on d.nombre = DS.nombreDepartamento inner Join (select s.idSede,s.nombreSede from Sedes as s where s.nombreSede = @sede) as w on w.idSede = DS.idSede");
+            consult = string.Format("select d.nombre, d.codigoDep from departamentos as d inner Join (select codigoDep, idSede from Departamento_Sede where idSede = @sede) s on d.codigoDep = s.codigoDep");
             comand = new SqlCommand(consult, con);
             comand.Parameters.Add("@sede", System.Data.SqlDbType.NChar);
             comand.Parameters["@sede"].Value = sede;

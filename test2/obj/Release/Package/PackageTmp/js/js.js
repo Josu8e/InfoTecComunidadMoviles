@@ -113,7 +113,7 @@ function insertarD() {
    
     var nombre = document.getElementById("nombre").value;
     var codigoDep = document.getElementById("codigoDep").value;
-    var sede = document.getElementById("sedeDepartamento").value;
+    var sede = document.getElementById("sedeDepartamento").value.split(" - ")[1];
     var categoria = document.getElementById("categoriaDepartamento").value;
     var encargado = document.getElementById("encargadoPersona").value.split(" - ")[1];
 
@@ -126,7 +126,7 @@ function insertarD() {
         {
             codigoDep = nombre.substr(0, 2) + sede.substr(0, 2) + categoria.substr(0, 2) + (Math.floor(Math.random() * (100 - 10)) + 10);
         }
-        var url = "infoTec/insertarDepartamento/" + nombre + '/' + sede + '/' + categoria + '/' + encargado + '/'+ codigoDep + '/';//IIS
+        var url = "infoTec/insertarDepartamento/" + nombre + '/' + categoria + '/' + encargado + '/' + codigoDep + '/' + sede;//IIS
         document.getElementById("mensajeDep").innerHTML = "<div id=\"topmenu\"><h3>Verificando nombre...<h3></div>";
         $.ajax({
             type: "POST",
@@ -136,11 +136,18 @@ function insertarD() {
                 document.getElementById("mensajeDep").innerHTML = '<div class="alert alert-danger"><strong>Error</strong> Error al insertar el departamento.</div>';
             }
         }).then(function (data) {
-            if (data === "successful") {
+            if (data === "success") {
                 document.getElementById("mensajeDep").innerHTML = '<div class="alert alert-success"><strong>Listo</strong> Departamento agregado.</div>';
-                insertarFireBase(codigoDep);
+               // insertarFireBase(codigoDep);
+                document.getElementById("nombre").innerHTML = " ";
+                document.getElementById("codigoDep").innerHTML = " ";
+                document.getElementById("sedeDepartamento").innerHTML = " ";
+                document.getElementById("categoriaDepartamento").innerHTML = " ";
+                document.getElementById("encargadoPersona").innerHTML = " ";
             }
             else {
+                console.log(data.toString);
+                insertarFireBase(codigoDep);
                 document.getElementById("mensajeDep").innerHTML = '<div id=\"topmenu\"><h3>Departamento ya existentente<h3></div>';
             }
         });
@@ -204,6 +211,7 @@ function obtenerDepartamentosPorSede(funcion, sede) {
                 while (j < listaCarreras.length)
                 {
                     if (listaCarreras[j].toString === data[i].nombre.toString) {
+                        console.log(listaCarreras[j].toString);
                         document.getElementById(j).style.visibility = "visible";
                         tam++;
                     }
@@ -519,7 +527,7 @@ function emailSend() {
 /// <param name="nombre">Nombre del departamento a insertar</param>
 /// <returns></returns> 
 function insertarFireBase(codigoDep) {
-    var myFirebaseRef = new Firebase(" https://infotec-d1598.firebaseio.com/");
+    var myFirebaseRef = new Firebase(" https://infotec-d1598.firebaseio.com/departamentos");
     var dep = JSON.parse('{"' + codigoDep + '":' + 0 + '}');
     myFirebaseRef.update(dep);
 }
@@ -632,7 +640,7 @@ function re() {
 /// <param></param>
 /// <returns></returns> 
 function mostrar_ocultarCarrera() {
-    var sede = document.getElementById("sedeMensaje").value;
+    var sede = document.getElementById("sedeMensaje").value.split(" - ")[1];
     if (document.getElementById("desplegarCarrera").value === "Departamentos" && sede.length != 0) {
         tam = 0; 
         j = 0;
@@ -833,7 +841,7 @@ function cargarSedes() {
         }).then(function (data) {
 
             for (i = 0; i < data.length; i++) {
-                opciones.innerHTML += "<option>" + data[i].nombreSede + "</option>";
+                opciones.innerHTML += "<option>" + data[i].nombreSede +' - '+ data[i].idSede + "</option>";
             }
         });
     }
@@ -1035,16 +1043,6 @@ function push(codigoDep) {
             text = "";
         }
     }
-    
-    function aux(text) {
-        var myFirebaseRef = new Firebase("https://infotec-d1598.firebaseio.com/");
-        myFirebaseRef.child("departamentos/" + text).once("value", function (data) {
-            var valor = data.val() + 1;
-            var pushing = JSON.parse('{"' + text + '":' + valor + '}');
-            console.log(pushing);
-            myFirebaseRef.child("departamentos").update(pushing);
-        });
-    }
 }
 
 /// <summary>
@@ -1057,7 +1055,6 @@ function aux(text) {
     myFirebaseRef.child("departamentos/" + text).once("value", function (data) {
         var valor = data.val() + 1;
         var pushing = JSON.parse('{"' + text + '":' + valor + '}');
-        console.log(pushing);
         myFirebaseRef.child("departamentos").update(pushing);
     });
 }
