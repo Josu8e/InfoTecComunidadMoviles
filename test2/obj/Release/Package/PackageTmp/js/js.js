@@ -5,8 +5,7 @@ var idUser = "";
 var texto = "";
 var imgWidth = "";
 var imgHeight = "";
-var listaCarreras = [];
-var listaIdCarreras = [];
+var listaDepartamentos = [];
 
 /// <summary>
 /// Carga el html del login a la pagina
@@ -36,12 +35,12 @@ function EnviarMensajeDinamico() {
     //Callback que carga las carreras a la pagina 
     obtenerDepartamentos(
         function carrerasDinamicas() {
-           texto = '<br\> <input id="ALL" type="button" onclick="marcarTODOS()"class="btn btn-primary btn-block btn-large" value="Marcar todos"/> <br\><p>';
-            for (i = 0; i < listaCarreras.length; i++) {
-                texto += '<div class="bg" id="'+ i +'" style="visibility:hidden"> <div class="cosa1">' + listaCarreras[i] + ':</div> <div class="cosa2"><input id="' + listaIdCarreras[i] + '" value="' + listaCarreras[i] + '" class="right" type="checkbox" data-off-color="warning"/></div></div>';
+           texto = '<br\> <input id="ALL" type="button" onclick="marcarTODOS()" class="btn btn-primary btn-block btn-large" value="Marcar todos"/> <br\><p>';
+           for (i = 0; i < listaDepartamentos.length; i++) {
+               texto += '<div class="bg" id="' + i + '" style="visibility:hidden"> <div class="cosa1">' + listaDepartamentos[i].nombre + ' - ' + listaDepartamentos[i].codigoDep + ':</div> <div class="cosa2"><input id="' + listaDepartamentos[i].codigoDep + '" value="' + listaDepartamentos[i].nombre + '" class="right" type="checkbox" data-off-color="warning"/></div></div>';
             }
             texto += '</p>';
-
+            
         var client = new XMLHttpRequest();
         client.open('GET', '/infoTec/js/EnviarMensaje.html');
         client.onreadystatechange = function () {
@@ -49,8 +48,8 @@ function EnviarMensajeDinamico() {
             document.getElementById('carreraDiv').innerHTML = texto;
             document.getElementById("sedeMensaje").addEventListener("change", cargarSedes);
             
-            for (i = 0; i < listaIdCarreras.length; i++) {
-                $("#" + listaIdCarreras[i]).bootstrapSwitch();
+            for (i = 0; i < listaDepartamentos.length; i++) {
+                $("#" + listaDepartamentos[i].codigoDep).bootstrapSwitch();
             }
             $("#switch-offColor").bootstrapSwitch();
             $("#datepicker").datepicker();
@@ -136,7 +135,7 @@ function insertarD() {
                 document.getElementById("mensajeDep").innerHTML = '<div class="alert alert-danger"><strong>Error</strong> Error al insertar el departamento.</div>';
             }
         }).then(function (data) {
-            if (data === "success") {
+            if (data == "g") {
                 document.getElementById("mensajeDep").innerHTML = '<div class="alert alert-success"><strong>Listo</strong> Departamento agregado.</div>';
                // insertarFireBase(codigoDep);
                 document.getElementById("nombre").innerHTML = " ";
@@ -180,8 +179,7 @@ function obtenerDepartamentos(funcion) {
     }).then(function (data) {
         try {
             for (i = 0; i < data.length; i++) {
-                listaCarreras[i] = data[i].nombre.toString();
-                listaIdCarreras[i] = generarID(data[i].codigoDep.toString());
+                listaDepartamentos[i] = data[i];
             }
             funcion();
         } catch (e) {
@@ -208,10 +206,9 @@ function obtenerDepartamentosPorSede(funcion, sede) {
         try {
             for (i = 0; i < data.length; i++) {
                 var j = 0;
-                while (j < listaCarreras.length)
+                while (j < listaDepartamentos.length)
                 {
-                    if (listaCarreras[j].toString === data[i].nombre.toString) {
-                        console.log(listaCarreras[j].toString);
+                    if (listaDepartamentos[j].nombre.toString === data[i].nombre.toString) {
                         document.getElementById(j).style.visibility = "visible";
                         tam++;
                     }
@@ -325,7 +322,7 @@ function MensajeDinamico(mensaje, Enviante) {
 /// <returns></returns> 
 function cambiarLoad() {
     var url = "infoTec/AdminMensaje/";//IIS    
-    //url = "http://localhost:50175/log/" + user + "/" + password;//c#        
+    //url = "http://localhost:50175/log/" + user + "/" + password;       
     var errorR = '<div class="alert alert-danger"><strong>Error!</strong> No ha sido posible obtener los mensajes de '+userName+'.</div>';
     $.ajax({
         url: url,
@@ -644,7 +641,7 @@ function mostrar_ocultarCarrera() {
     if (document.getElementById("desplegarCarrera").value === "Departamentos" && sede.length != 0) {
         tam = 0; 
         j = 0;
-        while (j < listaCarreras.length) {
+        while (j < listaDepartamentos.length) {
             document.getElementById(j).style.visibility = 'hidden';
             document.getElementById(j).style.visibility = 'none';
             j++;
@@ -759,9 +756,9 @@ function enviar() {
     var departamento = "";
     var selected = 0;
 
-    for (i = 0; i < listaIdCarreras.length; i++) {// verifica las carreras marcadas
-        if (document.getElementById(listaIdCarreras[i]).checked == true) {
-            departamento = departamento + document.getElementById(listaIdCarreras[i]).value + ",";
+    for (i = 0; i < listaDepartamentos.length; i++) {// verifica las carreras marcadas
+        if (document.getElementById(listaDepartamentos[i]).checked == true) {
+            departamento = departamento + document.getElementById(listaDepartamentos[i]).value + ",";
             selected = 1;
         }
     }
@@ -809,14 +806,14 @@ function enviar() {
 /// <returns></returns>
 function marcarTODOS() {
     if (document.getElementById("ALL").value == "Marcar todos") {
-        for (i = 0; i < listaIdCarreras.length; i++) {
-            $("#" + listaIdCarreras[i]).bootstrapSwitch('state', true);
+        for (i = 0; i < listaDepartamentos.length; i++) {
+            $("#" + listaDepartamentos[i].codigoDep).bootstrapSwitch('state', true);
         }
         document.getElementById("ALL").value = "Desmarcar todos"
     }
     else {
-        for (i = 0; i < listaIdCarreras.length; i++) {
-            $("#" + listaIdCarreras[i]).bootstrapSwitch('state', false);
+        for (i = 0; i < listaDepartamentos.length; i++) {
+            $("#" + listaDepartamentos[i].codigoDep).bootstrapSwitch('state', false);
         }
         document.getElementById("ALL").value = "Marcar todos"
     }
@@ -983,9 +980,7 @@ function cargarPersonas() {
                     id = data[i].ID;
                 }
                     
-                per.innerHTML += "<option>"+ data[i].tipo +" - "+ data[i].nombre + " - " + data[i].ID + "</option>";
-
-                //per.innerHTML += "<option>" + data[i].nombre + " - " + id + "</option>";
+                per.innerHTML += "<option>"+ data[i].tipo +" - "+ data[i].nombre + " - " + data[i].ID + "</option>";             
 
             }
         });

@@ -160,7 +160,7 @@ namespace test2.Models
                 comand.ExecuteNonQuery();
                 comand2.ExecuteNonQuery();
                 con.Close();
-                return "success";
+                return "successful";
             }
             catch (Exception ex)
             {
@@ -171,7 +171,7 @@ namespace test2.Models
         public List<DTO_Departamento> obtenerDepartamentos()
         {
             con.Open();
-            consult = string.Format("select * from departamentos");
+            consult = string.Format("select codigoDep, nombre from departamentos");
             comand = new SqlCommand(consult, con);
             reader = comand.ExecuteReader();
 
@@ -180,7 +180,7 @@ namespace test2.Models
             {
                 DTO_Departamento dep = new DTO_Departamento();
                 dep.codigoDep = reader[0].ToString();
-                dep.nombre = reader[0].ToString();
+                dep.nombre = reader[1].ToString();
                 lista.Add(dep);
             }
             con.Close();
