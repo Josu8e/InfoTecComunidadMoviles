@@ -761,7 +761,7 @@ function enviar() {
 
     for (i = 0; i < listaIdCarreras.length; i++) {// verifica las carreras marcadas
         if (document.getElementById(listaIdCarreras[i]).checked == true) {
-            departamento = departamento + document.getElementById(listaIdCarreras[i]).value + ",";
+            departamento = departamento + document.getElementById(listaIdCarreras[i]).id + ",";
             selected = 1;
         }
     }
@@ -985,7 +985,7 @@ function cargarPersonas() {
                     
                 per.innerHTML += "<option>"+ data[i].tipo +" - "+ data[i].nombre + " - " + data[i].ID + "</option>";
 
-                //per.innerHTML += "<option>" + data[i].nombre + " - " + id + "</option>";
+               
 
             }
         });
