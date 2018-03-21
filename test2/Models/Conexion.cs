@@ -437,16 +437,16 @@ namespace test2.Models
         public List<DTO_Departamento> getDepartementPerson(string id)
         {
             con.Open();
-            consult = string.Format("select d.nombre From Persona as p inner Join Persona_departamentos as Pd on p.ID = Pd.IDPer inner join departamentos as d on Pd.nombreDep = d.nombre where id = @idC");
+            consult = string.Format("select d.codigoDep From Persona as p inner Join Persona_departamentos as Pd on p.ID = Pd.IDPer inner join departamentos as d on Pd.codigoDep = d.codigoDep where id = @idC");
             comand = new SqlCommand(consult, con);
-            comand.Parameters.Add("@idC", System.Data.SqlDbType.Int);
+            comand.Parameters.Add("@idC", System.Data.SqlDbType.VarChar);
             comand.Parameters["@idC"].Value = id;
             reader = comand.ExecuteReader();
             List<DTO_Departamento> lista = new List<DTO_Departamento>();
             while (reader.Read())
             {
                 DTO_Departamento dto = new DTO_Departamento();
-                dto.nombre = reader[0].ToString();
+                dto.codigoDep = reader[0].ToString();
                 lista.Add(dto);
             }
             con.Close();
