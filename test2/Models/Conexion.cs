@@ -624,6 +624,7 @@ namespace test2.Models
             {
                 DTO_Departamento dto = new DTO_Departamento();
                 dto.nombre = reader[0].ToString();
+                dto.codigoDep = reader[1].ToString();
                 lista.Add(dto);
             }
             con.Close();
