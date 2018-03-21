@@ -755,15 +755,9 @@ function enviar() {
     var departamento = "";
     var selected = 0;
 
-<<<<<<< HEAD
-    for (i = 0; i < listaIdCarreras.length; i++) {// verifica las carreras marcadas
-        if (document.getElementById(listaIdCarreras[i]).checked == true) {
-            departamento = departamento + document.getElementById(listaIdCarreras[i]).id + ",";
-=======
     for (i = 0; i < listaDepartamentos.length; i++) {// verifica las carreras marcadas
         if (document.getElementById(listaDepartamentos[i]).checked == true) {
             departamento = departamento + document.getElementById(listaDepartamentos[i]).value + ",";
->>>>>>> ef4a8e5f67fb7c17e060af546b5a54799dd2c14e
             selected = 1;
         }
     }

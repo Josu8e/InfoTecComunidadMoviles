@@ -195,7 +195,6 @@ function obtenerDepartamentos(funcion) {
 /// <param name="sede">Nombre de la sede para buscar los departamentos asociados a esta</param>
 /// <returns></returns>
 function obtenerDepartamentosPorSede(funcion, sede) {
-    console.log(sede);
     var url = "infoTec/getDepartamentosPorSede/" + sede;
     $.ajax({
         url: url,
@@ -651,7 +650,7 @@ function mostrar_ocultarCarrera() {
             var distancia = (tam * 63) + 63;
             document.getElementById("carreraDiv").style.height = '' + distancia + 'px';//para animacion
             document.getElementById("desplegarCarrera").value = "Ocultar";
-            document.getElementById("sedeMensaje").value;},sede);
+            document.getElementById("sedeMensaje").value;}, sede);
     }          
     else {
         document.getElementById("carreraDiv").style.height = "0px";
@@ -756,15 +755,9 @@ function enviar() {
     var departamento = "";
     var selected = 0;
 
-<<<<<<< HEAD
-    for (i = 0; i < listaIdCarreras.length; i++) {// verifica las carreras marcadas
-        if (document.getElementById(listaIdCarreras[i]).checked == true) {
-            departamento = departamento + document.getElementById(listaIdCarreras[i]).id + ",";
-=======
     for (i = 0; i < listaDepartamentos.length; i++) {// verifica las carreras marcadas
         if (document.getElementById(listaDepartamentos[i]).checked == true) {
             departamento = departamento + document.getElementById(listaDepartamentos[i]).value + ",";
->>>>>>> ef4a8e5f67fb7c17e060af546b5a54799dd2c14e
             selected = 1;
         }
     }
@@ -986,13 +979,7 @@ function cargarPersonas() {
                     id = data[i].ID;
                 }
                     
-<<<<<<< HEAD
-                per.innerHTML += "<option>"+ data[i].tipo +" - "+ data[i].nombre + " - " + data[i].ID + "</option>";
-
-               
-=======
                 per.innerHTML += "<option>"+ data[i].tipo +" - "+ data[i].nombre + " - " + data[i].ID + "</option>";             
->>>>>>> ef4a8e5f67fb7c17e060af546b5a54799dd2c14e
 
             }
         });
