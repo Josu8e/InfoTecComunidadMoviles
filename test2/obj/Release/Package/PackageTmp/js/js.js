@@ -39,6 +39,7 @@ function EnviarMensajeDinamico() {
            for (i = 0; i < listaDepartamentos.length; i++) {
                texto += '<div class="bg" id="' + i + '" style="visibility:hidden"> <div class="cosa1">' + listaDepartamentos[i].nombre + ' - ' + listaDepartamentos[i].codigoDep + ':</div> <div class="cosa2"><input id="' + listaDepartamentos[i].codigoDep + '" value="' + listaDepartamentos[i].nombre + '" class="right" type="checkbox" data-off-color="warning"/></div></div>';
             }
+<<<<<<< HEAD
             texto += '</p>';
         var client = new XMLHttpRequest();
         client.open('GET', '/infoTec/js/EnviarMensaje.html');
@@ -52,9 +53,27 @@ function EnviarMensajeDinamico() {
             }
             $("#switch-offColor").bootstrapSwitch();
             $("#datepicker").datepicker();
+=======
+           texto += '</p>';
             
-        };
-        client.send();
+            var client = new XMLHttpRequest();
+            client.open('GET', '/infoTec/js/EnviarMensaje.html');
+
+            client.onreadystatechange = function () {
+               document.getElementById('MainDiv').innerHTML = client.responseText;
+               document.getElementById('carreraDiv').innerHTML = texto;
+               document.getElementById("sedeMensaje").addEventListener("change", cargarSedes);
+>>>>>>> 4ff69949f92f772e166537cfc00f00e82bd0eeda
+            
+               for (a = 0; a < listaDepartamentos.length; a++) {
+                   $("#" + listaDepartamentos[a].codigoDep).bootstrapSwitch();
+                   console.log(listaDepartamentos[a].codigoDep);
+               }
+
+                $("#switch-offColor").bootstrapSwitch();
+                $("#datepicker").datepicker()
+             };
+             client.send();        
        });
 }
 
@@ -206,8 +225,9 @@ function obtenerDepartamentosPorSede(funcion, sede) {
                 var j = 0;
                 while (j < listaDepartamentos.length)
                 {
-                    if (listaDepartamentos[j].nombre.toString === data[i].nombre.toString) {
+                    if (data[i].codigoDep == listaDepartamentos[j].codigoDep) {
                         document.getElementById(j).style.visibility = "visible";
+                        //console.log(listaDepartamentos[j].codigoDep);
                         tam++;
                     }
                     j++;
