@@ -6,6 +6,7 @@ var texto = "";
 var imgWidth = "";
 var imgHeight = "";
 var listaDepartamentos = [];
+var dep = [];
 
 /// <summary>
 /// Carga el html del login a la pagina
@@ -37,7 +38,7 @@ function EnviarMensajeDinamico() {
         function carrerasDinamicas() {
            texto = '<br\> <input id="ALL" type="button" onclick="marcarTODOS()" class="btn btn-primary btn-block btn-large" value="Marcar todos"/> <br\><p>';
            for (i = 0; i < listaDepartamentos.length; i++) {
-               texto += '<div class="bg" id="' + i + '" style="visibility:hidden"> <div class="cosa1">' + listaDepartamentos[i].nombre + ' - ' + listaDepartamentos[i].codigoDep + ':</div> <div class="cosa2"><input id="' + listaDepartamentos[i].codigoDep + '" value="' + listaDepartamentos[i].nombre + '" class="right" type="checkbox" data-off-color="warning"/></div></div>';
+               texto += '<div class="bg" id="' + i + '" style="visibility:hidden"> <div class="cosa1">' + listaDepartamentos[i].nombre + ' - ' + dep[i] + ':</div> <div class="cosa2"><input id="' + dep[i] + '" value="' + listaDepartamentos[i].nombre + '" class="right" type="checkbox" data-off-color="warning"/></div></div>';
             }
            texto += '</p>';
             
@@ -45,19 +46,19 @@ function EnviarMensajeDinamico() {
             client.open('GET', '/infoTec/js/EnviarMensaje.html');
 
             client.onreadystatechange = function () {
-               document.getElementById('MainDiv').innerHTML = client.responseText;
-               document.getElementById('carreraDiv').innerHTML = texto;
-               document.getElementById("sedeMensaje").addEventListener("change", cargarSedes);
-            
-               for (a = 0; a < listaDepartamentos.length; a++) {
-                   $("#" + listaDepartamentos[a].codigoDep).bootstrapSwitch();
-                   console.log(listaDepartamentos[a].codigoDep);
-               }
+                document.getElementById('MainDiv').innerHTML = client.responseText;
+                document.getElementById('carreraDiv').innerHTML = texto;
+                document.getElementById("sedeMensaje").addEventListener("change", cargarSedes);
+
+                for (a = 0; a < dep.length; a++) {
+                    $('#' + dep[a]).bootstrapSwitch();
+                }
 
                 $("#switch-offColor").bootstrapSwitch();
                 $("#datepicker").datepicker()
-             };
-             client.send();        
+
+                };
+            client.send();    
        });
 }
 
@@ -137,7 +138,7 @@ function insertarD() {
                 document.getElementById("mensajeDep").innerHTML = '<div class="alert alert-danger"><strong>Error</strong> Error al insertar el departamento.</div>';
             }
         }).then(function (data) {
-            if (data == "g") {
+            if (data == "successful") {
                 document.getElementById("mensajeDep").innerHTML = '<div class="alert alert-success"><strong>Listo</strong> Departamento agregado.</div>';
                // insertarFireBase(codigoDep);
                 document.getElementById("nombre").innerHTML = " ";
@@ -162,7 +163,7 @@ function insertarD() {
 /// <returns name"nueva">El ID del departamento</returns>
 function generarID(nombre) {
     var nueva = "";
-    nueva = nombre.split(" ").join("_");
+    nueva = nombre.split(" ").join("-");
     return nueva;
 }
 
@@ -182,6 +183,8 @@ function obtenerDepartamentos(funcion) {
         try {
             for (i = 0; i < data.length; i++) {
                 listaDepartamentos[i] = data[i];
+                dep[i] = data[i].codigoDep.toString;
+             
             }
             funcion();
         } catch (e) {
@@ -209,7 +212,7 @@ function obtenerDepartamentosPorSede(funcion, sede) {
                 var j = 0;
                 while (j < listaDepartamentos.length)
                 {
-                    if (data[i].codigoDep == listaDepartamentos[j].codigoDep) {
+                    if (data[i].codigoDep == dep[j]) {
                         document.getElementById(j).style.visibility = "visible";
                         //console.log(listaDepartamentos[j].codigoDep);
                         tam++;
@@ -809,13 +812,13 @@ function enviar() {
 function marcarTODOS() {
     if (document.getElementById("ALL").value == "Marcar todos") {
         for (i = 0; i < listaDepartamentos.length; i++) {
-            $("#" + listaDepartamentos[i].codigoDep).bootstrapSwitch('state', true);
+            $("#" + dep[i]).bootstrapSwitch('state', true);
         }
         document.getElementById("ALL").value = "Desmarcar todos"
     }
     else {
         for (i = 0; i < listaDepartamentos.length; i++) {
-            $("#" + listaDepartamentos[i].codigoDep).bootstrapSwitch('state', false);
+            $("#" + dep[i]).bootstrapSwitch('state', false);
         }
         document.getElementById("ALL").value = "Marcar todos"
     }
