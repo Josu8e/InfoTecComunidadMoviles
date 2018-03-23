@@ -588,7 +588,7 @@ namespace test2.Models
         {
             SqlCommand comand;
             string consult;
-            consult = string.Format("select d.codigoDep,d.nombre from departamentos as d inner Join Departamento_Sede as DS on d.codigoDep = DS.codigoDep inner join Sedes as s on s.nombreSede = @sede where d.tipo = @categoria");
+            consult = string.Format("select d.codigoDep,d.nombre from departamentos as d inner Join Departamento_Sede as DS on d.codigoDep = DS.codigoDep inner join Sedes as s on s.idSede = @sede where d.tipo = @categoria");
             comand = new SqlCommand(consult, con);
             comand.Parameters.Add("@sede", System.Data.SqlDbType.NChar);
             comand.Parameters["@sede"].Value = sede;

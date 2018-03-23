@@ -40,7 +40,6 @@ function EnviarMensajeDinamico() {
                texto += '<div class="bg" id="' + i + '" style="visibility:hidden"> <div class="cosa1">' + listaDepartamentos[i].nombre + ' - ' + listaDepartamentos[i].codigoDep + ':</div> <div class="cosa2"><input id="' + listaDepartamentos[i].codigoDep + '" value="' + listaDepartamentos[i].nombre + '" class="right" type="checkbox" data-off-color="warning"/></div></div>';
             }
             texto += '</p>';
-            
         var client = new XMLHttpRequest();
         client.open('GET', '/infoTec/js/EnviarMensaje.html');
         client.onreadystatechange = function () {
@@ -876,8 +875,12 @@ function cargarDepartamentosFiltro() {
     var sed = document.getElementById("sedes");
     var cat = document.getElementById("categorias");
     var dep = document.getElementById("departamentos");
+
+    var sede = document.getElementById("sedePersona").value.split(" - ");
+    sede = sede[1];
+
     if (sed.innerHTML == " " || cat.innerHTML == "" || dep.innerHTML == "") {
-        var url = 'infoTec/getDepartmentosFiltrados/' + document.getElementById("sedePersona").value + "/" + document.getElementById("categoriaPersona").value;
+        var url = 'infoTec/getDepartmentosFiltrados/' + sede + "/" + document.getElementById("categoriaPersona").value;
         $.ajax({
             url: url,
             error: function (request, error) {
