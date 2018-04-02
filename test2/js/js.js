@@ -36,18 +36,29 @@ function EnviarMensajeDinamico() {
     //Callback que carga las carreras a la pagina 
     obtenerDepartamentos(
         function carrerasDinamicas() {
+<<<<<<< HEAD
            texto = '<br\> <input id="ALL" type="button" onclick="marcarTODOS()" class="btn btn-primary btn-block btn-large" value="Marcar todos"/> <br\><p>';
            for (i = 0; i < listaDepartamentos.length; i++) {
                texto += '<div class="bg" id="' + i + '" style="visibility:hidden"> <div class="cosa1">' + listaDepartamentos[i].nombre + ' - ' + dep[i] + ':</div> <div class="cosa2"><input id="' + dep[i] + '" value="' + listaDepartamentos[i].nombre + '" class="right" type="checkbox" data-off-color="warning"/></div></div>';
             }
 
            texto += '</p>';
+=======
+            texto = '<br\> <input id="ALL" type="button" onclick="marcarTODOS()" class="btn btn-primary btn-block btn-large" value="Marcar todos"/> <br\><p>';
+            for (i = 0; i < listaDepartamentos.length; i++) {
+                texto += '<div class="bg" id="' + i + '" style="visibility:hidden"> <div class="cosa1">' + listaDepartamentos[i].nombre + ' - ' + dep[i] + ':</div> <div class="cosa2"><input id="' + dep[i] + '" value="' + listaDepartamentos[i].nombre + '" class="right" type="checkbox" data-off-color="warning"/></div></div>';
+            }
+            texto += '</p>';
+>>>>>>> ac71f10c356829c4815cff34f7d6fa0b4bb4251c
 
             var client = new XMLHttpRequest();
             client.open('GET', '/infoTec/js/EnviarMensaje.html');
 
             client.onreadystatechange = function () {
+<<<<<<< HEAD
 
+=======
+>>>>>>> ac71f10c356829c4815cff34f7d6fa0b4bb4251c
                 document.getElementById('MainDiv').innerHTML = client.responseText;
                 document.getElementById('carreraDiv').innerHTML = texto;
                 document.getElementById("sedeMensaje").addEventListener("change", cargarSedes);
@@ -61,8 +72,13 @@ function EnviarMensajeDinamico() {
 
             };
             client.send();
+<<<<<<< HEAD
         );
+=======
+        });
+>>>>>>> ac71f10c356829c4815cff34f7d6fa0b4bb4251c
 }
+
 
 /// <summary>
 /// Carga el html de administracion de departamentos a la pagina
