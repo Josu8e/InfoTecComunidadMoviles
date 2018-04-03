@@ -6,7 +6,6 @@ var texto = "";
 var imgWidth = "";
 var imgHeight = "";
 var listaDepartamentos = [];
-var dep = [];
 
 /// <summary>
 /// Carga el html del login a la pagina
@@ -33,50 +32,26 @@ function loginDinamico(mensaje) {
 /// <returns></returns>
 function EnviarMensajeDinamico() {
 
-    //Callback que carga las carreras a la pagina 
-    obtenerDepartamentos(
-        function carrerasDinamicas() {
-<<<<<<< HEAD
-           texto = '<br\> <input id="ALL" type="button" onclick="marcarTODOS()" class="btn btn-primary btn-block btn-large" value="Marcar todos"/> <br\><p>';
-           for (i = 0; i < listaDepartamentos.length; i++) {
-               texto += '<div class="bg" id="' + i + '" style="visibility:hidden"> <div class="cosa1">' + listaDepartamentos[i].nombre + ' - ' + dep[i] + ':</div> <div class="cosa2"><input id="' + dep[i] + '" value="' + listaDepartamentos[i].nombre + '" class="right" type="checkbox" data-off-color="warning"/></div></div>';
-            }
+    obtenerDepartamentos(function carrerasDinamicas() {
 
-           texto += '</p>';
-=======
-            texto = '<br\> <input id="ALL" type="button" onclick="marcarTODOS()" class="btn btn-primary btn-block btn-large" value="Marcar todos"/> <br\><p>';
-            for (i = 0; i < listaDepartamentos.length; i++) {
-                texto += '<div class="bg" id="' + i + '" style="visibility:hidden"> <div class="cosa1">' + listaDepartamentos[i].nombre + ' - ' + dep[i] + ':</div> <div class="cosa2"><input id="' + dep[i] + '" value="' + listaDepartamentos[i].nombre + '" class="right" type="checkbox" data-off-color="warning"/></div></div>';
-            }
-            texto += '</p>';
->>>>>>> ac71f10c356829c4815cff34f7d6fa0b4bb4251c
+        texto = '<br\> <input id="ALL" type="button" onclick="marcarTODOS()" class="btn btn-primary btn-block btn-large" value="Marcar todos"/> <br\><p>';
+        for (i = 0; i < listaDepartamentos.length; i++) {
+            texto += '<div class="bg" id="' + i + '" style="visibility:hidden"> <div class="cosa1">' + listaDepartamentos[i].nombre + ' - ' + listaDepartamentos[i].codigoDep + ': </div> <div class="cosa2"> <label class="switch-light switch-candy"> <input type="checkbox" id="mjsBorrable"> <span> <span>No</span> <span>Si</span> <a></a> </span> </label> </div> </div>';
+        }
+        texto += '</p>';
 
-            var client = new XMLHttpRequest();
-            client.open('GET', '/infoTec/js/EnviarMensaje.html');
-
-            client.onreadystatechange = function () {
-<<<<<<< HEAD
-
-=======
->>>>>>> ac71f10c356829c4815cff34f7d6fa0b4bb4251c
-                document.getElementById('MainDiv').innerHTML = client.responseText;
-                document.getElementById('carreraDiv').innerHTML = texto;
-                document.getElementById("sedeMensaje").addEventListener("change", cargarSedes);
-
-                for (a = 0; a < dep.length; a++) {
-                    $('#' + dep[a]).bootstrapSwitch();
-                }
-
-                $("#switch-offColor").bootstrapSwitch();
-                $("#datepicker").datepicker()
-
-            };
-            client.send();
-<<<<<<< HEAD
-        );
-=======
-        });
->>>>>>> ac71f10c356829c4815cff34f7d6fa0b4bb4251c
+        var client = new XMLHttpRequest();
+        client.open('GET', '/infoTec/js/EnviarMensaje.html');
+        client.onreadystatechange = function () {
+            document.getElementById('MainDiv').innerHTML = client.responseText;
+            document.getElementById('carreraDiv').innerHTML = texto;
+            document.getElementById("sedeMensaje").addEventListener("change", cargarSedes);
+                      
+          
+            $("#datepicker").datepicker();
+        };
+        client.send();
+    });
 }
 
 
@@ -201,7 +176,6 @@ function obtenerDepartamentos(funcion) {
         try {
             for (i = 0; i < data.length; i++) {
                 listaDepartamentos[i] = data[i];
-                dep[i] = data[i].codigoDep.toString;
              
             }
             funcion();
@@ -230,9 +204,8 @@ function obtenerDepartamentosPorSede(funcion, sede) {
                 var j = 0;
                 while (j < listaDepartamentos.length)
                 {
-                    if (data[i].codigoDep == dep[j]) {
+                    if (data[i].codigoDep == listaDepartamentos[j].codigoDep) {
                         document.getElementById(j).style.visibility = "visible";
-                        //console.log(listaDepartamentos[j].codigoDep);
                         tam++;
                     }
                     j++;
@@ -438,15 +411,6 @@ function master(a1,a2,a3,a4,a5,a6,a7)
     }).then(function (data) {
     });
 }
-
-/*
-function editarMensaje(idMensaje, description, date, titulo) {
-    document.getElementById("tituloEd").value = titulo.toString();
-    document.getElementById("descripcionEd").value = description.toString();
-    document.getElementById("datepickerEd").value = date
-    var error = '<div class="alert alert-danger"><strong>Error!</strong> El correo ingresado no existe en el sistema.</div>';
-}
-*/
 
 /// <summary>
 /// Elimina un mensaje que haya sido enviado por el usuario en sesion 
@@ -671,7 +635,7 @@ function mostrar_ocultarCarrera() {
         }
 
         obtenerDepartamentosPorSede(function mostrarDep() {
-            var distancia = (tam * 63) + 63;
+            var distancia = (tam * 68) + 68;
             document.getElementById("carreraDiv").style.height = '' + distancia + 'px';//para animacion
             document.getElementById("desplegarCarrera").value = "Ocultar";
             document.getElementById("sedeMensaje").value;}, sede);
@@ -775,12 +739,12 @@ function enviar() {
     if (imagen == "http://localhost/infoTec")
         imagen = "";
 
-    var borrable = document.getElementById("switch-offColor").checked;
+    var borrable = document.getElementById("mjsBorrable").checked;
     var departamento = "";
-    var selected = 0;
-
+    var selected = 10;
+   
     for (i = 0; i < listaDepartamentos.length; i++) {// verifica las carreras marcadas
-        if (document.getElementById(listaDepartamentos[i]).checked == true) {
+        if (document.getElementById(listaDepartamentos[i].codigoDep).checked == true) {
             departamento = departamento + document.getElementById(listaDepartamentos[i]).value + ",";
             selected = 1;
         }
@@ -830,13 +794,13 @@ function enviar() {
 function marcarTODOS() {
     if (document.getElementById("ALL").value == "Marcar todos") {
         for (i = 0; i < listaDepartamentos.length; i++) {
-            $("#" + dep[i]).bootstrapSwitch('state', true);
+            document.getElementById(listaDepartamentos[i].codigoDep).setAttribute(checked, true);
         }
         document.getElementById("ALL").value = "Desmarcar todos"
     }
     else {
         for (i = 0; i < listaDepartamentos.length; i++) {
-            $("#" + dep[i]).bootstrapSwitch('state', false);
+            document.getElementById(listaDepartamentos[i].codigoDep).setAttribute(checked, false);
         }
         document.getElementById("ALL").value = "Marcar todos"
     }

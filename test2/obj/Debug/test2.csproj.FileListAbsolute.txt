@@ -503,8 +503,6 @@ J:\tec\comunidad movil\InfoTEC - Copy\test2\obj\Debug\test2.pdb
 C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\bin\test2.dll.config
 C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\bin\test2.dll
 C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\bin\test2.pdb
-C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\bin\test2.dll.CodeAnalysisLog.xml
-C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\bin\test2.dll.lastcodeanalysissucceeded
 C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\bin\Antlr3.Runtime.dll
 C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\bin\DotNetOpenAuth.AspNet.dll
 C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\bin\DotNetOpenAuth.Core.dll
@@ -544,7 +542,6 @@ C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\bin\Syst
 C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\bin\System.Web.WebPages.xml
 C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\bin\System.Web.WebPages.Deployment.xml
 C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\bin\System.Web.WebPages.Razor.xml
-C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\bin\WebMatrix.Data.xml
 C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\bin\Microsoft.Web.WebPages.OAuth.xml
 C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\bin\WebMatrix.WebData.xml
 C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\bin\DotNetOpenAuth.AspNet.xml
@@ -568,7 +565,6 @@ C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\bin\es\S
 C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\bin\es\System.Web.WebPages.resources.dll
 C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\bin\es\System.Web.WebPages.Deployment.resources.dll
 C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\bin\es\System.Web.WebPages.Razor.resources.dll
-C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\bin\es\WebMatrix.Data.resources.dll
 C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\bin\es\Microsoft.Web.WebPages.OAuth.resources.dll
 C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\bin\es\WebMatrix.WebData.resources.dll
 C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\bin\es\System.Web.Http.OData.resources.dll
@@ -599,7 +595,6 @@ C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\bin\ko\S
 C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\bin\ru\System.Spatial.resources.dll
 C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\bin\zh-Hans\System.Spatial.resources.dll
 C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\bin\zh-Hant\System.Spatial.resources.dll
-C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\obj\Debug\test2.csprojResolveAssemblyReference.cache
 C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\obj\Debug\test2.csproj.CoreCompileInputs.cache
 C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\obj\Debug\test2.dll
 C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\obj\Debug\test2.pdb

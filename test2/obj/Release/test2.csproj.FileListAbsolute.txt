@@ -842,7 +842,6 @@ C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\bin\Syst
 C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\bin\System.Web.WebPages.xml
 C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\bin\System.Web.WebPages.Deployment.xml
 C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\bin\System.Web.WebPages.Razor.xml
-C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\bin\WebMatrix.Data.xml
 C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\bin\Microsoft.Web.WebPages.OAuth.xml
 C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\bin\WebMatrix.WebData.xml
 C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\bin\DotNetOpenAuth.AspNet.xml
@@ -866,7 +865,6 @@ C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\bin\es\S
 C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\bin\es\System.Web.WebPages.resources.dll
 C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\bin\es\System.Web.WebPages.Deployment.resources.dll
 C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\bin\es\System.Web.WebPages.Razor.resources.dll
-C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\bin\es\WebMatrix.Data.resources.dll
 C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\bin\es\Microsoft.Web.WebPages.OAuth.resources.dll
 C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\bin\es\WebMatrix.WebData.resources.dll
 C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\bin\es\System.Web.Http.OData.resources.dll
