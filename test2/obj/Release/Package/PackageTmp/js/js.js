@@ -744,7 +744,8 @@ function enviar() {
     var selected = 10;
    
     for (i = 0; i < listaDepartamentos.length; i++) {// verifica las carreras marcadas
-        if (document.getElementById(listaDepartamentos[i].codigoDep).checked == true) {
+        depaCheked = document.getElementById(listaDepartamentos[i].codigoDep).checked
+        if (depaCheked == true) {
             departamento = departamento + document.getElementById(listaDepartamentos[i]).value + ",";
             selected = 1;
         }
