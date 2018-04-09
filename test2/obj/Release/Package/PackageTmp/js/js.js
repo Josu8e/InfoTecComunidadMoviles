@@ -748,8 +748,10 @@ function enviar() {
     var selected = 10;
    
     for (i = 0; i < listaDepartamentos.length; i++) {// verifica las carreras marcadas
-        if (document.getElementById(listaDepartamentos[i].codigoDep).checked == true) {
-            departamento = departamento + document.getElementById(listaDepartamentos[i]).value + ",";
+        var codigo = listaDepartamentos[i].codigoDep;
+        var depaCheked = document.getElementById(codigo).checked
+        if (depaCheked == true) {
+            departamento = departamento + listaDepartamentos[i].codigoDep + ',';
             selected = 1;
         }
     }
