@@ -208,6 +208,10 @@ function obtenerDepartamentosPorSede(funcion, sede) {
                         document.getElementById(j).style.visibility = "visible";
                         tam++;
                     }
+                    else
+                    {
+                       // document.getElementById(j).style.visibility = none;
+                    }
                     j++;
                 }
             }
