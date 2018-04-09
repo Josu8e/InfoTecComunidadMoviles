@@ -204,13 +204,10 @@ function obtenerDepartamentosPorSede(funcion, sede) {
                 var j = 0;
                 while (j < listaDepartamentos.length)
                 {
-                    if (data[i].codigoDep == listaDepartamentos[j].codigoDep) {
-                        document.getElementById(j).style.visibility = "visible";
+                    if (data[i].codigoDep.toString() === listaDepartamentos[j].codigoDep) {
+                        console.log(data[i].codigoDep.toString());
+                        document.getElementById(j).style.setProperty("visibility","visible"); 
                         tam++;
-                    }
-                    else
-                    {
-                        document.getElementById(j).style.visibility = none;
                     }
                     j++;
                 }
@@ -800,13 +797,13 @@ function enviar() {
 function marcarTODOS() {
     if (document.getElementById("ALL").value == "Marcar todos") {
         for (i = 0; i < listaDepartamentos.length; i++) {
-            document.getElementById(listaDepartamentos[i].codigoDep).setAttribute(checked, true);
+            document.getElementById(listaDepartamentos[i].codigoDep).setAttribute("state", "checked")
         }
         document.getElementById("ALL").value = "Desmarcar todos"
     }
     else {
         for (i = 0; i < listaDepartamentos.length; i++) {
-            document.getElementById(listaDepartamentos[i].codigoDep).setAttribute(checked, false);
+            document.getElementById(listaDepartamentos[i].codigoDep).setAttribute("state", "none");
         }
         document.getElementById("ALL").value = "Marcar todos"
     }
