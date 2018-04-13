@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Cadena de conexión que usa la aplicación en web.config para obtener acceso a la base de datos." defaultValue="Data Source=Jimmy-PC;Initial Catalog=test;User ID=sa;Password=heaven" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\natha\\OneDrive\\Documentos\\GitHub\\InfoTecComunidadMoviles\\test2\\obj\\Debug\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+  <parameter name="test2.Models.UsersContext-Web.config Connection String" description="test2.Models.UsersContext Cadena de conexión que usa la aplicación en web.config para obtener acceso a la base de datos." defaultValue="test2.Models.UsersContext_ConnectionString" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\natha\\OneDrive\\Documentos\\GitHub\\InfoTecComunidadMoviles\\test2\\obj\\Debug\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='test2.Models.UsersContext']/@connectionString" />
+  </parameter>
+</parameters>

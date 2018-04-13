@@ -36,7 +36,7 @@ function EnviarMensajeDinamico() {
 
         texto = '<br\> <input id="ALL" type="button" onclick="marcarTODOS()" class="btn btn-primary btn-block btn-large" value="Marcar todos"/> <br\><p>';
         for (i = 0; i < listaDepartamentos.length; i++) {
-            texto += '<div class="bg" id="' + i + '" style="visibility:hidden"> <div class="cosa1">' + listaDepartamentos[i].nombre + ' - ' + listaDepartamentos[i].codigoDep + ': </div> <div class="cosa2"> <label class="switch-light switch-candy"> <input type="checkbox" id="' + listaDepartamentos[i].codigoDep + '"> <span> <span>No</span> <span>Si</span> <a></a> </span> </label> </div> </div>';
+            texto += '<div class="bg" id="' + i + '" style= "visibility: hidden;"> <div class="cosa1">' + listaDepartamentos[i].nombre + ' - ' + listaDepartamentos[i].codigoDep + ': </div> <div class="cosa2"> <label class="switch-light switch-candy"> <input type="checkbox" id="' + listaDepartamentos[i].codigoDep + '"> <span> <span>No</span> <span>Si</span> <a></a> </span> </label> </div> </div>';
         }
         texto += '</p>';
 
@@ -205,8 +205,8 @@ function obtenerDepartamentosPorSede(funcion, sede) {
                 while (j < listaDepartamentos.length)
                 {
                     if (data[i].codigoDep.toString() === listaDepartamentos[j].codigoDep) {
-                        console.log(data[i].codigoDep.toString());
-                        document.getElementById(j).style.setProperty("visibility","visible"); 
+                        console.log(data[i].codigoDep.toString() + " - " + listaDepartamentos[j].codigoDep);
+                        document.getElementById(j).style.setProperty("visibility", "visible");
                         tam++;
                     }
                     j++;
@@ -631,7 +631,7 @@ function mostrar_ocultarCarrera() {
         j = 0;
         while (j < listaDepartamentos.length) {
             document.getElementById(j).style.visibility = 'hidden';
-            document.getElementById(j).style.visibility = 'none';
+            //document.getElementById(j).style.visibility = 'none';
             j++;
         }
 
@@ -797,13 +797,13 @@ function enviar() {
 function marcarTODOS() {
     if (document.getElementById("ALL").value == "Marcar todos") {
         for (i = 0; i < listaDepartamentos.length; i++) {
-            document.getElementById(listaDepartamentos[i].codigoDep).setAttribute("state", "checked")
+            document.getElementById(listaDepartamentos[i].codigoDep).checked = true;
         }
         document.getElementById("ALL").value = "Desmarcar todos"
     }
     else {
         for (i = 0; i < listaDepartamentos.length; i++) {
-            document.getElementById(listaDepartamentos[i].codigoDep).setAttribute("state", "none");
+            document.getElementById(listaDepartamentos[i].codigoDep).checked = false;
         }
         document.getElementById("ALL").value = "Marcar todos"
     }
