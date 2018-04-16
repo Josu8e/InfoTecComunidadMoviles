@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>    
+    <meta http-equiv="Content-Type" content="text/html, width=device-width, initial-scale=1" charset="utf-8">
+    <link href="~/eventos.png" rel="shortcut icon" type="image/x-icon" />
+
+    <title>InfoTEC</title>
+
+    <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+    
+    
+    <!--Librerias para el forget pass-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    
+    <link href="~/switch/bootstrap-switch.css" rel="stylesheet">        
+    <script src="~/switch/bootstrap-switch.js"></script>
+    <script src="~/switch/main.js"></script>
+    <script src="~/switch/highlight.js"></script>
+
+    <script language="JavaScript" type="text/javascript" src="~/js/index.js"></script>
+    <script language="JavaScript" type="text/javascript" src="~/js/js.js"></script>
+    <script language="JavaScript" type="text/javascript" src="~/js/prefixfree.min.js"></script>
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/normalize.css">
+    <link rel="stylesheet" href="~/css/login.css">
+    <link rel="stylesheet" href="~/css/custom.css">
+
+    
+    <link rel="stylesheet" href="~/datepicker/smooth.css">    
+    <script language="JavaScript" type="text/javascript" src="~/datepicker/jquery-ui.js"></script>
+    <link rel="stylesheet" href="~/datepicker/style.css"> 
+
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("user_1Q9QOLbjR9Ym4xNFCxVYs");
+   })();
+    </script>
+
+    <script type="text/javascript">
+
+			$(document).ready(function()
+			{
+			    $("#datepicker").datepicker();
+			});
+
+    </script>
+
+
+</head>
+<body onresize="re()" id="style-6">
+
+    @RenderSection("featured", required: false)
+    <div style="margin-bottom: 10%">
+        <img src="/infoTec/calcomania.png" width="250" height="70" align="left" />
+        <img src="/infoTec/logoTec.png" width="250" height="55" align="right" />
+    </div>
+    <div id="MainDiv">
+        <script>
+            loginDinamico("");
+        </script>
+    </div>    
+
+        @RenderSection("scripts", required: false)
+</body>
+</html>
