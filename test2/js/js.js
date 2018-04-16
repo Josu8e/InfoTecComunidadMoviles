@@ -36,9 +36,10 @@ function EnviarMensajeDinamico() {
 
         texto = '<br\> <input id="ALL" type="button" onclick="marcarTODOS()" class="btn btn-primary btn-block btn-large" value="Marcar todos"/> <br\><p>';
         for (i = 0; i < listaDepartamentos.length; i++) {
-            texto += '<div class="bg" id="' + i + '" style= "visibility: hidden;"> <div class="cosa1">' + listaDepartamentos[i].nombre + ' - ' + listaDepartamentos[i].codigoDep + ': </div> <div class="cosa2"> <label class="switch-light switch-candy"> <input type="checkbox" id="' + listaDepartamentos[i].codigoDep + '"> <span> <span>No</span> <span>Si</span> <a></a> </span> </label> </div> </div>';
+            texto += '<div class="bg" id="' + i + '" style= "visibility: hidden;"> <div class="cosa1">' + listaDepartamentos[i].nombre.toString() + ' - ' + listaDepartamentos[i].codigoDep.toString() + ': </div> <div class="cosa2"> <label class="switch-light switch-candy"> <input type="checkbox" id="' + listaDepartamentos[i].codigoDep.toString() + '"> <span> <span>No</span> <span>Si</span> <a></a> </span> </label> </div> </div>';
         }
         texto += '</p>';
+        console.log(texto);
 
         var client = new XMLHttpRequest();
         client.open('GET', '/infoTec/js/EnviarMensaje.html');
