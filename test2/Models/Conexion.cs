@@ -454,7 +454,7 @@ namespace test2.Models
         }
 
 
-        public String borrarMensaje(int mensajeID, int personaID)
+        public String borrarMensaje(int mensajeID, string personaID)
         {
             SqlCommand comand;
             string consult;

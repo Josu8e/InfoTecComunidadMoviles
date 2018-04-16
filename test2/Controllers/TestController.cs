@@ -85,7 +85,7 @@ namespace test2.Controllers
                     , JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult DelOwnM(int id_m, int id_p)
+        public JsonResult DelOwnM(int id_m, string id_p)
         {
             return Json(
                   conexion.borrarMensaje(id_m, id_p)
