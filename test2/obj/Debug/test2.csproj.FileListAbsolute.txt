@@ -598,3 +598,4 @@ C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\bin\zh-H
 C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\obj\Debug\test2.csproj.CoreCompileInputs.cache
 C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\obj\Debug\test2.dll
 C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\obj\Debug\test2.pdb
+C:\Users\natha\OneDrive\Documentos\GitHub\InfoTecComunidadMoviles\test2\obj\Debug\test2.csprojResolveAssemblyReference.cache
