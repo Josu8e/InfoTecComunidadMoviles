@@ -735,9 +735,10 @@ function enviar() {
 
     var Enviante = userName;//cambio
 
-    var imagen = document.getElementById("imgPhoto").src;
+    var imagen = document.getElementById("imgPhoto");
 
-    if (imagen == "http://localhost/infoTec")
+
+    if (imagen.src == "http://localhost/infoTec")
         imagen = "";
 
     var borrable = document.getElementById("mjsBorrable").checked;

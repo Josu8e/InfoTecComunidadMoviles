@@ -22,7 +22,6 @@ namespace test2.Models
             consult = string.Format("select ID,nombre,rol from Persona where ID=@ID and pass=@pass");
             comand = new SqlCommand(consult, con);
 
-            Console.WriteLine("Entro al login xD");
             comand.Parameters.Add("@ID", System.Data.SqlDbType.VarChar);
             comand.Parameters["@ID"].Value = id;
 
@@ -467,7 +466,7 @@ namespace test2.Models
 
                 // Creando los parámetros necesarios
                 comand.Parameters.Add("@ID_m", System.Data.SqlDbType.Int);
-                comand.Parameters.Add("@ID_p", System.Data.SqlDbType.Int);
+                comand.Parameters.Add("@ID_p", System.Data.SqlDbType.NVarChar);
 
                 // Asignando los valores a los atributos
                 comand.Parameters["@ID_m"].Value = mensajeID;

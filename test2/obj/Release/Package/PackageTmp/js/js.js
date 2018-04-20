@@ -735,10 +735,29 @@ function enviar() {
 
     var Enviante = userName;//cambio
 
-    var imagen = document.getElementById("imgPhoto").src;
+    var imagen = document.getElementById("imgPhoto");
 
-    if (imagen == "http://localhost/infoTec")
+
+    if (imagen.src == "http://localhost/infoTec")
         imagen = "";
+    else {
+        //prueba imagen
+        var frm = new FormData();
+        var file = imagen.files[0];
+        frm.append('file', file);
+        $.ajax({
+            type: 'POST',
+            url: 'http://172.19.32.10/infoTec/src/images',
+            data: frm,
+            cache: false,
+            contentType: false,
+            processData: false,
+        });
+    }
+
+
+
+    
 
     var borrable = document.getElementById("mjsBorrable").checked;
     var departamento = "";
