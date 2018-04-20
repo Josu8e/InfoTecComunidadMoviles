@@ -6,6 +6,7 @@ var texto = "";
 var imgWidth = "";
 var imgHeight = "";
 var listaDepartamentos = [];
+var listaCodigoDep = [];
 
 /// <summary>
 /// Carga el html del login a la pagina
@@ -31,27 +32,17 @@ function loginDinamico(mensaje) {
 /// <param></param>
 /// <returns></returns>
 function EnviarMensajeDinamico() {
-
-    obtenerDepartamentos(function carrerasDinamicas() {
-
-        texto = '<br\> <input id="ALL" type="button" onclick="marcarTODOS()" class="btn btn-primary btn-block btn-large" value="Marcar todos"/> <br\><p>';
-        for (i = 0; i < listaDepartamentos.length; i++) {
-            texto += '<div class="bg" id="' + i + '" style= "visibility: hidden;"> <div class="cosa1">' + listaDepartamentos[i].nombre + ' - ' + listaDepartamentos[i].codigoDep + ': </div> <div class="cosa2"> <label class="switch-light switch-candy"> <input type="checkbox" id="' + listaDepartamentos[i].codigoDep + '"> <span> <span>No</span> <span>Si</span> <a></a> </span> </label> </div> </div>';
-        }
-        texto += '</p>';
-
+   
         var client = new XMLHttpRequest();
         client.open('GET', '/infoTec/js/EnviarMensaje.html');
         client.onreadystatechange = function () {
             document.getElementById('MainDiv').innerHTML = client.responseText;
-            document.getElementById('carreraDiv').innerHTML = texto;
             document.getElementById("sedeMensaje").addEventListener("change", cargarSedes);
                       
           
             $("#datepicker").datepicker();
         };
-        client.send();
-    });
+        client.send();   
 }
 
 
@@ -175,8 +166,7 @@ function obtenerDepartamentos(funcion) {
     }).then(function (data) {
         try {
             for (i = 0; i < data.length; i++) {
-                listaDepartamentos[i] = data[i];
-             
+                listaDepartamentos[i] = data[i];   
             }
             funcion();
         } catch (e) {
@@ -200,18 +190,14 @@ function obtenerDepartamentosPorSede(funcion, sede) {
         }
     }).then(function (data) {
         try {
+            texto = '<br\> <input id="ALL" type="button" onclick="marcarTODOS()" class="btn btn-primary btn-block btn-large" value="Marcar todos"/> <br\><p>';
             for (i = 0; i < data.length; i++) {
-                var j = 0;
-                while (j < listaDepartamentos.length)
-                {
-                    if (data[i].codigoDep.toString() === listaDepartamentos[j].codigoDep) {
-                        console.log(data[i].codigoDep.toString() + " - " + listaDepartamentos[j].codigoDep);
-                        document.getElementById(j).style.setProperty("visibility", "visible");
-                        tam++;
-                    }
-                    j++;
-                }
+                listaDepartamentos[i] = data[i];
+                tam++;
+                texto += '<div class="bg" id="' + i + '" style= "visibility: visible;"> <div class="cosa1">' + data[i].nombre.toString() + ' - ' + data[i].codigoDep.toString() + ': </div> <div class="cosa2"> <label class="switch-light switch-candy"> <input type="checkbox" id="' + data[i].codigoDep.toString() + '"> <span> <span>No</span> <span>Si</span> <a></a> </span> </label> </div> </div>';
             }
+            texto += '</p>';
+            document.getElementById('carreraDiv').innerHTML = texto;
             funcion();
         } catch (e) {
             console.log(e);
@@ -241,26 +227,6 @@ function cambiar() {
     }
 
 }
-
-/*
-function cambiar() {
-    if (document.getElementById("M_admin").innerHTML === "Enviados") {
-        document.getElementById("M_admin").innerHTML = "Enviar";
-        document.getElementById("Mensaje_Enviar").style.visibility = "hidden";
-        document.getElementById("Mensaje_Enviar").style.display = "none";
-        document.getElementById("Mensaje_admin").style.visibility = "visible";
-        document.getElementById("Mensaje_admin").style.display = "inherit";
-        cambiarLoad();
-    } else {
-        document.getElementById("M_admin").innerHTML = "Enviados";
-        document.getElementById("Mensaje_admin").style.visibility = "hidden";
-        document.getElementById("Mensaje_admin").style.display = "none";
-        document.getElementById("Mensaje_Enviar").style.visibility = "visible";
-        document.getElementById("Mensaje_Enviar").style.display = "inherit";
-    }
-}
-
-*/
 
 /// <summary>
 /// Carga el html para cambiar la contraseña a la pagina
